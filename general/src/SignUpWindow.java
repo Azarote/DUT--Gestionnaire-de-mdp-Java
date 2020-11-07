@@ -16,12 +16,55 @@ public class SignUpWindow extends JFrame {
         setLocationRelativeTo(null); //Centre la fenêtre
         setResizable(false); //Empêche le redimensionnement de la fenêtre
 
-        JPanel mainPanel = new JPanel();
-        mainPanel.add(button1);
 
+        setLayout(null);
 
+        JLabel newPassword = new JLabel("Nouveau mot de passe");
+        newPassword.setBounds(150,20,290,25);
+        add(newPassword);
 
-        setContentPane(mainPanel);
+        JPasswordField passwordField = new JPasswordField();
+        passwordField.setBounds(150,40,290,25);
+        add(passwordField);
+
+        JLabel newPasswordConfirmation = new JLabel("Confirmer le nouveau mot de passe");
+        newPasswordConfirmation.setBounds(150,70,300,25);
+        add(newPasswordConfirmation);
+
+        JPasswordField passwordFieldConfirmation = new JPasswordField();
+        passwordFieldConfirmation.setBounds(150,90,290,25);
+        add(passwordFieldConfirmation);
+
+        JButton validateButton = new JButton("Valider");
+        validateButton.setBounds(150,130,150,25);
+        add(validateButton);
+
+        JLabel label1 = new JLabel("ATTENTION", SwingConstants.CENTER);
+        label1.setFont(new Font("Helvetica", Font.PLAIN, 17));
+        label1.setForeground(Color.RED);
+        label1.setBounds(0,200,600,30);
+        add(label1);
+
+        JLabel label2 = new JLabel("Le mot de passe doit contenir 8 caractères minimum dont :", SwingConstants.CENTER);
+        label2.setFont(new Font("Helvetica", Font.PLAIN, 14));
+        label2.setForeground(Color.RED);
+        label2.setBounds(0,220,600,30);
+        add(label2);
+
+        JLabel label3 = new JLabel("- au moins 6 lettres", SwingConstants.CENTER);
+        label3.setFont(new Font("Helvetica", Font.PLAIN, 14));
+        label3.setForeground(Color.RED);
+        label3.setBounds(0,235,600,30);
+        add(label3);
+
+        JLabel label4 = new JLabel("- au moins 2 chiffres", SwingConstants.CENTER);
+        label4.setFont(new Font("Helvetica", Font.PLAIN, 14));
+        label4.setForeground(Color.RED);
+        label4.setBounds(0,250,600,30);
+        add(label4);
+
         setVisible(true);
+
+
     }
 }
