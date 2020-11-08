@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.io.File;
 
 public class principal {
     public static SignUpWindow signup;
@@ -7,7 +8,12 @@ public class principal {
     public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-        signup = new SignUpWindow("Enregistrer un nouveau mot de passe");
-        login = new LoginWindow("Authentification");
+        File fichierPWD = new File("general/src/password.dat");
+
+        //Question : faut il stocker le mot de passe dans un fichier différent de celui contenant tous les mdp ?
+        if(fichierPWD.exists())
+            login = new LoginWindow("Authentification");
+        else
+            signup = new SignUpWindow("Enregistrer un nouveau mot de passe");
     }
 }
