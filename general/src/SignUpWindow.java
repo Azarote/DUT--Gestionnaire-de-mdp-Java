@@ -23,7 +23,7 @@ public class SignUpWindow extends JFrame {
         setLayout(null);
 
         //Label demandant d'entrer un nouveau mot de passe
-        JLabel newPassword = new JLabel("Nouveau mot de passe");
+        JLabel newPassword = new JLabel("Mot de passe global");
         newPassword.setBounds(150,30,290,25);
         add(newPassword);
 
@@ -33,7 +33,7 @@ public class SignUpWindow extends JFrame {
 
 
         //Label demandant de confirmer le nouveau mot de passe
-        JLabel newPasswordConfirmation = new JLabel("Confirmer le nouveau mot de passe");
+        JLabel newPasswordConfirmation = new JLabel("Confirmer le mot de passe");
         newPasswordConfirmation.setBounds(150,80,300,25);
         add(newPasswordConfirmation);
 

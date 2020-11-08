@@ -14,6 +14,6 @@ public class principal {
         if(fichierPWD.exists())
             login = new LoginWindow("Authentification");
         else
-            signup = new SignUpWindow("Enregistrer un nouveau mot de passe");
+            signup = new SignUpWindow("Enregistrer un mot de passe global");
     }
 }
