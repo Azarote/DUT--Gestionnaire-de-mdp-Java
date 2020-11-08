@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
 
 public class SignUpWindow extends JFrame {
 
@@ -68,5 +71,23 @@ public class SignUpWindow extends JFrame {
         add(label4);
 
         setVisible(true);
+
+        validateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    File f = new File("general/src/password.dat");
+
+                    if (f.createNewFile())
+                        System.out.println("Fichier créé");
+                    else
+                        System.out.println("Fichier déjà existant");
+                }
+                catch(Exception ex)
+                {
+                    System.err.println(ex);
+                }
+            }
+        });
     }
 }
