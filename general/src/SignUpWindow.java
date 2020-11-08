@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.security.Principal;
 import java.util.Arrays;
 
 public class SignUpWindow extends JFrame {
@@ -17,6 +18,8 @@ public class SignUpWindow extends JFrame {
 
     private JPasswordField passwordField = new JPasswordField();
     private JPasswordField passwordFieldConfirmation = new JPasswordField();
+
+    public static LoginWindow login;
 
     public static ObjectOutputStream fWo;
 
@@ -116,8 +119,9 @@ public class SignUpWindow extends JFrame {
                             } catch (IOException ioException) {
                                 ioException.printStackTrace();
                             }
-
-                            System.exit(0);//Ferme la fenêtre
+                            dispose();
+                            login = new LoginWindow("Authentification");
+                            //System.exit(0);//Ferme la fenêtre
                         }
                     }
                 }
