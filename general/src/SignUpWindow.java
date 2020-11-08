@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.util.Arrays;
 
 public class SignUpWindow extends JFrame {
 
@@ -51,19 +52,36 @@ public class SignUpWindow extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     //new SignUpProcessing(passwordField.getText(), passwordFieldConfirmation.getText());
+                    int nbLettre = 0;
+                    int nbChiffre = 0;
 
-                    String pwd1 = passwordField.getText();//Récupère la saisie dans le premier champ
-                    String pwd2 = passwordFieldConfirmation.getText();//Récupère la saisie dans le deuxième champ
+                    char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
+                    char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
 
-                    if (pwd1.equals(pwd2) == false) { //Si les deux mots de passe ne correspondent pas
+                    for (int i = 0; i < pwd1.length; i++) {
+                        if (Character.isLetter(pwd1[i])){
+                            nbLettre++;
+                        }
+                        if (Character.isDigit(pwd1[i])){
+                            nbChiffre++;
+                        }
+
+                    }
+
+                    if (!Arrays.equals(pwd1, pwd2)) { //Si les deux mots de passe ne correspondent pas
                         JOptionPane.showMessageDialog(passwordField,"Les deux mots de passe ne correspondent pas","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
                         System.out.println("Les deux mots de passe ne correspondent pas");
                     }
-                    else if(pwd1.length()<8){ //Si le mot de passe fait moins de 8 caractères
+                    else if(pwd1.length<8){ //Si le mot de passe fait moins de 8 caractères
                         JOptionPane.showMessageDialog(passwordField,"Le mot de passe doit contenir 8 caractères minimum","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
                         System.out.println("Le mot de passe doit contenir 8 caractères minimum");
+                    }else if (nbLettre < 6 || nbChiffre < 2){
+                        JOptionPane.showMessageDialog(passwordField,"Le mot de passe doit contenir 6 lettres et 2 chiffres minimum","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
+                        System.out.println("Le mot de passe doit contenir 6 lettres et 2 chiffres minimum");
+
                     }
                     else {
+
                         System.out.println("Le mot de passe choisi est valide");
                         System.out.println("Les deux mots de passe correspondent");
                         int reponse = JOptionPane.showConfirmDialog(passwordField,"Le mot de passe est valide\nVoulez-vous poursuivre ?","Validation", JOptionPane.YES_NO_OPTION);
@@ -79,7 +97,7 @@ public class SignUpWindow extends JFrame {
                                 else
                                     System.out.println("Fichier déjà existant");
 
-                                f.deleteOnExit();//Sert à éviter de supprimer le fichier à chaque fois quand on compile, mais ligne à supprimer à la fin
+                               // f.deleteOnExit();//Sert à éviter de supprimer le fichier à chaque fois quand on compile, mais ligne à supprimer à la fin
                             }
                             catch(Exception ex)
                             {
