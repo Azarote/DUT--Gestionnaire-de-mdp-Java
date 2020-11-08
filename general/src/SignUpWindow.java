@@ -8,9 +8,11 @@ import java.io.File;
 
 public class SignUpWindow extends JFrame {
 
+    private JPanel panel1;//osef
+    private JButton button1;//osef
 
-    private JPanel panel1;
-    private JButton button1;
+    private JPasswordField passwordField = new JPasswordField();
+    private JPasswordField passwordFieldConfirmation = new JPasswordField();
 
     public SignUpWindow(String a){
         super(a);
@@ -26,9 +28,9 @@ public class SignUpWindow extends JFrame {
         add(newPassword);
 
         //Champ de texte pour saisir le nouveau mot de passe
-        JPasswordField passwordField = new JPasswordField();
         passwordField.setBounds(150,50,290,25);
         add(passwordField);
+
 
         //Label demandant de confirmer le nouveau mot de passe
         JLabel newPasswordConfirmation = new JLabel("Confirmer le nouveau mot de passe");
@@ -36,7 +38,6 @@ public class SignUpWindow extends JFrame {
         add(newPasswordConfirmation);
 
         //Champ de texte pour confirmer le nouveau mot de passe
-        JPasswordField passwordFieldConfirmation = new JPasswordField();
         passwordFieldConfirmation.setBounds(150,100,290,25);
         add(passwordFieldConfirmation);
 
@@ -44,6 +45,51 @@ public class SignUpWindow extends JFrame {
         JButton validateButton = new JButton("Valider");
         validateButton.setBounds(150,140,150,25);
         add(validateButton);
+
+            //Lorsque l'on clique sur "Valider"
+            validateButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //new SignUpProcessing(passwordField.getText(), passwordFieldConfirmation.getText());
+
+                    String pwd1 = passwordField.getText();//Récupère la saisie dans le premier champ
+                    String pwd2 = passwordFieldConfirmation.getText();//Récupère la saisie dans le deuxième champ
+
+                    if (pwd1.equals(pwd2) == false) { //Si les deux mots de passe ne correspondent pas
+                        JOptionPane.showMessageDialog(passwordField,"Les deux mots de passe ne correspondent pas","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
+                        System.out.println("Les deux mots de passe ne correspondent pas");
+                    }
+                    else if(pwd1.length()<8){ //Si le mot de passe fait moins de 8 caractères
+                        JOptionPane.showMessageDialog(passwordField,"Le mot de passe doit contenir 8 caractères minimum","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
+                        System.out.println("Le mot de passe doit contenir 8 caractères minimum");
+                    }
+                    else {
+                        System.out.println("Le mot de passe choisi est valide");
+                        System.out.println("Les deux mots de passe correspondent");
+                        int reponse = JOptionPane.showConfirmDialog(passwordField,"Le mot de passe est valide\nVoulez-vous poursuivre ?","Validation", JOptionPane.YES_NO_OPTION);
+
+                        //Si l'utilisateur veut poursuivre, on crée le fichier
+                        if(reponse == JOptionPane.YES_OPTION)
+                        {
+                            try{
+                                File f = new File("general/src/password.dat");
+
+                                if (f.createNewFile())
+                                    System.out.println("Fichier créé");
+                                else
+                                    System.out.println("Fichier déjà existant");
+
+                                f.deleteOnExit();//Sert à éviter de supprimer le fichier à chaque fois quand on compile, mais ligne à supprimer à la fin
+                            }
+                            catch(Exception ex)
+                            {
+                                System.err.println(ex);
+                            }
+                            System.exit(0);//Ferme la fenêtre
+                        }
+                    }
+                }
+            });
 
         //Labels affichant les critères à respecter pour un mot de passe valide
         JLabel label1 = new JLabel("ATTENTION", SwingConstants.CENTER);
@@ -72,22 +118,10 @@ public class SignUpWindow extends JFrame {
 
         setVisible(true);
 
-        validateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try{
-                    File f = new File("general/src/password.dat");
 
-                    if (f.createNewFile())
-                        System.out.println("Fichier créé");
-                    else
-                        System.out.println("Fichier déjà existant");
-                }
-                catch(Exception ex)
-                {
-                    System.err.println(ex);
-                }
-            }
-        });
+    }
+
+    public SignUpWindow() {
+
     }
 }
