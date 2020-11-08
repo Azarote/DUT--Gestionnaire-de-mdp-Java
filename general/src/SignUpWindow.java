@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Arrays;
 
 public class SignUpWindow extends JFrame {
@@ -14,6 +17,8 @@ public class SignUpWindow extends JFrame {
 
     private JPasswordField passwordField = new JPasswordField();
     private JPasswordField passwordFieldConfirmation = new JPasswordField();
+
+    public static ObjectOutputStream fWo;
 
     public SignUpWindow(String a){
         super(a);
@@ -103,6 +108,15 @@ public class SignUpWindow extends JFrame {
                             {
                                 System.err.println(ex);
                             }
+
+                            try {
+                                fWo = new ObjectOutputStream(new FileOutputStream("general/src/password.dat"));
+                                fWo.writeObject(pwd1);
+                                fWo.close();
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+
                             System.exit(0);//Ferme la fenêtre
                         }
                     }
