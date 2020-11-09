@@ -7,6 +7,7 @@ import java.util.Arrays;
 public class LoginWindow extends JFrame {
 
     private ObjectInputStream fRo;
+    public static ManagerWindow manager;
 
     public LoginWindow(String s){
         super(s);
@@ -63,6 +64,9 @@ public class LoginWindow extends JFrame {
 
                 if(Arrays.equals(pwdWritten, pwdSaved)){
                     System.out.println("Le mot de passe saisi est identique à celui enregistré");
+
+                    dispose();
+                    manager = new ManagerWindow("Gestionnaire de mots de passe");
                 }
                 else{
                     JOptionPane.showMessageDialog(enterPasswordField,"Le mot de passe saisi ne correspond à celui enregistré au préalable","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
