@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class SignUpProcessing extends SignUpWindow{
 
-    /*
+    /* TROUVER COMME SEPARER TRAITEMENT
     public SignUpProcessing(String pwd1, String pwd2) {
         super();
 

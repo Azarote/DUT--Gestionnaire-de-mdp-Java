@@ -121,7 +121,6 @@ public class SignUpWindow extends JFrame {
                             }
                             dispose();
                             login = new LoginWindow("Authentification");
-                            //System.exit(0);//Ferme la fenêtre
                         }
                     }
                 }
