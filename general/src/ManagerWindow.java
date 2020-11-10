@@ -3,14 +3,14 @@ import javax.swing.*;
 public class ManagerWindow extends JFrame {
     public ManagerWindow(String s){
         super(s);
-        setSize(1200,750);
-        setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
-        setLocationRelativeTo(null); //Centre la fenêtre
-        setResizable(false); //Empêche le redimensionnement de la fenêtre
+        this.setSize(1200,750);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
+        this.setLocationRelativeTo(null); //Centre la fenêtre
+        this.setResizable(false); //Empêche le redimensionnement de la fenêtre
 
         ImageIcon icon = new ImageIcon("general/src/cadenas.png");
-        setIconImage(icon.getImage());
+        this.setIconImage(icon.getImage());
 
-        setVisible(true);
+        this.setVisible(true);
     }
 }
