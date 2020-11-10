@@ -31,6 +31,9 @@ public class SignUpWindow extends JFrame {
         setResizable(false); //Empêche le redimensionnement de la fenêtre
         setLayout(null);
 
+        ImageIcon icon = new ImageIcon("general/src/cadenas.png");
+        setIconImage(icon.getImage());
+
         //Label demandant d'entrer un nouveau mot de passe
         JLabel newPassword = new JLabel("Mot de passe global");
         newPassword.setBounds(150,30,290,25);

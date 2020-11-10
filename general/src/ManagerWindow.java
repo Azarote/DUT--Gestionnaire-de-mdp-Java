@@ -8,6 +8,9 @@ public class ManagerWindow extends JFrame {
         setLocationRelativeTo(null); //Centre la fenêtre
         setResizable(false); //Empêche le redimensionnement de la fenêtre
 
+        ImageIcon icon = new ImageIcon("general/src/cadenas.png");
+        setIconImage(icon.getImage());
+
         setVisible(true);
     }
 }

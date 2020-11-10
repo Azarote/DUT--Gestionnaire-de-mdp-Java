@@ -17,6 +17,8 @@ public class LoginWindow extends JFrame {
         setResizable(false); //Empêche le redimensionnement de la fenêtre
         setLayout(null);
 
+        ImageIcon icon = new ImageIcon("general/src/cadenas.png");
+        setIconImage(icon.getImage());
 
         //Champ de texte pour saisir le mot de passe
         JPasswordField enterPasswordField = new JPasswordField();
