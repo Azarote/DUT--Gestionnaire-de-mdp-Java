@@ -33,6 +33,16 @@ public class LoginWindow extends JFrame {
         validatePassword.setBounds(105,90,150,25);
         add(validatePassword);
 
+        //Label1
+        JLabel attention = new JLabel("Attention : par mesure de sécurité, vous serez automatiquement déconnecté", SwingConstants.CENTER);
+        attention.setBounds(0,135,500,20);
+        add(attention);
+
+        //Label2
+        JLabel attention2 = new JLabel("à la fermeture du gestionnaire.", SwingConstants.CENTER);
+        attention2.setBounds(0,149,500,20);
+        add(attention2);
+
         try{
             fRo = new ObjectInputStream(new FileInputStream("general/src/password.dat"));
             char[] pwdSaved = (char[]) fRo.readObject();
@@ -69,8 +79,8 @@ public class LoginWindow extends JFrame {
                     manager = new ManagerWindow("Gestionnaire de mots de passe");
                 }
                 else{
-                    JOptionPane.showMessageDialog(enterPasswordField,"Le mot de passe saisi ne correspond à celui enregistré au préalable","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
-                    System.out.println("Le mot de passe saisi ne correspond pas à celui enregistré au préalable");
+                    JOptionPane.showMessageDialog(enterPasswordField,"Mot de passe inconnu","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
+                    System.out.println("Mot de passe inconnu");
                 }
             }
         });
