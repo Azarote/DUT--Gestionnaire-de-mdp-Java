@@ -13,56 +13,59 @@ import java.util.Arrays;
 
 public class SignUpWindow extends JFrame {
 
-    private JPanel panel1;//osef
-    private JButton button1;//osef
+    private JButton validateButton;
 
-    private JPasswordField passwordField = new JPasswordField();
-    private JPasswordField passwordFieldConfirmation = new JPasswordField();
+    private JLabel newPassword;
+    private JLabel newPasswordConfirmation;
+    private JLabel label1, label2, label3, label4;
 
-    public static LoginWindow login;
+    private JPasswordField passwordField;
+    private JPasswordField passwordFieldConfirmation;
 
-    public static ObjectOutputStream fWo;
+    private static LoginWindow login;
+    private static ObjectOutputStream fWo;
 
     public SignUpWindow(String a){
         super(a);
-        setSize(600,370);
-        setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
-        setLocationRelativeTo(null); //Centre la fenêtre
-        setResizable(false); //Empêche le redimensionnement de la fenêtre
-        setLayout(null);
+        this.setSize(600,370);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
+        this.setLocationRelativeTo(null); //Centre la fenêtre
+        this.setResizable(false); //Empêche le redimensionnement de la fenêtre
+        this.setLayout(null);
 
         ImageIcon icon = new ImageIcon("general/src/cadenas.png");
-        setIconImage(icon.getImage());
+        this.setIconImage(icon.getImage());
 
         //Label demandant d'entrer un nouveau mot de passe
-        JLabel newPassword = new JLabel("Mot de passe global");
+        newPassword = new JLabel("Mot de passe global");
         newPassword.setBounds(150,30,290,25);
-        add(newPassword);
+        this.add(newPassword);
 
         //Champ de texte pour saisir le nouveau mot de passe
+        passwordField = new JPasswordField();
         passwordField.setBounds(150,50,290,25);
-        add(passwordField);
+        this.add(passwordField);
 
 
         //Label demandant de confirmer le nouveau mot de passe
-        JLabel newPasswordConfirmation = new JLabel("Confirmer le mot de passe");
+        newPasswordConfirmation = new JLabel("Confirmer le mot de passe");
         newPasswordConfirmation.setBounds(150,80,300,25);
-        add(newPasswordConfirmation);
+        this.add(newPasswordConfirmation);
 
         //Champ de texte pour confirmer le nouveau mot de passe
+        passwordFieldConfirmation = new JPasswordField();
         passwordFieldConfirmation.setBounds(150,100,290,25);
-        add(passwordFieldConfirmation);
+        this.add(passwordFieldConfirmation);
 
         //Bouton pour valider l'opération
-        JButton validateButton = new JButton("Valider");
+        validateButton = new JButton("Valider");
         validateButton.setBounds(150,140,150,25);
-        add(validateButton);
+        this.add(validateButton);
 
             //Lorsque l'on clique sur "Valider"
             validateButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //new SignUpProcessing(passwordField.getText(), passwordFieldConfirmation.getText());
                     int nbLettre = 0;
                     int nbChiffre = 0;
 
@@ -76,7 +79,6 @@ public class SignUpWindow extends JFrame {
                         if (Character.isDigit(pwd1[i])){
                             nbChiffre++;
                         }
-
                     }
 
                     if (!Arrays.equals(pwd1, pwd2)) { //Si les deux mots de passe ne correspondent pas
@@ -92,7 +94,6 @@ public class SignUpWindow extends JFrame {
 
                     }
                     else {
-
                         System.out.println("Le mot de passe choisi est valide");
                         System.out.println("Les deux mots de passe correspondent");
                         int reponse = JOptionPane.showConfirmDialog(passwordField,"Le mot de passe est valide\nVoulez-vous poursuivre ?","Validation", JOptionPane.YES_NO_OPTION);
@@ -101,7 +102,7 @@ public class SignUpWindow extends JFrame {
                         if(reponse == JOptionPane.YES_OPTION)
                         {
                             try{
-                                File f = new File("general/src/password.dat");
+                                File f = new File("general/src/data.dat");
 
                                 if (f.createNewFile())
                                     System.out.println("Fichier créé");
@@ -116,13 +117,14 @@ public class SignUpWindow extends JFrame {
                             }
 
                             try {
-                                fWo = new ObjectOutputStream(new FileOutputStream("general/src/password.dat"));
+                                fWo = new ObjectOutputStream(new FileOutputStream("general/src/data.dat"));
                                 fWo.writeObject(pwd1);
                                 fWo.close();
                             } catch (IOException ioException) {
                                 ioException.printStackTrace();
                             }
                             dispose();
+
                             login = new LoginWindow("Authentification");
                         }
                     }
@@ -130,36 +132,30 @@ public class SignUpWindow extends JFrame {
             });
 
         //Labels affichant les critères à respecter pour un mot de passe valide
-        JLabel label1 = new JLabel("ATTENTION", SwingConstants.CENTER);
+        label1 = new JLabel("ATTENTION", SwingConstants.CENTER);
         label1.setFont(new Font("Helvetica", Font.PLAIN, 17));
         label1.setForeground(Color.RED);
         label1.setBounds(0,210,600,30);
-        add(label1);
+        this.add(label1);
 
-        JLabel label2 = new JLabel("Le mot de passe doit contenir 8 caractères minimum dont :", SwingConstants.CENTER);
+        label2 = new JLabel("Le mot de passe doit contenir 8 caractères minimum dont :", SwingConstants.CENTER);
         label2.setFont(new Font("Helvetica", Font.PLAIN, 14));
         label2.setForeground(Color.RED);
         label2.setBounds(0,230,600,30);
-        add(label2);
+        this.add(label2);
 
-        JLabel label3 = new JLabel("- au moins 6 lettres", SwingConstants.CENTER);
+        label3 = new JLabel("- au moins 6 lettres", SwingConstants.CENTER);
         label3.setFont(new Font("Helvetica", Font.PLAIN, 14));
         label3.setForeground(Color.RED);
         label3.setBounds(0,245,600,30);
-        add(label3);
+        this.add(label3);
 
-        JLabel label4 = new JLabel("- au moins 2 chiffres", SwingConstants.CENTER);
+        label4 = new JLabel("- au moins 2 chiffres", SwingConstants.CENTER);
         label4.setFont(new Font("Helvetica", Font.PLAIN, 14));
         label4.setForeground(Color.RED);
         label4.setBounds(0,260,600,30);
-        add(label4);
+        this.add(label4);
 
-        setVisible(true);
-
-
-    }
-
-    public SignUpWindow() {
-
+        this.setVisible(true);
     }
 }

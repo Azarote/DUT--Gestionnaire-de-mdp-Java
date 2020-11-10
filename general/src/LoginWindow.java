@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -6,47 +7,54 @@ import java.util.Arrays;
 
 public class LoginWindow extends JFrame {
 
-    private ObjectInputStream fRo;
-    public static ManagerWindow manager;
+    private JButton validatePassword;
+
+    private JLabel enterPassword;
+    private JLabel attention, attention2;
+
+    private JPasswordField enterPasswordField;
+
+    private static ManagerWindow manager;
+    private static ObjectInputStream fRo;
 
     public LoginWindow(String s){
         super(s);
-        setSize(500,220);
-        setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
-        setLocationRelativeTo(null); //Centre la fenêtre
-        setResizable(false); //Empêche le redimensionnement de la fenêtre
-        setLayout(null);
+        this.setSize(500,220);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
+        this.setLocationRelativeTo(null); //Centre la fenêtre
+        this.setResizable(false); //Empêche le redimensionnement de la fenêtre
+        this.setLayout(null);
 
         ImageIcon icon = new ImageIcon("general/src/cadenas.png");
-        setIconImage(icon.getImage());
+        this.setIconImage(icon.getImage());
 
         //Champ de texte pour saisir le mot de passe
-        JPasswordField enterPasswordField = new JPasswordField();
+        enterPasswordField = new JPasswordField();
         enterPasswordField.setBounds(105,50,290,25);
-        add(enterPasswordField);
+        this.add(enterPasswordField);
 
         //Label demandant d'entrer le mot de passe
-        JLabel enterPassword = new JLabel("Saisir le mot de passe");
+        enterPassword = new JLabel("Saisir le mot de passe");
         enterPassword.setBounds(105,30,290,25);
-        add(enterPassword);
+        this.add(enterPassword);
 
         //Bouton pour valider l'opération
-        JButton validatePassword = new JButton("Valider");
+        validatePassword = new JButton("Valider");
         validatePassword.setBounds(105,90,150,25);
-        add(validatePassword);
+        this.add(validatePassword);
 
         //Label1
-        JLabel attention = new JLabel("Attention : par mesure de sécurité, vous serez automatiquement déconnecté", SwingConstants.CENTER);
+        attention = new JLabel("Attention : par mesure de sécurité, vous serez automatiquement déconnecté", SwingConstants.CENTER);
         attention.setBounds(0,135,500,20);
-        add(attention);
+        this.add(attention);
 
         //Label2
-        JLabel attention2 = new JLabel("à la fermeture du gestionnaire.", SwingConstants.CENTER);
+        attention2 = new JLabel("à la fermeture du gestionnaire.", SwingConstants.CENTER);
         attention2.setBounds(0,149,500,20);
-        add(attention2);
+        this.add(attention2);
 
         try{
-            fRo = new ObjectInputStream(new FileInputStream("general/src/password.dat"));
+            fRo = new ObjectInputStream(new FileInputStream("general/src/data.dat"));
             char[] pwdSaved = (char[]) fRo.readObject();
             fRo.close();
         }
@@ -54,17 +62,14 @@ public class LoginWindow extends JFrame {
             ioException.printStackTrace();
         }
 
-        /* Lorsque l'on clique sur "Valider"
-        on lance le traitement du mdp saisi pour comparer
-        s'il est identique à celui enregistré dans le fichier
-         */
+        //Compare le mdp saisi avec celui enregistré
         validatePassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 char[] pwdSaved = new char[0];
                 
                 try{
-                    fRo = new ObjectInputStream(new FileInputStream("general/src/password.dat"));
+                    fRo = new ObjectInputStream(new FileInputStream("general/src/data.dat"));
                     pwdSaved = (char[]) fRo.readObject();
                     fRo.close();
                 }
@@ -87,7 +92,6 @@ public class LoginWindow extends JFrame {
             }
         });
 
-        setVisible(true);
+        this.setVisible(true);
     }
-
 }
