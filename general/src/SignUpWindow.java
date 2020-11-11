@@ -12,7 +12,7 @@ public class SignUpWindow extends JFrame {
     private JButton validateButton;
     private JLabel newPassword;
     private JLabel newPasswordConfirmation;
-    private JLabel label1, label2, label3, label4;
+    private JLabel info;
     private JPasswordField passwordField;
     private JPasswordField passwordFieldConfirmation;
     private static LoginWindow login;
@@ -31,7 +31,7 @@ public class SignUpWindow extends JFrame {
 
         //Label demandant d'entrer un nouveau mot de passe
         newPassword = new JLabel("Mot de passe global");
-        newPassword.setBounds(150,30,290,25);
+        newPassword.setBounds(getSize().width/4,30,290,25);
         this.add(newPassword);
 
         //Champ de texte pour saisir le nouveau mot de passe
@@ -94,30 +94,13 @@ public class SignUpWindow extends JFrame {
                 }
             });
 
-        //Labels affichant les critères à respecter pour un mot de passe valide
-        label1 = new JLabel("ATTENTION", SwingConstants.CENTER);
-        label1.setFont(new Font("Helvetica", Font.PLAIN, 17));
-        label1.setForeground(Color.RED);
-        label1.setBounds(0,210,600,30);
-        this.add(label1);
-
-        label2 = new JLabel("Le mot de passe doit contenir 8 caractères minimum dont :", SwingConstants.CENTER);
-        label2.setFont(new Font("Helvetica", Font.PLAIN, 14));
-        label2.setForeground(Color.RED);
-        label2.setBounds(0,230,600,30);
-        this.add(label2);
-
-        label3 = new JLabel("- au moins 6 lettres", SwingConstants.CENTER);
-        label3.setFont(new Font("Helvetica", Font.PLAIN, 14));
-        label3.setForeground(Color.RED);
-        label3.setBounds(0,245,600,30);
-        this.add(label3);
-
-        label4 = new JLabel("- au moins 2 chiffres", SwingConstants.CENTER);
-        label4.setFont(new Font("Helvetica", Font.PLAIN, 14));
-        label4.setForeground(Color.RED);
-        label4.setBounds(0,260,600,30);
-        this.add(label4);
+        //Label affichant les critères à respecter pour un mot de passe valide
+        info = new JLabel("", SwingConstants.CENTER);
+        info.setText("<html><div style=\"text-align:center;\"><strong>ATTENTION</strong><br/>Le mot de passe doit contenir 8 caractères minimum dont :<br/>- au moins 6 lettres<br/>- au moins 2 chiffres</div></html>");
+        info.setFont(new Font("Helvetica", Font.PLAIN, 17));
+        info.setForeground(Color.RED);
+        info.setBounds(-6,200,600,100);
+        this.add(info);
 
         this.setVisible(true);
     }

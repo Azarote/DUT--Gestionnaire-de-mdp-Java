@@ -12,7 +12,7 @@ public class LoginWindow extends JFrame {
     private JButton validatePassword;
 
     private JLabel enterPassword;
-    private JLabel attention, attention2;
+    private JLabel info;
 
     private JPasswordField enterPasswordField;
 
@@ -69,15 +69,11 @@ public class LoginWindow extends JFrame {
                 }
             });
 
-        //Label1
-        attention = new JLabel("Attention : par mesure de sécurité, vous serez automatiquement déconnecté", SwingConstants.CENTER);
-        attention.setBounds(0,135,500,20);
-        this.add(attention);
-
-        //Label2
-        attention2 = new JLabel("à la fermeture du gestionnaire.", SwingConstants.CENTER);
-        attention2.setBounds(0,149,500,20);
-        this.add(attention2);
+        //Label d'information
+        info = new JLabel("", SwingConstants.CENTER);
+        info.setText("<html><div style=\"text-align:center;\">Attention : par mesure de sécurité, vous serez automatiquement déconnecté<br/>à la fermeture du gestionnaire.</div></html>");
+        info.setBounds(0,135,500,30);
+        this.add(info);
 
         this.setVisible(true);
     }
