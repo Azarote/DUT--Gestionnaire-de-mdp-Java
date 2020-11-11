@@ -21,12 +21,12 @@ public class LoginWindow extends JFrame {
 
         //Label demandant d'entrer le mot de passe
         JLabel enterPassword = new JLabel("Saisir le mot de passe");
-        enterPassword.setBounds(99,30,290,25);
+        enterPassword.setBounds(105,30,290,25);
         this.add(enterPassword);
 
         //Champ de texte pour saisir le mot de passe
         enterPasswordField = new JPasswordField();
-        enterPasswordField.setBounds(99,50,290,25);
+        enterPasswordField.setBounds(105,50,290,25);
         this.add(enterPasswordField);
 
             //Appelle la fonction qui compare le mdp saisi avec celui enregistré si on appuye sur "Entrée"
@@ -47,7 +47,7 @@ public class LoginWindow extends JFrame {
 
         //Bouton pour valider la saisie du mot de passe
         JButton validatePassword = new JButton("Valider");
-        validatePassword.setBounds(99,90,150,25);
+        validatePassword.setBounds(105,90,150,25);
         this.add(validatePassword);
 
             //Appelle la fonction qui compare le mdp saisi avec celui enregistré si on clique sur "Valider"
@@ -56,14 +56,15 @@ public class LoginWindow extends JFrame {
         //Label d'information
         JLabel info = new JLabel("", SwingConstants.CENTER);
         info.setText("<html><div style=\"text-align:center;\">Attention : par mesure de sécurité, vous serez automatiquement déconnecté<br/>à la fermeture du gestionnaire.</div></html>");
-        info.setBounds(-6,135,500,30);
+        info.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        info.setBounds(0,135,500,30);
         this.add(info);
 
         //Label pour réinitialiser le mot de passer (hypertexte)
         JLabel lostPassword = new JLabel("", SwingConstants.CENTER);
         lostPassword.setCursor(new Cursor(Cursor.HAND_CURSOR));
         lostPassword.setText("<html><span style=\"color:blue;\"><u>Mot de passe perdu ?</u></span></html>");
-        lostPassword.setBounds(-6,180,500,30);
+        lostPassword.setBounds(0,180,500,30);
         this.add(lostPassword);
 
             //Si on clique sur "Mot de passe perdu ?"
