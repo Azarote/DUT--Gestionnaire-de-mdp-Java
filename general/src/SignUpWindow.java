@@ -5,18 +5,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.security.Principal;
 import java.util.Arrays;
 
 public class SignUpWindow extends JFrame {
-    private JButton validateButton;
-    private JLabel newPassword;
-    private JLabel newPasswordConfirmation;
-    private JLabel info;
-    private JPasswordField passwordField;
-    private JPasswordField passwordFieldConfirmation;
-    private static LoginWindow login;
-    private static ObjectOutputStream fWo;
+    private final JPasswordField passwordField;
+    private final JPasswordField passwordFieldConfirmation;
 
     public SignUpWindow(String a){
         super(a);
@@ -30,7 +23,7 @@ public class SignUpWindow extends JFrame {
         this.setIconImage(icon.getImage());
 
         //Label demandant d'entrer un nouveau mot de passe
-        newPassword = new JLabel("Mot de passe global");
+        JLabel newPassword = new JLabel("Mot de passe global");
         newPassword.setBounds(getSize().width/4,30,290,25);
         this.add(newPassword);
 
@@ -56,7 +49,7 @@ public class SignUpWindow extends JFrame {
             });
 
         //Label demandant de confirmer le nouveau mot de passe
-        newPasswordConfirmation = new JLabel("Confirmer le mot de passe");
+        JLabel newPasswordConfirmation = new JLabel("Confirmer le mot de passe");
         newPasswordConfirmation.setBounds(150,80,300,25);
         this.add(newPasswordConfirmation);
 
@@ -82,20 +75,15 @@ public class SignUpWindow extends JFrame {
             });
 
         //Bouton pour valider la saisie des mdp
-        validateButton = new JButton("Valider");
+        JButton validateButton = new JButton("Valider");
         validateButton.setBounds(150,140,150,25);
         this.add(validateButton);
 
             //Appelle la fonction qui traite les mdps si on clique sur "Valider"
-            validateButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    passwordProcessing();
-                }
-            });
+            validateButton.addActionListener(e -> passwordProcessing());
 
         //Label affichant les critères à respecter pour un mot de passe valide
-        info = new JLabel("", SwingConstants.CENTER);
+        JLabel info = new JLabel("", SwingConstants.CENTER);
         info.setText("<html><div style=\"text-align:center;\"><strong>ATTENTION</strong><br/>Le mot de passe doit contenir 8 caractères minimum dont :<br/>- au moins 6 lettres<br/>- au moins 2 chiffres</div></html>");
         info.setFont(new Font("Helvetica", Font.PLAIN, 17));
         info.setForeground(Color.RED);
@@ -114,11 +102,11 @@ public class SignUpWindow extends JFrame {
         int nbChiffre = 0;
 
         //Traite le nombre de chiffres et de lettres
-        for (int i = 0; i < pwd1.length; i++) {
-            if (Character.isLetter(pwd1[i])){
+        for (char c : pwd1) {
+            if (Character.isLetter(c)) {
                 nbLettre++;//Incrémente le nombre de lettres si le caractère à la position i est une lettre
             }
-            if (Character.isDigit(pwd1[i])){
+            if (Character.isDigit(c)) {
                 nbChiffre++;//Incrémente le nombre de chiffres si le caractère à la position i est un chiffre
             }
         }
@@ -154,13 +142,13 @@ public class SignUpWindow extends JFrame {
 
                     // f.deleteOnExit();//Sert à éviter de supprimer le fichier à chaque fois quand on compile, mais ligne à supprimer à la fin
                 }
-                catch(Exception ex)
+                catch(Exception e)
                 {
-                    System.err.println(ex);
+                    System.err.println();
                 }
 
                 try {
-                    fWo = new ObjectOutputStream(new FileOutputStream("general/src/data.dat"));
+                    ObjectOutputStream fWo = new ObjectOutputStream(new FileOutputStream("general/src/data.dat"));
                     fWo.writeObject(pwd1); //On écrit le mdp dans le fichier
                     fWo.close();
                 } catch (IOException ioException) {
@@ -168,7 +156,7 @@ public class SignUpWindow extends JFrame {
                 }
                 dispose();
 
-                login = new LoginWindow("Authentification");
+                LoginWindow login = new LoginWindow("Authentification");
             }
         }
     }

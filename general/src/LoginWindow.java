@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -9,15 +8,7 @@ import java.util.Arrays;
 
 public class LoginWindow extends JFrame {
 
-    private JButton validatePassword;
-
-    private JLabel enterPassword;
-    private JLabel info;
-
-    private JPasswordField enterPasswordField;
-
-    private static ManagerWindow manager;
-    private static ObjectInputStream fRo;
+    private final JPasswordField enterPasswordField;
 
     public LoginWindow(String s){
         super(s);
@@ -31,7 +22,7 @@ public class LoginWindow extends JFrame {
         this.setIconImage(icon.getImage());
 
         //Label demandant d'entrer le mot de passe
-        enterPassword = new JLabel("Saisir le mot de passe");
+        JLabel enterPassword = new JLabel("Saisir le mot de passe");
         enterPassword.setBounds(105,30,290,25);
         this.add(enterPassword);
 
@@ -57,22 +48,17 @@ public class LoginWindow extends JFrame {
             });
 
         //Bouton pour valider la saisie du mot de passe
-        validatePassword = new JButton("Valider");
+        JButton validatePassword = new JButton("Valider");
         validatePassword.setBounds(105,90,150,25);
         this.add(validatePassword);
 
             //Appelle la fonction qui compare le mdp saisi avec celui enregistré si on clique sur "Valider"
-            validatePassword.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    passwordComparison();
-                }
-            });
+            validatePassword.addActionListener(e -> passwordComparison());
 
         //Label d'information
-        info = new JLabel("", SwingConstants.CENTER);
+        JLabel info = new JLabel("", SwingConstants.CENTER);
         info.setText("<html><div style=\"text-align:center;\">Attention : par mesure de sécurité, vous serez automatiquement déconnecté<br/>à la fermeture du gestionnaire.</div></html>");
-        info.setBounds(0,135,500,30);
+        info.setBounds(-6,135,500,30);
         this.add(info);
 
         this.setVisible(true);
@@ -84,7 +70,7 @@ public class LoginWindow extends JFrame {
 
         //Lit le mot de passe enregistré
         try{
-            fRo = new ObjectInputStream(new FileInputStream("general/src/data.dat"));
+            ObjectInputStream fRo = new ObjectInputStream(new FileInputStream("general/src/data.dat"));
             pwdSaved = (char[]) fRo.readObject();
             fRo.close();
         }
@@ -99,7 +85,7 @@ public class LoginWindow extends JFrame {
             System.out.println("Le mot de passe saisi est identique à celui enregistré");
             dispose();
 
-            manager = new ManagerWindow("Gestionnaire de mots de passe");
+            ManagerWindow manager = new ManagerWindow("Gestionnaire de mots de passe");
         }
         else{
             JOptionPane.showMessageDialog(enterPasswordField,"Mot de passe inconnu","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
