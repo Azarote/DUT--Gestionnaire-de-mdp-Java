@@ -1,8 +1,6 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.*;
 import java.util.Arrays;
 
@@ -12,7 +10,7 @@ public class LoginWindow extends JFrame {
 
     public LoginWindow(String s){
         super(s);
-        this.setSize(500,220);
+        this.setSize(500,265);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
         this.setLocationRelativeTo(null); //Centre la fenêtre
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
@@ -23,12 +21,12 @@ public class LoginWindow extends JFrame {
 
         //Label demandant d'entrer le mot de passe
         JLabel enterPassword = new JLabel("Saisir le mot de passe");
-        enterPassword.setBounds(105,30,290,25);
+        enterPassword.setBounds(99,30,290,25);
         this.add(enterPassword);
 
         //Champ de texte pour saisir le mot de passe
         enterPasswordField = new JPasswordField();
-        enterPasswordField.setBounds(105,50,290,25);
+        enterPasswordField.setBounds(99,50,290,25);
         this.add(enterPasswordField);
 
             //Appelle la fonction qui compare le mdp saisi avec celui enregistré si on appuye sur "Entrée"
@@ -49,7 +47,7 @@ public class LoginWindow extends JFrame {
 
         //Bouton pour valider la saisie du mot de passe
         JButton validatePassword = new JButton("Valider");
-        validatePassword.setBounds(105,90,150,25);
+        validatePassword.setBounds(99,90,150,25);
         this.add(validatePassword);
 
             //Appelle la fonction qui compare le mdp saisi avec celui enregistré si on clique sur "Valider"
@@ -61,7 +59,55 @@ public class LoginWindow extends JFrame {
         info.setBounds(-6,135,500,30);
         this.add(info);
 
+        //Label pour réinitialiser le mot de passer (hypertexte)
+        JLabel lostPassword = new JLabel("", SwingConstants.CENTER);
+        lostPassword.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        lostPassword.setText("<html><span style=\"color:blue;\"><u>Mot de passe perdu ?</u></span></html>");
+        lostPassword.setBounds(-6,180,500,30);
+        this.add(lostPassword);
+
+            //Si on clique sur "Mot de passe perdu ?"
+            lostPassword.addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    passwordReset();
+                }
+
+                @Override
+                public void mousePressed(MouseEvent e) { }
+
+                @Override
+                public void mouseReleased(MouseEvent e) { }
+
+                @Override
+                public void mouseEntered(MouseEvent e) { }
+
+                @Override
+                public void mouseExited(MouseEvent e) { }
+            });
+
         this.setVisible(true);
+    }
+
+    //Fonction qui lance la procédure de réinitialisation de mot de passe
+    private void passwordReset() {
+        int reponse = JOptionPane.showConfirmDialog(this, "Si vous réinitialisez le mot de passe global, toutes les données seront perdues. Voulez-vous poursuivre ?", "Réinitialiser le mot de passe", JOptionPane.YES_NO_OPTION);
+
+        if(reponse == JOptionPane.YES_OPTION)
+        {
+            try{
+                File f = new File("general/src/data.dat");
+                f.delete();
+            }
+            catch(Exception e)
+            {
+                System.err.println();
+            }
+
+            dispose();
+
+            SignUpWindow login = new SignUpWindow("Enregistrer un mot de passe global");
+        }
     }
 
     //Fonction qui compare le mot de passe enregistré avec le mot de passe saisi
