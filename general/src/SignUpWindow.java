@@ -12,7 +12,8 @@ public class SignUpWindow extends JFrame {
     private final JPasswordField passwordFieldConfirmation;
 
     public SignUpWindow(){
-        JFrame frame = new JFrame("Enregistrer un mot de passe global");
+        JFrame frame = new JFrame();
+        this.setTitle("Enregistrer un mot de passe global");
         this.setSize(600,370);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
         this.setLocationRelativeTo(null); //Centre la fenêtre

@@ -9,7 +9,8 @@ public class LoginWindow extends JFrame {
     private final JPasswordField enterPasswordField;
 
     public LoginWindow(){
-        JFrame frame = new JFrame("Authentification");
+        JFrame frame = new JFrame();
+        this.setTitle("Authentification");
         this.setSize(500,265);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
         this.setLocationRelativeTo(null); //Centre la fenêtre
