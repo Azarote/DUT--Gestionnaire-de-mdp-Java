@@ -8,8 +8,8 @@ public class LoginWindow extends JFrame {
 
     private final JPasswordField enterPasswordField;
 
-    public LoginWindow(String s){
-        super(s);
+    public LoginWindow(){
+        JFrame frame = new JFrame("Authentification");
         this.setSize(500,265);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
         this.setLocationRelativeTo(null); //Centre la fenêtre
@@ -107,7 +107,7 @@ public class LoginWindow extends JFrame {
 
             dispose();
 
-            SignUpWindow login = new SignUpWindow("Enregistrer un mot de passe global");
+            new SignUpWindow();
         }
     }
 
@@ -132,7 +132,7 @@ public class LoginWindow extends JFrame {
             System.out.println("Le mot de passe saisi est identique à celui enregistré");
             dispose();
 
-            ManagerWindow manager = new ManagerWindow("Gestionnaire de mots de passe");
+            new ManagerWindow();
         }
         else{
             JOptionPane.showMessageDialog(enterPasswordField,"Mot de passe inconnu","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up

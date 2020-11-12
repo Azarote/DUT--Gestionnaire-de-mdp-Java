@@ -1,8 +1,8 @@
 import javax.swing.*;
 
 public class ManagerWindow extends JFrame {
-    public ManagerWindow(String s){
-        super(s);
+    public ManagerWindow(){
+        JFrame frame = new JFrame("Gestionnaire de mots de passe");
         this.setSize(650,500);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
         this.setLocationRelativeTo(null); //Centre la fenêtre

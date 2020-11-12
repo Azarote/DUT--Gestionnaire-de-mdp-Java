@@ -11,8 +11,8 @@ public class SignUpWindow extends JFrame {
     private final JPasswordField passwordField;
     private final JPasswordField passwordFieldConfirmation;
 
-    public SignUpWindow(String a){
-        super(a);
+    public SignUpWindow(){
+        JFrame frame = new JFrame("Enregistrer un mot de passe global");
         this.setSize(600,370);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
         this.setLocationRelativeTo(null); //Centre la fenêtre
@@ -24,7 +24,7 @@ public class SignUpWindow extends JFrame {
 
         //Label demandant d'entrer un nouveau mot de passe
         JLabel newPassword = new JLabel("Mot de passe global");
-        newPassword.setBounds(getSize().width/4,30,290,25);
+        newPassword.setBounds(150,30,290,25);
         this.add(newPassword);
 
         //Champ de texte pour saisir le nouveau mot de passe
@@ -154,9 +154,9 @@ public class SignUpWindow extends JFrame {
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
-                dispose();
+                this.dispose();
 
-                LoginWindow login = new LoginWindow("Authentification");
+                new LoginWindow();
             }
         }
     }
