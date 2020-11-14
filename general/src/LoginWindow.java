@@ -11,13 +11,11 @@ public class LoginWindow extends JFrame {
     public LoginWindow(){
         JFrame frame = new JFrame();
         this.setTitle("Authentification");
-        //this.setSize(500,265);
-        this.setPreferredSize(new Dimension(500,265));
+        this.setSize(500,265);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
         this.setLocationRelativeTo(null); //Centre la fenêtre
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
         this.setLayout(null);
-        this.pack();
 
         ImageIcon icon = new ImageIcon("general/src/cadenas.png");
         this.setIconImage(icon.getImage());
@@ -50,7 +48,7 @@ public class LoginWindow extends JFrame {
 
         //Bouton pour valider la saisie du mot de passe
         JButton validatePassword = new JButton("Valider");
-        validatePassword.setBounds(105,90,150,25);
+        validatePassword.setBounds(245,90,150,25);
         this.add(validatePassword);
 
             //Appelle la fonction qui compare le mdp saisi avec celui enregistré si on clique sur "Valider"

@@ -77,7 +77,7 @@ public class SignUpWindow extends JFrame {
 
         //Bouton pour valider la saisie des mdp
         JButton validateButton = new JButton("Valider");
-        validateButton.setBounds(150,140,150,25);
+        validateButton.setBounds(290,140,150,25);
         this.add(validateButton);
 
             //Appelle la fonction qui traite les mdps si on clique sur "Valider"
