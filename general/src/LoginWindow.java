@@ -58,7 +58,7 @@ public class LoginWindow extends JFrame {
         JLabel info = new JLabel("", SwingConstants.CENTER);
         info.setText("<html><div style=\"text-align:center;\">Attention : par mesure de sécurité, vous serez automatiquement déconnecté<br/>à la fermeture du gestionnaire.</div></html>");
         info.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        info.setBounds(0,135,500,30);
+        info.setBounds(0,135,500,35);
         this.add(info);
 
         //Label pour réinitialiser le mot de passer (hypertexte)
@@ -130,14 +130,12 @@ public class LoginWindow extends JFrame {
 
         //Compare le mot de passe saisi avec le mot de passe enregistré
         if(Arrays.equals(pwdWritten, pwdSaved)){
-            System.out.println("Le mot de passe saisi est identique à celui enregistré");
             dispose();
 
             new ManagerWindow();
         }
         else{
             JOptionPane.showMessageDialog(enterPasswordField,"Mot de passe inconnu","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
-            System.out.println("Mot de passe inconnu");
         }
     }
 }

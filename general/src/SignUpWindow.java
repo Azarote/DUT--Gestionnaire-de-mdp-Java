@@ -114,20 +114,15 @@ public class SignUpWindow extends JFrame {
 
         if (!Arrays.equals(pwd1, pwd2)) { //Si les deux mots de passe ne correspondent pas
             JOptionPane.showMessageDialog(passwordField,"Les deux mots de passe ne correspondent pas","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
-            System.out.println("Les deux mots de passe ne correspondent pas");
         }
         else if(pwd1.length<8){ //Si le mot de passe fait moins de 8 caractères
             JOptionPane.showMessageDialog(passwordField,"Le mot de passe doit contenir 8 caractères minimum","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
-            System.out.println("Le mot de passe doit contenir 8 caractères minimum");
         }
         else if (nbLettre < 6 || nbChiffre < 2){ //Si le mot de passe contient moins de 6 lettres et/ou moins de 2 chiffres
             JOptionPane.showMessageDialog(passwordField,"Le mot de passe doit contenir 6 lettres et 2 chiffres minimum","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
-            System.out.println("Le mot de passe doit contenir 6 lettres et 2 chiffres minimum");
 
         }
         else { //Si les critères de validation de mdp sont vérifiés, on demande confirmation
-            System.out.println("Le mot de passe choisi est valide");
-            System.out.println("Les deux mots de passe correspondent");
             int reponse = JOptionPane.showConfirmDialog(passwordField,"Le mot de passe est valide\nVoulez-vous poursuivre ?","Validation", JOptionPane.YES_NO_OPTION);
 
             //Si l'utilisateur veut poursuivre, on crée le fichier
@@ -135,13 +130,6 @@ public class SignUpWindow extends JFrame {
             {
                 try{
                     File f = new File("general/src/data.dat");
-
-                    if (f.createNewFile())
-                        System.out.println("Fichier créé");
-                    else
-                        System.out.println("Fichier déjà existant");
-
-                    // f.deleteOnExit();//Sert à éviter de supprimer le fichier à chaque fois quand on compile, mais ligne à supprimer à la fin
                 }
                 catch(Exception e)
                 {
