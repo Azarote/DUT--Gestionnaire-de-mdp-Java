@@ -1,7 +1,8 @@
+package fr.passwordmanager;
 import javax.swing.*;
 import java.io.File;
 
-public class principal {
+public class Principal {
 
     public static void main(String[] args){
         try {

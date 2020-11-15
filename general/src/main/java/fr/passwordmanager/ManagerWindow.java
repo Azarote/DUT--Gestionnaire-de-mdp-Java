@@ -1,3 +1,5 @@
+package fr.passwordmanager;
+
 import javax.swing.*;
 
 public class ManagerWindow extends JFrame {

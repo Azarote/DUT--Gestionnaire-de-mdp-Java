@@ -1,3 +1,6 @@
+package fr.passwordmanager;
+
+import javax.crypto.Cipher;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -128,18 +131,13 @@ public class SignUpWindow extends JFrame {
             //Si l'utilisateur veut poursuivre, on crée le fichier
             if(reponse == JOptionPane.YES_OPTION)
             {
-                try{
-                    File f = new File("general/src/data.dat");
-                }
-                catch(Exception e)
-                {
-                    System.err.println();
-                }
 
                 try {
+                    File f = new File("general/src/data.dat");
                     ObjectOutputStream fWo = new ObjectOutputStream(new FileOutputStream("general/src/data.dat"));
                     fWo.writeObject(pwd1); //On écrit le mdp dans le fichier
                     fWo.close();
+                    FileEncrypterDecrypter.encryptDecrypt(pwd1, Cipher.ENCRYPT_MODE,f,f);
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }

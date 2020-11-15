@@ -1,3 +1,6 @@
+package fr.passwordmanager;
+
+import javax.crypto.Cipher;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -127,6 +130,8 @@ public class LoginWindow extends JFrame {
         }
 
         char[] pwdWritten = enterPasswordField.getPassword();//Capte le mot de passe saisi dans le champ
+        File f = new File("general/src/data.dat");
+        FileEncrypterDecrypter.encryptDecrypt(pwdWritten, Cipher.DECRYPT_MODE,f,f);
 
         //Compare le mot de passe saisi avec le mot de passe enregistré
         if(Arrays.equals(pwdWritten, pwdSaved)){
