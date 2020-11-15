@@ -20,7 +20,7 @@ public class LoginWindow extends JFrame {
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
         this.setLayout(null);
 
-        ImageIcon icon = new ImageIcon("general/src/cadenas.png");
+        ImageIcon icon = new ImageIcon("general/images/cadenas.png");
         this.setIconImage(icon.getImage());
 
         //Label demandant d'entrer le mot de passe
@@ -138,6 +138,9 @@ public class LoginWindow extends JFrame {
             dispose();
 
             new ManagerWindow();
+        }
+        else if(pwdWritten.length<=0){
+            JOptionPane.showMessageDialog(enterPasswordField,"Aucun mot de passe n'a été saisi","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
         }
         else{
             JOptionPane.showMessageDialog(enterPasswordField,"Mot de passe inconnu","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
