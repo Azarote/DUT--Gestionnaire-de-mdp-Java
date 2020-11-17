@@ -136,8 +136,8 @@ public class SignUpWindow extends JFrame {
             {
 
                 try {
-                    File f = new File("general/src/data.dat");
-                    ObjectOutputStream fWo = new ObjectOutputStream(new FileOutputStream("general/src/data.dat"));
+                    File f = new File("../general/src/data.dat");
+                    ObjectOutputStream fWo = new ObjectOutputStream(new FileOutputStream("../general/src/data.dat"));
                     fWo.writeObject(pwd1); //On écrit le mdp dans le fichier
                     fWo.close();
                     FileEncrypterDecrypter.encryptDecrypt(pwd1, Cipher.ENCRYPT_MODE,f,f);

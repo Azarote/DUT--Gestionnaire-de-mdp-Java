@@ -103,7 +103,7 @@ public class LoginWindow extends JFrame {
         if(reponse == JOptionPane.YES_OPTION)
         {
             try{
-                File f = new File("general/src/data.dat");
+                File f = new File("../general/src/data.dat");
                 f.delete();
             }
             catch(Exception e)
@@ -123,7 +123,7 @@ public class LoginWindow extends JFrame {
 
         //Lit le mot de passe enregistré
         try{
-            ObjectInputStream fRo = new ObjectInputStream(new FileInputStream("general/src/data.dat"));
+            ObjectInputStream fRo = new ObjectInputStream(new FileInputStream("../general/src/data.dat"));
             pwdSaved = (char[]) fRo.readObject();
             fRo.close();
         }
@@ -132,7 +132,7 @@ public class LoginWindow extends JFrame {
         }
 
         char[] pwdWritten = enterPasswordField.getPassword();//Capte le mot de passe saisi dans le champ
-        File f = new File("general/src/data.dat");
+        File f = new File("../general/src/data.dat");
         FileEncrypterDecrypter.encryptDecrypt(pwdWritten, Cipher.DECRYPT_MODE,f,f);
 
         //Compare le mot de passe saisi avec le mot de passe enregistré
