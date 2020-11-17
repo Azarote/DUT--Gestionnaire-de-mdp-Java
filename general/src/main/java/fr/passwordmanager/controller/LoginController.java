@@ -40,7 +40,7 @@ public class LoginController {
     }
 
     //Fonction qui compare le mot de passe enregistré avec le mot de passe saisi
-    public static boolean passwordComparison(char[] pwdWritten) {
+    public static int passwordComparison(char[] pwdWritten) {
         String pwdSaved = null;
 
         //Lit le mot de passe enregistré
@@ -58,7 +58,7 @@ public class LoginController {
                 .toString();
         //Compare le mot de passe saisi avec le mot de passe enregistré
         if(pwdWrittenHashed.equals(pwdSaved)){
-            return true;
+            return 0;
 
         }
         else if(pwdWritten.length<=0){
