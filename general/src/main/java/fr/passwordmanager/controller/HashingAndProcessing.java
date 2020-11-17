@@ -53,7 +53,7 @@ public class HashingAndProcessing {
 
         }
         else { //Si les critères de validation de mdp sont vérifiés, on demande confirmation
-            int reponse = DialogMessage.confirmDialog("Le mot de passe est valide\nVoulez-vous poursuivre ?");
+            int reponse = DialogMessage.confirmDialog("Le mot de passe est valide\nVoulez-vous poursuivre ?","Validation");
 
             //Si l'utilisateur veut poursuivre, on crée le fichier
             if(reponse == 0)
