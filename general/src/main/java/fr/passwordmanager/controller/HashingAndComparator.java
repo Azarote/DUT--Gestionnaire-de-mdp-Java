@@ -23,5 +23,5 @@ public class HashingAndComparator {
             e.printStackTrace();
         }
     }
-
+//TODO Déplacer passwordProcessing
 }
