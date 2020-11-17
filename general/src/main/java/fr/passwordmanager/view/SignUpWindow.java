@@ -1,6 +1,7 @@
 package fr.passwordmanager.view;
 
 import fr.passwordmanager.controller.FileEncrypterDecrypter;
+import fr.passwordmanager.controller.HashingAndProcessing;
 import fr.passwordmanager.view.LoginWindow;
 
 import javax.crypto.Cipher;
@@ -44,7 +45,12 @@ public class SignUpWindow extends JFrame {
                 @Override
                 public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                        passwordProcessing();
+                        char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
+                        char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
+
+                        HashingAndProcessing.passwordProcessing(pwd1,pwd2);
+                        dispose();
+                        new LoginWindow();
                     }
                 }
 
@@ -70,7 +76,12 @@ public class SignUpWindow extends JFrame {
                 @Override
                 public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                        passwordProcessing();
+                        char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
+                        char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
+
+                        HashingAndProcessing.passwordProcessing(pwd1,pwd2);
+                        dispose();
+                        new LoginWindow();
                     }
                 }
 
@@ -87,7 +98,23 @@ public class SignUpWindow extends JFrame {
         this.add(validateButton);
 
             //Appelle la fonction qui traite les mdps si on clique sur "Valider"
-            validateButton.addActionListener(e -> passwordProcessing());
+            validateButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try{
+                        char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
+                        char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
+
+                        HashingAndProcessing.passwordProcessing(pwd1,pwd2);
+                        dispose();
+                        new LoginWindow();
+                    }
+                    catch(Exception ex)
+                    {
+                        System.err.println(ex);
+                    }
+                }
+            });
 
         //Label affichant les critères à respecter pour un mot de passe valide
         JLabel info = new JLabel("", SwingConstants.CENTER);
@@ -100,54 +127,5 @@ public class SignUpWindow extends JFrame {
         this.setVisible(true);
     }
 
-    //Fonction qui traite les mots de passes saisis dans les champs
-    private void passwordProcessing() {
-        char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
-        char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
 
-        int nbLettre = 0;
-        int nbChiffre = 0;
-
-        //Traite le nombre de chiffres et de lettres
-        for (char c : pwd1) {
-            if (Character.isLetter(c)) {
-                nbLettre++;//Incrémente le nombre de lettres si le caractère à la position i est une lettre
-            }
-            if (Character.isDigit(c)) {
-                nbChiffre++;//Incrémente le nombre de chiffres si le caractère à la position i est un chiffre
-            }
-        }
-
-        if (!Arrays.equals(pwd1, pwd2)) { //Si les deux mots de passe ne correspondent pas
-            JOptionPane.showMessageDialog(passwordField,"Les deux mots de passe ne correspondent pas","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
-        }
-        else if(pwd1.length<8){ //Si le mot de passe fait moins de 8 caractères
-            JOptionPane.showMessageDialog(passwordField,"Le mot de passe doit contenir 8 caractères minimum","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
-        }
-        else if (nbLettre < 6 || nbChiffre < 2){ //Si le mot de passe contient moins de 6 lettres et/ou moins de 2 chiffres
-            JOptionPane.showMessageDialog(passwordField,"Le mot de passe doit contenir 6 lettres et 2 chiffres minimum","Erreur", JOptionPane.ERROR_MESSAGE);//Pop-up
-
-        }
-        else { //Si les critères de validation de mdp sont vérifiés, on demande confirmation
-            int reponse = JOptionPane.showConfirmDialog(passwordField,"Le mot de passe est valide\nVoulez-vous poursuivre ?","Validation", JOptionPane.YES_NO_OPTION);
-
-            //Si l'utilisateur veut poursuivre, on crée le fichier
-            if(reponse == JOptionPane.YES_OPTION)
-            {
-
-                try {
-                    File f = new File("../general/src/data.dat");
-                    ObjectOutputStream fWo = new ObjectOutputStream(new FileOutputStream("../general/src/data.dat"));
-                    fWo.writeObject(pwd1); //On écrit le mdp dans le fichier
-                    fWo.close();
-                    FileEncrypterDecrypter.encryptDecrypt(pwd1, Cipher.ENCRYPT_MODE,f,f);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
-                this.dispose();
-
-                new LoginWindow();
-            }
-        }
-    }
 }
