@@ -1,15 +1,12 @@
 package fr.passwordmanager.view;
 
-import fr.passwordmanager.controller.FileEncrypterDecrypter;
-import fr.passwordmanager.controller.HashingAndProcessing;
+
 import fr.passwordmanager.controller.LoginController;
 
 import javax.crypto.Cipher;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
-import java.util.Arrays;
 
 public class LoginWindow extends JFrame {
 

@@ -1,15 +1,17 @@
 package fr.passwordmanager.controller;
 
-import fr.passwordmanager.view.ManagerWindow;
-import fr.passwordmanager.view.SignUpWindow;
+import com.google.common.hash.Hashing;
 import fr.passwordmanager.view.DialogMessage;
 
 import javax.crypto.Cipher;
-import javax.swing.*;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 
 public class LoginController {
@@ -21,7 +23,7 @@ public class LoginController {
         if(reponse == 0)
         {
             try{
-                File f = new File("../general/src/data.dat");
+                File f = new File("../general/src/hashed.dat");
                 f.delete();
             }
             catch(Exception e)
@@ -33,24 +35,22 @@ public class LoginController {
 
     //Fonction qui compare le mot de passe enregistré avec le mot de passe saisi
     public static boolean passwordComparison(char[] pwdWritten) {
-        char[] pwdSaved = new char[0];
+        String pwdSaved = null;
 
         //Lit le mot de passe enregistré
         try{
-            ObjectInputStream fRo = new ObjectInputStream(new FileInputStream("../general/src/data.dat"));
-            pwdSaved = (char[]) fRo.readObject();
-            fRo.close();
+            Path file = Path.of("../general/src/hashed.dat");
+            pwdSaved = Files.readString(file);
         }
-        catch (IOException | ClassNotFoundException ioException){
+        catch (IOException ioException){
             ioException.printStackTrace();
         }
 
-
-        File f = new File("../general/src/data.dat");
-        FileEncrypterDecrypter.encryptDecrypt(pwdWritten, Cipher.DECRYPT_MODE,f,f);
-
+        final String pwdWrittenHashed = Hashing.sha256()
+                .hashString(String.valueOf(String.valueOf(pwdSaved)), StandardCharsets.UTF_8)
+                .toString();
         //Compare le mot de passe saisi avec le mot de passe enregistré
-        if(Arrays.equals(pwdWritten, pwdSaved)){
+        if(pwdWrittenHashed.equals(pwdSaved)){
             return true;
         }
         else if(pwdWritten.length<=0){
