@@ -1,4 +1,7 @@
-package fr.passwordmanager;
+package fr.passwordmanager.view;
+
+import fr.passwordmanager.controller.FileEncrypterDecrypter;
+import fr.passwordmanager.view.LoginWindow;
 
 import javax.crypto.Cipher;
 import javax.swing.*;

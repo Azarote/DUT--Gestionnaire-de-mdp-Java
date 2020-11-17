@@ -1,4 +1,4 @@
-package fr.passwordmanager;
+package fr.passwordmanager.view;
 
 import javax.swing.*;
 import java.awt.*;

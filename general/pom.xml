@@ -19,7 +19,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>fr.passwordmanager.Principal</mainClass>
+                    <mainClass>fr.passwordmanager.view.Principal</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -44,7 +44,7 @@
                         <archive>
                             <manifest>
                                 <mainClass>
-                                    fr.passwordmanager.Principal
+                                    fr.passwordmanager.view.Principal
                                 </mainClass>
                             </manifest>
                         </archive>

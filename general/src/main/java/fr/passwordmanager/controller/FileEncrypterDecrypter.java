@@ -1,4 +1,4 @@
-package fr.passwordmanager;
+package fr.passwordmanager.controller;
 
 import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
