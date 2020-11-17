@@ -1,18 +1,10 @@
 package fr.passwordmanager.view;
 
-import fr.passwordmanager.controller.FileEncrypterDecrypter;
 import fr.passwordmanager.controller.HashingAndProcessing;
-import fr.passwordmanager.view.LoginWindow;
 
-import javax.crypto.Cipher;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.Arrays;
 
 public class SignUpWindow extends JFrame {
     private final JPasswordField passwordField;

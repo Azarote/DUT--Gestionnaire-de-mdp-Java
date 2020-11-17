@@ -1,11 +1,8 @@
 package fr.passwordmanager.controller;
 
-import com.google.common.hash.Hashing;
-
 import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
