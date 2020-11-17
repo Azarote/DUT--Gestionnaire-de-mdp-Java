@@ -40,9 +40,12 @@ public class SignUpWindow extends JFrame {
                         char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
                         char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
 
-                        HashingAndProcessing.passwordProcessing(pwd1,pwd2);
-                        dispose();
-                        new LoginWindow();
+                        boolean result = HashingAndProcessing.passwordProcessing(pwd1,pwd2);
+
+                        if(result) {
+                            dispose();
+                            new LoginWindow();
+                        }
                     }
                 }
 
@@ -71,9 +74,12 @@ public class SignUpWindow extends JFrame {
                         char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
                         char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
 
-                        HashingAndProcessing.passwordProcessing(pwd1,pwd2);
-                        dispose();
-                        new LoginWindow();
+                        boolean result = HashingAndProcessing.passwordProcessing(pwd1,pwd2);
+
+                        if(result) {
+                            dispose();
+                            new LoginWindow();
+                        }
                     }
                 }
 
@@ -97,9 +103,12 @@ public class SignUpWindow extends JFrame {
                         char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
                         char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
 
-                        HashingAndProcessing.passwordProcessing(pwd1,pwd2);
-                        dispose();
-                        new LoginWindow();
+                        boolean result = HashingAndProcessing.passwordProcessing(pwd1,pwd2);
+
+                        if(result) {
+                            dispose();
+                            new LoginWindow();
+                        }
                     }
                     catch(Exception ex)
                     {

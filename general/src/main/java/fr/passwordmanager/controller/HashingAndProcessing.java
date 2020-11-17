@@ -26,7 +26,7 @@ public class HashingAndProcessing {
     }
 
     //Fonction qui traite les mots de passes saisis dans les champs
-    public static void passwordProcessing(char[] pwd1, char[] pwd2) {
+    public static boolean passwordProcessing(char[] pwd1, char[] pwd2) {
 
         int nbLettre = 0;
         int nbChiffre = 0;
@@ -43,13 +43,15 @@ public class HashingAndProcessing {
 
         if (!Arrays.equals(pwd1, pwd2)) { //Si les deux mots de passe ne correspondent pas
             DialogMessage.messageDialog("Les deux mots de passe ne correspondent pas");
+            return false;
         }
         else if(pwd1.length<8){ //Si le mot de passe fait moins de 8 caractères
             DialogMessage.messageDialog("Le mot de passe doit contenir 8 caractères minimum");//Pop-up
+            return false;
         }
         else if (nbLettre < 6 || nbChiffre < 2){ //Si le mot de passe contient moins de 6 lettres et/ou moins de 2 chiffres
             DialogMessage.messageDialog("Le mot de passe doit contenir 6 lettres et 2 chiffres minimum");//Pop-up
-
+            return false;
         }
         else { //Si les critères de validation de mdp sont vérifiés, on demande confirmation
             int reponse = DialogMessage.confirmDialog("Le mot de passe est valide\nVoulez-vous poursuivre ?","Validation");
@@ -59,6 +61,7 @@ public class HashingAndProcessing {
             {
                 mainPasswordHashing(pwd1);
             }
+            return true;
         }
     }
 }

@@ -43,9 +43,9 @@ public class LoginWindow extends JFrame {
                 public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode() == KeyEvent.VK_ENTER){
                         char[] pwdWritten = enterPasswordField.getPassword();//Capte le mot de passe saisi dans le champ
-                        boolean result = LoginController.passwordComparison(pwdWritten);
+                        int result = LoginController.passwordComparison(pwdWritten);
 
-                        if(result) {
+                        if(result == 0) {
                             dispose();
                             new ManagerWindow();
                         }
@@ -70,9 +70,9 @@ public class LoginWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try{
                     char[] pwdWritten = enterPasswordField.getPassword();//Capte le mot de passe saisi dans le champ
-                    boolean result = LoginController.passwordComparison(pwdWritten);
+                    int result = LoginController.passwordComparison(pwdWritten);
 
-                    if(result) {
+                    if(result == 0) {
                         dispose();
                         new ManagerWindow();
                     }
@@ -102,10 +102,12 @@ public class LoginWindow extends JFrame {
             lostPassword.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    LoginController.passwordReset();
-                    dispose();
+                    int result = LoginController.passwordReset();
 
-                    new SignUpWindow();
+                    if(result == 0) {
+                        dispose();
+                        new SignUpWindow();
+                    }
                 }
 
                 @Override
