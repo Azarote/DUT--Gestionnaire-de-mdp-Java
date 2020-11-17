@@ -2,8 +2,7 @@ package fr.passwordmanager.controller;
 
 import com.google.common.hash.Hashing;
 import fr.passwordmanager.view.DialogMessage;
-import fr.passwordmanager.view.LoginWindow;
-import fr.passwordmanager.view.SignUpWindow;
+
 
 import javax.crypto.Cipher;
 import java.io.*;
@@ -16,7 +15,7 @@ public class HashingAndProcessing {
         final String hashed = Hashing.sha256()
                 .hashString(String.valueOf(String.valueOf(mainPassword)), StandardCharsets.UTF_8)
                 .toString();
-        File hashedFile = new File("general/src/hashed.dat");
+        File hashedFile = new File("../general/src/hashed.dat");
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(hashedFile));
             writer.write(hashed);
@@ -58,15 +57,7 @@ public class HashingAndProcessing {
             //Si l'utilisateur veut poursuivre, on crée le fichier
             if(reponse == 0)
             {
-                try {
-                    File f = new File("../general/src/data.dat");
-                    ObjectOutputStream fWo = new ObjectOutputStream(new FileOutputStream("../general/src/data.dat"));
-                    fWo.writeObject(pwd1); //On écrit le mdp dans le fichier
-                    fWo.close();
-                    //FileEncrypterDecrypter.encryptDecrypt(pwd1, Cipher.ENCRYPT_MODE,f,f);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
+                mainPasswordHashing(pwd1);
             }
         }
     }

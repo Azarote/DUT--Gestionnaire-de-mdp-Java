@@ -14,7 +14,7 @@ public class Principal {
             ex.printStackTrace();
         }
 
-        File data = new File("../general/src/data.dat");
+        File data = new File("../general/src/hashed.dat");
 
         if(data.exists())
             new LoginWindow();
