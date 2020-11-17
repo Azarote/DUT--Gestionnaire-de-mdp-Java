@@ -1,8 +1,11 @@
 package fr.passwordmanager.controller;
 
+import com.google.common.hash.Hashing;
+
 import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -46,10 +49,9 @@ public class FileEncrypterDecrypter {
            out.close();
            in.close();
    }
-
-    //public static void main(String[] args) {
-      //  File test = new File("general/src/data.dat");
-        //File encrypt = new File("general/src/dataencrypt.dat");
+  //  public static void main(String[] args) {
+     //   File test = new File("general/src/data.dat");
+       // File encrypt = new File("general/src/dataencrypt.dat");
         //encryptDecrypt("12345678",Cipher.ENCRYPT_MODE,test,encrypt);
-    //}
+//   }
 }
