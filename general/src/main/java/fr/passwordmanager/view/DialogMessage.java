@@ -11,8 +11,8 @@ public class DialogMessage {
     }
 
     //Message de confirmation
-    public static int confirmDialog(String s) {
-        JOptionPane.showConfirmDialog(null,s,"Validation", JOptionPane.YES_NO_OPTION);
+    public static int confirmDialog(String s, String titre) {
+        JOptionPane.showConfirmDialog(null,s,titre, JOptionPane.YES_NO_OPTION);
 
         return JOptionPane.YES_OPTION;
     }
