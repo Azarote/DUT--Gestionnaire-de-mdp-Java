@@ -14,13 +14,13 @@ public class ManagerWindow extends JFrame {
         this.setLocationRelativeTo(null); //Centre la fenêtre
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
 
-        ImageIcon icon = new ImageIcon("general/images/cadenas.png");
+        ImageIcon icon = new ImageIcon("../general/images/cadenas.png");
         this.setIconImage(icon.getImage());
 
         JToolBar menu = new JToolBar();
         menu.setFloatable(false);
 
-        JButton btnAjouter = new JButton(new ImageIcon("general/images/ajouter_icon_large.png"));
+        JButton btnAjouter = new JButton(new ImageIcon("../general/images/ajouter_icon_large.png"));
         btnAjouter.setFocusPainted(false);
         btnAjouter.setFocusable(false);
         btnAjouter.addMouseListener(new MouseListener() {
@@ -53,7 +53,7 @@ public class ManagerWindow extends JFrame {
         btnAjouter.setToolTipText("Ajouter un nouveau mot de passe");
         menu.add(btnAjouter);
 
-        JButton btnSupprimer = new JButton(new ImageIcon("general/images/supprimer_icon_large.png"));
+        JButton btnSupprimer = new JButton(new ImageIcon("../general/images/supprimer_icon_large.png"));
         btnSupprimer.setFocusPainted(false);
         btnSupprimer.setFocusable(false);
         btnSupprimer.addMouseListener(new MouseListener() {
@@ -86,7 +86,7 @@ public class ManagerWindow extends JFrame {
         btnSupprimer.setToolTipText("Supprimer un mot de passe");
         menu.add(btnSupprimer);
 
-        JButton btnModifier = new JButton(new ImageIcon("general/images/modifier_icon_large.png"));
+        JButton btnModifier = new JButton(new ImageIcon("../general/images/modifier_icon_large.png"));
         btnModifier.setFocusPainted(false);
         btnModifier.setFocusable(false);
         btnModifier.addMouseListener(new MouseListener() {

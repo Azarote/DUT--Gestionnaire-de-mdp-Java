@@ -18,7 +18,7 @@ public class LoginWindow extends JFrame {
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
         this.setLayout(null);
 
-        ImageIcon icon = new ImageIcon("general/images/cadenas.png");//Icône
+        ImageIcon icon = new ImageIcon("../general/images/cadenas.png");//Icône
         this.setIconImage(icon.getImage());
 
         //Label demandant d'entrer le mot de passe

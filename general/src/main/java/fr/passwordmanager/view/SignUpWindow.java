@@ -19,7 +19,7 @@ public class SignUpWindow extends JFrame {
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
         this.setLayout(null);
 
-        ImageIcon icon = new ImageIcon("general/images/cadenas.png");
+        ImageIcon icon = new ImageIcon("../general/images/cadenas.png");
         this.setIconImage(icon.getImage());
 
         //Label demandant d'entrer un nouveau mot de passe
