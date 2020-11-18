@@ -9,9 +9,9 @@ public class Password {
     private String email;
     private String password;
     private String description;
-    private Date expiration_date;
+    private String expiration_date;
 
-    public Password(String title, String URL, String username, String email, String password, String description, Date expiration_date) {
+    public Password(String title, String URL, String username, String email, String password, String description, String expiration_date) {
         this.title = title;
         this.URL = URL;
         this.username = username;
@@ -69,11 +69,11 @@ public class Password {
         this.description = description;
     }
 
-    public Date getExpiration_date() {
+    public String getExpiration_date() {
         return expiration_date;
     }
 
-    public void setExpiration_date(Date expiration_date) {
+    public void setExpiration_date(String expiration_date) {
         this.expiration_date = expiration_date;
     }
 }

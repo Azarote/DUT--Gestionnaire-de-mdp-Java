@@ -1,11 +1,15 @@
 package fr.passwordmanager.view;
 
+import fr.passwordmanager.model.ModeleTableObjet;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class ManagerWindow extends JFrame {
+    private ModeleTableObjet modele = new ModeleTableObjet();
+    private JTable tableau;
     public ManagerWindow(){
         JFrame frame = new JFrame();
         this.setTitle("Gestionnaire de mots de passe");
@@ -120,7 +124,9 @@ public class ManagerWindow extends JFrame {
         menu.add(btnModifier);
 
         this.add(menu, BorderLayout.NORTH);
-
+        tableau = new JTable(modele);
+        tableau.getTableHeader().setReorderingAllowed(false);
+        getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
         this.setVisible(true);
     }
 }
