@@ -1,6 +1,4 @@
 package fr.passwordmanager.view;
-import fr.passwordmanager.view.LoginWindow;
-import fr.passwordmanager.view.SignUpWindow;
 
 import javax.swing.*;
 import java.io.File;

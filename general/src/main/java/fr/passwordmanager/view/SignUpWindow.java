@@ -40,7 +40,7 @@ public class SignUpWindow extends JFrame {
                         char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
                         char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
 
-                        int result = HashingAndProcessing.passwordProcessing(pwd1,pwd2);
+                        int result = HashingAndProcessing.passwordProcessing(pwd1,pwd2);//Appelle la fonction de traitement du mdp
 
                         if(result == 0) {
                             dispose();
@@ -74,7 +74,7 @@ public class SignUpWindow extends JFrame {
                         char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
                         char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
 
-                        int result = HashingAndProcessing.passwordProcessing(pwd1,pwd2);
+                        int result = HashingAndProcessing.passwordProcessing(pwd1,pwd2);//Appelle la fonction de traitement du mdp
 
                         if(result == 0) {
                             dispose();
@@ -96,24 +96,21 @@ public class SignUpWindow extends JFrame {
         this.add(validateButton);
 
             //Appelle la fonction qui traite les mdps si on clique sur "Valider"
-            validateButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try{
-                        char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
-                        char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
+            validateButton.addActionListener(e -> {
+                try{
+                    char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
+                    char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
 
-                        int result = HashingAndProcessing.passwordProcessing(pwd1,pwd2);
+                    int result = HashingAndProcessing.passwordProcessing(pwd1,pwd2);//Appelle la fonction de traitement du mdp
 
-                        if(result == 0) {
-                            dispose();
-                            new LoginWindow();
-                        }
+                    if(result == 0) {
+                        dispose();
+                        new LoginWindow();
                     }
-                    catch(Exception ex)
-                    {
-                        System.err.println(ex);
-                    }
+                }
+                catch(Exception ex)
+                {
+                    System.err.println(ex);
                 }
             });
 

@@ -3,16 +3,11 @@ package fr.passwordmanager.controller;
 import com.google.common.hash.Hashing;
 import fr.passwordmanager.view.DialogMessage;
 
-import javax.crypto.Cipher;
-
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
 
 public class LoginController {
 
@@ -25,8 +20,8 @@ public class LoginController {
         if(reponse == 0)
         {
             try{
-                File f = new File("../general/src/hashed.dat");
-                f.delete();
+                File f = new File("../general/src/hashed.dat");//Repère le fichier
+                f.delete();//Supprime le fichier
             }
             catch(Exception e)
             {

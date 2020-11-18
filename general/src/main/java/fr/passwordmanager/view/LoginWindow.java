@@ -1,15 +1,9 @@
 package fr.passwordmanager.view;
 
-import fr.passwordmanager.controller.FileEncrypterDecrypter;
-import fr.passwordmanager.controller.HashingAndProcessing;
 import fr.passwordmanager.controller.LoginController;
-
-import javax.crypto.Cipher;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
-import java.util.Arrays;
 
 public class LoginWindow extends JFrame {
 
@@ -17,14 +11,14 @@ public class LoginWindow extends JFrame {
 
     public LoginWindow(){
         JFrame frame = new JFrame();
-        this.setTitle("Authentification");
-        this.setSize(500,265);
+        this.setTitle("Authentification");//Titre
+        this.setSize(500,265);//Dimensions
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
         this.setLocationRelativeTo(null); //Centre la fenêtre
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
         this.setLayout(null);
 
-        ImageIcon icon = new ImageIcon("general/images/cadenas.png");
+        ImageIcon icon = new ImageIcon("general/images/cadenas.png");//Icône
         this.setIconImage(icon.getImage());
 
         //Label demandant d'entrer le mot de passe
@@ -43,7 +37,7 @@ public class LoginWindow extends JFrame {
                 public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode() == KeyEvent.VK_ENTER){
                         char[] pwdWritten = enterPasswordField.getPassword();//Capte le mot de passe saisi dans le champ
-                        int result = LoginController.passwordComparison(pwdWritten);
+                        int result = LoginController.passwordComparison(pwdWritten);//Appelle la fonction de comparaison de mdp
 
                         if(result == 0) {
                             dispose();
@@ -65,12 +59,10 @@ public class LoginWindow extends JFrame {
         this.add(validatePassword);
 
             //Appelle la fonction qui compare le mdp saisi avec celui enregistré si on clique sur "Valider"
-            validatePassword.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            validatePassword.addActionListener(e -> {
                 try{
                     char[] pwdWritten = enterPasswordField.getPassword();//Capte le mot de passe saisi dans le champ
-                    int result = LoginController.passwordComparison(pwdWritten);
+                    int result = LoginController.passwordComparison(pwdWritten);//Appelle la fonction de comparaison de mdp
 
                     if(result == 0) {
                         dispose();
@@ -81,8 +73,7 @@ public class LoginWindow extends JFrame {
                 {
                     System.err.println(ex);
                 }
-            }
-        });
+            });
 
         //Label d'information
         JLabel info = new JLabel("", SwingConstants.CENTER);
@@ -102,7 +93,7 @@ public class LoginWindow extends JFrame {
             lostPassword.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    int result = LoginController.passwordReset();
+                    int result = LoginController.passwordReset();//Appelle la fonction de réinitialisation de mdp
 
                     if(result == 0) {
                         dispose();
