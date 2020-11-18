@@ -13,7 +13,7 @@ public class HashingAndProcessing {
 
     public static void mainPasswordHashing(char[] mainPassword) {
         final String hashed = Hashing.sha256()
-                .hashString(String.valueOf(String.valueOf(mainPassword)), StandardCharsets.UTF_8)
+                .hashString((String.valueOf(mainPassword)), StandardCharsets.UTF_8)
                 .toString();
         File hashedFile = new File("../general/src/hashed.dat");
         try {
@@ -60,6 +60,8 @@ public class HashingAndProcessing {
             if(reponse == 0)
             {
                 mainPasswordHashing(pwd1);
+            }else {
+                return 1;
             }
             return 0;
         }

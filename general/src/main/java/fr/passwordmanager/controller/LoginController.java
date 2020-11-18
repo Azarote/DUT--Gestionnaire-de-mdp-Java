@@ -54,7 +54,7 @@ public class LoginController {
         }
 
         final String pwdWrittenHashed = Hashing.sha256()
-                .hashString(String.valueOf(String.valueOf(pwdSaved)), StandardCharsets.UTF_8)
+                .hashString((String.valueOf(pwdWritten)), StandardCharsets.UTF_8)
                 .toString();
         //Compare le mot de passe saisi avec le mot de passe enregistré
         if(pwdWrittenHashed.equals(pwdSaved)){
