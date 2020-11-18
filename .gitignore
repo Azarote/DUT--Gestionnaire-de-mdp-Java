@@ -192,7 +192,7 @@ modules.xml
 hs_err_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,java,intellij+all
-general/src/password.dat
+general/src/hashed.dat
 general/src/data.dat
 
 ### Maven ###
