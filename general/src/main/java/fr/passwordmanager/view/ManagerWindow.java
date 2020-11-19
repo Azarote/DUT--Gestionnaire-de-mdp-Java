@@ -23,10 +23,12 @@ public class ManagerWindow extends JFrame {
 
         JToolBar menu = new JToolBar();
         menu.setFloatable(false);
+        menu.setBackground(new Color(255, 255, 255,255));
 
         JButton btnAjouter = new JButton(new ImageIcon("../general/images/ajouter_icon_large.png"));
-        btnAjouter.setFocusPainted(false);
-        btnAjouter.setFocusable(false);
+        btnAjouter.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut
+        btnAjouter.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
+        btnAjouter.setBackground(new Color(46, 209, 60, 128));
         btnAjouter.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -45,21 +47,23 @@ public class ManagerWindow extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                btnAjouter.setBackground(new Color(112,224,159, 153));
+                //btnAjouter.setBackground(new Color(112,224,159, 153));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                btnAjouter.setBackground(UIManager.getColor("control"));
+                //btnAjouter.setBackground(UIManager.getColor("control"));
             }
         });
 
         btnAjouter.setToolTipText("Ajouter un nouveau mot de passe");
+        menu.add(Box.createHorizontalGlue());//Ajoute un espacement à gauche du premier bouton
         menu.add(btnAjouter);
 
         JButton btnSupprimer = new JButton(new ImageIcon("../general/images/supprimer_icon_large.png"));
-        btnSupprimer.setFocusPainted(false);
-        btnSupprimer.setFocusable(false);
+        btnSupprimer.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut
+        btnSupprimer.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
+        btnSupprimer.setBackground(new Color(255, 0, 0, 128));
         btnSupprimer.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -78,21 +82,24 @@ public class ManagerWindow extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                btnSupprimer.setBackground(new Color(255,0,0, 100));
+                //btnSupprimer.setBackground(new Color(255,0,0, 100));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                btnSupprimer.setBackground(UIManager.getColor("control"));
+                //btnSupprimer.setBackground(UIManager.getColor("control"));
             }
         });
 
         btnSupprimer.setToolTipText("Supprimer un mot de passe");
+        menu.addSeparator();
         menu.add(btnSupprimer);
+        menu.addSeparator();
 
         JButton btnModifier = new JButton(new ImageIcon("../general/images/modifier_icon_large.png"));
-        btnModifier.setFocusPainted(false);
-        btnModifier.setFocusable(false);
+        btnModifier.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut
+        btnModifier.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
+        btnModifier.setBackground(new Color(255, 127, 54, 128));
         btnModifier.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -111,17 +118,18 @@ public class ManagerWindow extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                btnModifier.setBackground(new Color(255,255,255, 153));
+                //btnModifier.setBackground(new Color(255,255,255, 153));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                btnModifier.setBackground(UIManager.getColor("control"));
+                //btnModifier.setBackground(UIManager.getColor("control"));
             }
         });
 
         btnModifier.setToolTipText("Modifier un mot de passe");
         menu.add(btnModifier);
+        menu.add(Box.createHorizontalGlue());//Ajoute un espacement à droite du dernier bouton
 
         this.add(menu, BorderLayout.NORTH);
         tableau = new JTable(modele);
