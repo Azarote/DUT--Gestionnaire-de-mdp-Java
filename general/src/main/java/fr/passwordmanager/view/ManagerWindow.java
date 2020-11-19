@@ -10,6 +10,11 @@ import java.awt.event.MouseListener;
 public class ManagerWindow extends JFrame {
     private ModeleTableObjet modele = new ModeleTableObjet();
     private JTable tableau;
+
+    private ImageIcon ajouterIcon = new ImageIcon("../general/images/ajouter_icon_large.jpg");
+    private ImageIcon supprimerIcon = new ImageIcon("../general/images/supprimer_icon_large.jpg");
+    private ImageIcon modifierIcon = new ImageIcon("../general/images/modifier_icon_large.jpg");
+
     public ManagerWindow(){
         JFrame frame = new JFrame();
         this.setTitle("Gestionnaire de mots de passe");
@@ -21,115 +26,88 @@ public class ManagerWindow extends JFrame {
         ImageIcon icon = new ImageIcon("../general/images/cadenas.png");
         this.setIconImage(icon.getImage());
 
-        JToolBar menu = new JToolBar();
-        menu.setFloatable(false);
-        menu.setBackground(new Color(255, 255, 255,255));
+        JToolBar menu = new JToolBar();//Crée une barre d'outils pour mettre les boutons
+        menu.setFloatable(false);//Empêche le possibilité de déplacer la barre d'outils
+        menu.setBackground(new Color(255, 255, 255,255));//Colore le fond de la barre d'outils en blanc
 
-        JButton btnAjouter = new JButton(new ImageIcon("../general/images/ajouter_icon_large.png"));
-        btnAjouter.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut
+        JButton btnAjouter = new JButton(ajouterIcon);
+        btnAjouter.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnAjouter.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
-        btnAjouter.setBackground(new Color(46, 209, 60, 128));
+        btnAjouter.setMargin(new Insets(0, 0, 0, 0));//Enlève les espaces autour de l'icône
+
         btnAjouter.addMouseListener(new MouseListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
+            public void mouseClicked(MouseEvent e) {}
 
             @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
+            public void mousePressed(MouseEvent e) {}
 
             @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
+            public void mouseReleased(MouseEvent e) {}
 
             @Override
-            public void mouseEntered(MouseEvent e) {
-                //btnAjouter.setBackground(new Color(112,224,159, 153));
-            }
+            public void mouseEntered(MouseEvent e) {}
 
             @Override
-            public void mouseExited(MouseEvent e) {
-                //btnAjouter.setBackground(UIManager.getColor("control"));
-            }
+            public void mouseExited(MouseEvent e) {}
         });
 
-        btnAjouter.setToolTipText("Ajouter un nouveau mot de passe");
-        menu.add(Box.createHorizontalGlue());//Ajoute un espacement à gauche du premier bouton
+        btnAjouter.setToolTipText("Ajouter un nouveau mot de passe");//Ajoute un message au survol du bouton
+        menu.add(Box.createHorizontalGlue());//Ajoute un espacement à gauche du premier bouton pour centrer
         menu.add(btnAjouter);
 
-        JButton btnSupprimer = new JButton(new ImageIcon("../general/images/supprimer_icon_large.png"));
-        btnSupprimer.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut
+        JButton btnSupprimer = new JButton(supprimerIcon);
+        btnSupprimer.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnSupprimer.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
-        btnSupprimer.setBackground(new Color(255, 0, 0, 128));
+        btnAjouter.setMargin(new Insets(0, 0, 0, 0));//Enlève les espaces autour de l'icône
+
         btnSupprimer.addMouseListener(new MouseListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
+            public void mouseClicked(MouseEvent e) {}
 
             @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
+            public void mousePressed(MouseEvent e) {}
 
             @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
+            public void mouseReleased(MouseEvent e) {}
 
             @Override
-            public void mouseEntered(MouseEvent e) {
-                //btnSupprimer.setBackground(new Color(255,0,0, 100));
-            }
+            public void mouseEntered(MouseEvent e) { }
 
             @Override
-            public void mouseExited(MouseEvent e) {
-                //btnSupprimer.setBackground(UIManager.getColor("control"));
-            }
+            public void mouseExited(MouseEvent e) {}
         });
 
-        btnSupprimer.setToolTipText("Supprimer un mot de passe");
-        menu.addSeparator();
+        btnSupprimer.setToolTipText("Supprimer un mot de passe");//Ajoute un message au survol du bouton
+        menu.addSeparator();//Ajoute une séparation à gauche du bouton "Supprimer un mdp"
         menu.add(btnSupprimer);
-        menu.addSeparator();
+        menu.addSeparator();//Ajoute une séparation à droite du bouton "Supprimer un mdp"
 
-        JButton btnModifier = new JButton(new ImageIcon("../general/images/modifier_icon_large.png"));
-        btnModifier.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut
+        JButton btnModifier = new JButton(modifierIcon);
+        btnModifier.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnModifier.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
-        btnModifier.setBackground(new Color(255, 127, 54, 128));
+        btnAjouter.setMargin(new Insets(0, 0, 0, 0));//Enlève les espaces autour de l'icône
+
         btnModifier.addMouseListener(new MouseListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
+            public void mouseClicked(MouseEvent e) {}
 
             @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
+            public void mousePressed(MouseEvent e) {}
 
             @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
+            public void mouseReleased(MouseEvent e) {}
 
             @Override
-            public void mouseEntered(MouseEvent e) {
-                //btnModifier.setBackground(new Color(255,255,255, 153));
-            }
+            public void mouseEntered(MouseEvent e) {}
 
             @Override
-            public void mouseExited(MouseEvent e) {
-                //btnModifier.setBackground(UIManager.getColor("control"));
-            }
+            public void mouseExited(MouseEvent e) {}
         });
 
-        btnModifier.setToolTipText("Modifier un mot de passe");
+        btnModifier.setToolTipText("Modifier un mot de passe");//Ajoute un message au survol du bouton
         menu.add(btnModifier);
-        menu.add(Box.createHorizontalGlue());//Ajoute un espacement à droite du dernier bouton
+        menu.add(Box.createHorizontalGlue());//Ajoute un espacement à droite du dernier bouton pour centrer
 
         this.add(menu, BorderLayout.NORTH);
         tableau = new JTable(modele);
