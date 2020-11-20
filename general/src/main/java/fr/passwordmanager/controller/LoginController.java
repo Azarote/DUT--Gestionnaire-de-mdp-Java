@@ -3,6 +3,7 @@ package fr.passwordmanager.controller;
 import com.google.common.hash.Hashing;
 import fr.passwordmanager.view.DialogMessage;
 
+import javax.crypto.Cipher;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -53,6 +54,8 @@ public class LoginController {
                 .toString();
         //Compare le mot de passe saisi avec le mot de passe enregistré
         if(pwdWrittenHashed.equals(pwdSaved)){
+            File data = new File("../general/src/data.dat");
+            FileEncrypterDecrypter.encryptDecrypt(pwdWritten, Cipher.DECRYPT_MODE,data,data);
             return 0;
 
         }

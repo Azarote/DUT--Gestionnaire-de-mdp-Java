@@ -37,7 +37,9 @@ public class ManagerWindow extends JFrame {
 
         btnAjouter.addMouseListener(new MouseListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {}
+            public void mouseClicked(MouseEvent e) {
+                new AddPassword();
+            }
 
             @Override
             public void mousePressed(MouseEvent e) {}
