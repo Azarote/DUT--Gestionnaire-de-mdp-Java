@@ -1,11 +1,16 @@
 package fr.passwordmanager.view;
 
+import fr.passwordmanager.controller.FileEncrypterDecrypter;
 import fr.passwordmanager.model.ModeleTableObjet;
 
+import javax.crypto.Cipher;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
 
 public class ManagerWindow extends JFrame {
     private ModeleTableObjet modele = new ModeleTableObjet();
@@ -19,7 +24,7 @@ public class ManagerWindow extends JFrame {
         JFrame frame = new JFrame();
         this.setTitle("Gestionnaire de mots de passe");
         this.setSize(650,500);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
         this.setLocationRelativeTo(null); //Centre la fenêtre
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
 
@@ -105,6 +110,19 @@ public class ManagerWindow extends JFrame {
 
             @Override
             public void mouseExited(MouseEvent e) {}
+        });
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = DialogMessage.confirmDialog("Êtes-vous sur de vouloir fermer le gestionnaire ?","Confirmation");
+                if (result == JOptionPane.YES_OPTION){
+                    //TODO trouve la solution
+                    //File data = new File("../general/src/data.dat");
+                    //FileEncrypterDecrypter.encryptDecrypt(pwdWritten, Cipher.DECRYPT_MODE,data,data);
+                    System.exit(0);
+                }
+            }
         });
 
         btnModifier.setToolTipText("Modifier un mot de passe");//Ajoute un message au survol du bouton
