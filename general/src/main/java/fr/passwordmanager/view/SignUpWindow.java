@@ -24,6 +24,7 @@ public class SignUpWindow extends JFrame {
 
         //Label demandant d'entrer un nouveau mot de passe
         JLabel newPassword = new JLabel("Mot de passe global");
+        newPassword.setForeground(Color.WHITE);
         newPassword.setBounds(150,30,290,25);
         this.add(newPassword);
 
@@ -58,6 +59,7 @@ public class SignUpWindow extends JFrame {
 
         //Label demandant de confirmer le nouveau mot de passe
         JLabel newPasswordConfirmation = new JLabel("Confirmer le mot de passe");
+        newPasswordConfirmation.setForeground(Color.WHITE);
         newPasswordConfirmation.setBounds(150,80,300,25);
         this.add(newPasswordConfirmation);
 
@@ -116,11 +118,16 @@ public class SignUpWindow extends JFrame {
 
         //Label affichant les critères à respecter pour un mot de passe valide
         JLabel info = new JLabel("", SwingConstants.CENTER);
-        info.setText("<html><div style=\"text-align:center;\"><strong>ATTENTION</strong><br/>Le mot de passe doit contenir 8 caractères minimum dont :<br/>- au moins 6 lettres<br/>- au moins 2 chiffres</div></html>");
+        info.setText("<html><div style=\"text-align:center;\"><table style=\"border-collapse:collapse; border:solid red 1px;\"><tr><th><strong>ATTENTION</strong><br/>Le mot de passe doit contenir 8 caractères minimum dont :<br/>- au moins 6 lettres<br/>- au moins 2 chiffres</tr></th></table></div></html>");
         info.setFont(new Font("Helvetica", Font.PLAIN, 17));
         info.setForeground(Color.RED);
         info.setBounds(-6,200,600,100);
         this.add(info);
+
+        ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundSignUp2.png");
+        JLabel background = new JLabel("",imgBackground,JLabel.CENTER);
+        background.setBounds(0,0,600,370);
+        this.add(background);
 
         this.setVisible(true);
     }

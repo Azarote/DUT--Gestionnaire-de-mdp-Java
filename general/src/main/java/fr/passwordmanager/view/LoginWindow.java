@@ -78,7 +78,7 @@ public class LoginWindow extends JFrame {
 
         //Label d'information
         JLabel info = new JLabel("", SwingConstants.CENTER);
-        info.setText("<html><div style=\"text-align:center; color:white;\"><strong>Attention : par mesure de sécurité, vous serez automatiquement déconnecté<br/>à la fermeture du gestionnaire.</strong></div></html>");
+        info.setText("<html><div style=\"text-align:center; color:white;\"><table style=\"border-collapse:collapse; border:solid red 1px;\"><tr><th><strong>Attention : par mesure de sécurité, vous serez automatiquement déconnecté<br/>à la fermeture du gestionnaire.</strong></tr></th></table></div></html>");
         info.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         info.setBounds(0,135,500,35);
         this.add(info);
@@ -86,7 +86,7 @@ public class LoginWindow extends JFrame {
         //Label pour réinitialiser le mot de passer (hypertexte)
         JLabel lostPassword = new JLabel("", SwingConstants.CENTER);
         lostPassword.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        lostPassword.setText("<html><span style=\"color:blue; background-color:gray; font-size:10px;\"><u> Mot de passe perdu ? </u></span></html>");
+        lostPassword.setText("<html><span style=\"color:red; font-size:10px;\"><u> Mot de passe perdu ? </u></span></html>");
         lostPassword.setBounds(0,180,500,30);
         this.add(lostPassword);
 
@@ -115,7 +115,7 @@ public class LoginWindow extends JFrame {
                 public void mouseExited(MouseEvent e) { }
             });
 
-        ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundLogin.png");
+        ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundLogin2.png");
         JLabel background = new JLabel("",imgBackground,JLabel.CENTER);
         background.setBounds(0,0,500,265);
         this.add(background);
