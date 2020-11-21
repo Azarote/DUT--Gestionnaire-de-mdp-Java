@@ -17,9 +17,9 @@ public class ManagerWindow extends JFrame {
     private ModeleTableObjet modele = new ModeleTableObjet();
     private JTable tableau;
 
-    private ImageIcon ajouterIcon = new ImageIcon("../general/images/icons/ajouter_icon_large.jpg");
-    private ImageIcon supprimerIcon = new ImageIcon("../general/images/icons/supprimer_icon_large.jpg");
-    private ImageIcon modifierIcon = new ImageIcon("../general/images/icons/modifier_icon_large.jpg");
+    private ImageIcon ajouterIcon = new ImageIcon("../general/images/icons/ajouter_icon.jpg");
+    private ImageIcon supprimerIcon = new ImageIcon("../general/images/icons/supprimer_icon.jpg");
+    private ImageIcon modifierIcon = new ImageIcon("../general/images/icons/modifier_icon.jpg");
 
     public ManagerWindow(){
         JFrame frame = new JFrame();

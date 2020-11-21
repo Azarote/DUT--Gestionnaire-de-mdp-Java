@@ -94,7 +94,7 @@ public class AddPassword extends JFrame {
             UtilDateModel model = new UtilDateModel();
             JDatePanelImpl datePanel = new JDatePanelImpl(model);
             JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
-            datePicker.setBounds(135,130,300,25);
+            datePicker.setBounds(135,130,300,40);
             this.add(datePicker);
 
         //Label demandant d'entrer la description

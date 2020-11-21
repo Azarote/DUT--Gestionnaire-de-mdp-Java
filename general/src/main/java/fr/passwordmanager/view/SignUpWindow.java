@@ -124,7 +124,7 @@ public class SignUpWindow extends JFrame {
         info.setBounds(-6,200,600,100);
         this.add(info);
 
-        ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundSignUp2.png");
+        ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundSignUp.png");
         JLabel background = new JLabel("",imgBackground,JLabel.CENTER);
         background.setBounds(0,0,600,370);
         this.add(background);
