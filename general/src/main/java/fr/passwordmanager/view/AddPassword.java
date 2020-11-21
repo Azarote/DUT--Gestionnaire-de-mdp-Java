@@ -195,7 +195,7 @@ public class AddPassword extends JDialog {
                     }
                     else
                     {
-                        AddPasswordController.AddPasswordProcessing(fieldTitre.getText(), fieldPseudo.getText(), fieldMDP.getPassword(), fieldURL.getText(), areaDescription.getText(), datePicker.getJFormattedTextField().getText());
+                        passwordController.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getJFormattedTextField().getText());
                     }
                 }
 
