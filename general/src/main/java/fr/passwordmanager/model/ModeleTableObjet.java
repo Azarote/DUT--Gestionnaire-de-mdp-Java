@@ -7,10 +7,10 @@ import java.util.List;
 public class ModeleTableObjet extends AbstractTableModel {
     private final List<Password> passwords = new ArrayList<Password>();
 
-    private final String[] titles = {"Titre","URL","Pseudo/Email","Mot de Passe","Description","Date Expiration"};
+    private final String[] titles = {"Titre","Pseudo/Email","Mot de Passe","URL","Description","Date d'expiration"};
     public ModeleTableObjet(){
         super();
-        //passwords.add(new Password("Test","youtube.com","Celestin","risitas@gmail.com","123456","Test desc", "28-05-2020"));
+        //passwords.add(new Password("Test","Celestin","123456","youtube.com","Test desc", "28-05-2020"));
     }
     @Override
     public int getRowCount() {
@@ -32,16 +32,14 @@ public class ModeleTableObjet extends AbstractTableModel {
             case 0:
                 return passwords.get(i).getTitle();
             case 1:
-                return passwords.get(i).getURL();
-            case 2:
                 return passwords.get(i).getUsername();
-            case 3:
-                return passwords.get(i).getEmail();
-            case 4:
+            case 2:
                 return passwords.get(i).getPassword();
-            case 5:
+            case 3:
+                return passwords.get(i).getURL();
+            case 4:
                 return passwords.get(i).getDescription();
-            case 6:
+            case 5:
                 return passwords.get(i).getExpiration_date();
             default:
                 return null;
