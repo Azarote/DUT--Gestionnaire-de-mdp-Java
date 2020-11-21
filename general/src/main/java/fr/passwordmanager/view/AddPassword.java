@@ -12,6 +12,7 @@ import java.awt.event.MouseListener;
 
 public class AddPassword extends JDialog {
     private ImageIcon info = new ImageIcon("../general/images/icons/info.png");
+    private final AddPasswordController passwordController = new AddPasswordController();
 
     public AddPassword() {
         JFrame frame = new JFrame();
@@ -126,7 +127,7 @@ public class AddPassword extends JDialog {
             validation.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    AddPasswordController.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getJFormattedTextField().getText());
+                    passwordController.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getJFormattedTextField().getText());
                     
                 }
 
