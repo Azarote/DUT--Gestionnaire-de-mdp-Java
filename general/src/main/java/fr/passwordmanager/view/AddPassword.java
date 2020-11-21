@@ -23,7 +23,7 @@ public class AddPassword extends JDialog {
         JFrame frame = new JFrame();
         setModal(true);
         this.setTitle("Ajouter un mot de passe");
-        this.setSize(480,480);
+        this.setSize(480,450);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null); //Centre la fenêtre
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
@@ -198,24 +198,16 @@ public class AddPassword extends JDialog {
                 }
 
                 @Override
-                public void mousePressed(MouseEvent e) {
-
-                }
+                public void mousePressed(MouseEvent e) { }
 
                 @Override
-                public void mouseReleased(MouseEvent e) {
-
-                }
+                public void mouseReleased(MouseEvent e) { }
 
                 @Override
-                public void mouseEntered(MouseEvent e) {
-
-                }
+                public void mouseEntered(MouseEvent e) { }
 
                 @Override
-                public void mouseExited(MouseEvent e) {
-
-                }
+                public void mouseExited(MouseEvent e) { }
             });
 
         //Bouton pour annuler la saisie
