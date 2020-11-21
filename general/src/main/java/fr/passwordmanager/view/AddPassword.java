@@ -14,6 +14,8 @@ import java.awt.event.MouseListener;
 
 public class AddPassword extends JDialog {
     private ImageIcon info = new ImageIcon("../general/images/icons/info.png");
+    private final AddPasswordController passwordController = new AddPasswordController();
+
     private final JTextField fieldTitre;
     private final JTextField fieldPseudo;
     private final JPasswordField fieldMDP;
@@ -193,7 +195,7 @@ public class AddPassword extends JDialog {
                     }
                     else
                     {
-                        AddPasswordController.AddPasswordProcessing(fieldTitre.getText(), fieldPseudo.getText(), fieldMDP.getPassword(), fieldURL.getText(), areaDescription.getText(), datePicker.getJFormattedTextField().getText());
+                        passwordController.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getJFormattedTextField().getText());
                     }
                 }
 
