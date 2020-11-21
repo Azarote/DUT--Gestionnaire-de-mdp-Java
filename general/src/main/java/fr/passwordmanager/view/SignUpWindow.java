@@ -38,15 +38,7 @@ public class SignUpWindow extends JFrame {
                 @Override
                 public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                        char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
-                        char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
-
-                        int result = HashingAndProcessing.passwordProcessing(pwd1,pwd2);//Appelle la fonction de traitement du mdp
-
-                        if(result == 0) {
-                            dispose();
-                            new LoginWindow();
-                        }
+                        passwordFieldConfirmation.requestFocusInWindow();
                     }
                 }
 
