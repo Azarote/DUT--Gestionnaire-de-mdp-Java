@@ -1,6 +1,8 @@
 package fr.passwordmanager.view;
 
 import fr.passwordmanager.controller.LoginController;
+import fr.passwordmanager.controller.Singleton;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -38,6 +40,8 @@ public class LoginWindow extends JFrame {
                 public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode() == KeyEvent.VK_ENTER){
                         char[] pwdWritten = enterPasswordField.getPassword();//Capte le mot de passe saisi dans le champ
+                        Singleton singleton = Singleton.getInstance();
+                        singleton.setInfo(pwdWritten);
                         int result = LoginController.passwordComparison(pwdWritten);//Appelle la fonction de comparaison de mdp
 
                         if(result == 0) {
@@ -63,6 +67,8 @@ public class LoginWindow extends JFrame {
             validatePassword.addActionListener(e -> {
                 try{
                     char[] pwdWritten = enterPasswordField.getPassword();//Capte le mot de passe saisi dans le champ
+                    Singleton singleton = Singleton.getInstance();
+                    singleton.setInfo(pwdWritten);
                     int result = LoginController.passwordComparison(pwdWritten);//Appelle la fonction de comparaison de mdp
 
                     if(result == 0) {
@@ -114,6 +120,7 @@ public class LoginWindow extends JFrame {
                 @Override
                 public void mouseExited(MouseEvent e) { }
             });
+
 
         ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundLogin2.png");
         JLabel background = new JLabel("",imgBackground,JLabel.CENTER);
