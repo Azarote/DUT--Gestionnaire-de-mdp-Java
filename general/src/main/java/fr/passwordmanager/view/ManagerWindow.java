@@ -1,6 +1,7 @@
 package fr.passwordmanager.view;
 
 import fr.passwordmanager.controller.FileEncrypterDecrypter;
+import fr.passwordmanager.controller.Singleton;
 import fr.passwordmanager.model.ModeleTableObjet;
 
 import javax.crypto.Cipher;
@@ -117,9 +118,9 @@ public class ManagerWindow extends JFrame {
             public void windowClosing(WindowEvent e) {
                 int result = DialogMessage.confirmDialog("Êtes-vous sur de vouloir fermer le gestionnaire ?","Confirmation");
                 if (result == JOptionPane.YES_OPTION){
-                    //TODO trouve la solution
-                    //File data = new File("../general/src/data.dat");
-                    //FileEncrypterDecrypter.encryptDecrypt(pwdWritten, Cipher.DECRYPT_MODE,data,data);
+                    Singleton singleton = Singleton.getInstance();
+                    File data = new File("../general/src/data.dat");
+                    FileEncrypterDecrypter.encryptDecrypt(singleton.getInfo(), Cipher.DECRYPT_MODE,data,data);
                     System.exit(0);
                 }
             }
