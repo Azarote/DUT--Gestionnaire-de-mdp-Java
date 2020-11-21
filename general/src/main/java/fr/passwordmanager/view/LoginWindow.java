@@ -122,7 +122,7 @@ public class LoginWindow extends JFrame {
             });
 
 
-        ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundLogin2bis.png");
+        ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundLogin2.png");
         JLabel background = new JLabel("",imgBackground,JLabel.CENTER);
         background.setBounds(0,0,500,265);
         this.add(background);
