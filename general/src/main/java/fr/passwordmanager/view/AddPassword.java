@@ -1,5 +1,6 @@
 package fr.passwordmanager.view;
 
+import fr.passwordmanager.controller.AddPasswordController;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
@@ -125,6 +126,7 @@ public class AddPassword extends JDialog {
             validation.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                    AddPasswordController.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getJFormattedTextField().getText());
                     
                 }
 
