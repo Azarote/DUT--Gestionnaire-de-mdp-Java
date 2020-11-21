@@ -84,9 +84,9 @@ public class LoginWindow extends JFrame {
 
         //Label d'information
         JLabel info = new JLabel("", SwingConstants.CENTER);
-        info.setText("<html><div style=\"text-align:center; color:white;\"><table style=\"border-collapse:collapse; border:solid red 1px;\"><tr><th><strong>Attention : par mesure de sécurité, vous serez automatiquement déconnecté<br/>à la fermeture du gestionnaire.</strong></tr></th></table></div></html>");
+        info.setText("<html><div style=\"text-align:center; color:white;\"><strong>Attention : par mesure de sécurité, vous serez automatiquement<br/>déconnecté à la fermeture du gestionnaire.</strong></div></html>");
         info.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        info.setBounds(0,135,500,35);
+        info.setBounds(0,135,500,50);
         this.add(info);
 
         //Label pour réinitialiser le mot de passer (hypertexte)
@@ -122,7 +122,7 @@ public class LoginWindow extends JFrame {
             });
 
 
-        ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundLogin2.png");
+        ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundLogin2bis.png");
         JLabel background = new JLabel("",imgBackground,JLabel.CENTER);
         background.setBounds(0,0,500,265);
         this.add(background);
