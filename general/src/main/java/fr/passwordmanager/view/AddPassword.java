@@ -13,7 +13,7 @@ public class AddPassword extends JFrame {
     public AddPassword() {
         JFrame frame = new JFrame();
         this.setTitle("Ajouter un mot de passe");
-        this.setSize(500,450);
+        this.setSize(445,380);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null); //Centre la fenêtre
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
@@ -104,7 +104,7 @@ public class AddPassword extends JFrame {
 
             //Champ de texte pour saisir la description
             JTextArea areaDescription = new JTextArea();
-            JScrollPane paneDescription = new JScrollPane(areaDescription);
+            JScrollPane paneDescription = new JScrollPane(areaDescription);//On met le TextArea dans le ScrollPane pour pouvoir scroller
             paneDescription.setBounds(100,160,300,100);
             this.add(paneDescription);
 
@@ -113,6 +113,16 @@ public class AddPassword extends JFrame {
         labelRq.setText("<html><span style=\"color:red; text-align:center;\"><em>Les champs marqués d'une * sont obligatoires</em></span></html>");
         labelRq.setBounds(5,265,300,25);
         this.add(labelRq);
+
+        //Bouton pour valider la saisie
+        JButton validation = new JButton("Valider");
+        validation.setBounds(195,295,100,25);
+        this.add(validation);
+
+        //Bouton pour annuler la saisie
+        JButton cancel = new JButton("Annuler");
+        cancel.setBounds(300,295,100,25);
+        this.add(cancel);
 
         this.setVisible(true);
     }
