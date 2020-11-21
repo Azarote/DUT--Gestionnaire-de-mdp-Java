@@ -7,11 +7,12 @@ import net.sourceforge.jdatepicker.impl.UtilDateModel;
 import javax.swing.*;
 import java.awt.*;
 
-public class AddPassword extends JFrame {
+public class AddPassword extends JDialog {
     private ImageIcon info = new ImageIcon("../general/images/icons/info.png");
 
     public AddPassword() {
         JFrame frame = new JFrame();
+        setModal(true);
         this.setTitle("Ajouter un mot de passe");
         this.setSize(480,390);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
