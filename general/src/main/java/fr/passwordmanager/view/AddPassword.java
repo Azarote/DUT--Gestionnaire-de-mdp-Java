@@ -27,14 +27,14 @@ public class AddPassword extends JDialog {
         this.setTitle("Ajouter un mot de passe");
         this.setSize(480,450);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.setLocationRelativeTo(null); //Centre la fenêtre
-        this.setResizable(false); //Empêche le redimensionnement de la fenêtre
+        this.setLocationRelativeTo(null);//Centre la fenêtre
+        this.setResizable(false);//Empêche le redimensionnement de la fenêtre
         this.setLayout(null);
 
         ImageIcon icon = new ImageIcon("../general/images/cadenas.png");//Icône
         this.setIconImage(icon.getImage());
 
-        UIManager.put("ToolTip.background", Color.white);
+        UIManager.put("ToolTip.background", Color.white);//Rend le fond des bulles d'aide blanc
 
         //Label demandant d'entrer le titre
         JLabel labelTitre = new JLabel("");
@@ -48,16 +48,17 @@ public class AddPassword extends JDialog {
             this.add(fieldTitre);
 
             //Icone astuce titre
-            JLabel labelInfo = new JLabel("",info,JLabel.CENTER);
-            labelInfo.setBounds(440,15,15,15);
-            labelInfo.setToolTipText("Peut être le nom du site (ex: Youtube)");
-            this.add(labelInfo);
+            JLabel labelInfoTitre = new JLabel("",info,JLabel.CENTER);
+            labelInfoTitre.setBounds(440,15,15,15);
+            labelInfoTitre.setToolTipText("Peut être le nom du site (ex: Youtube)");
+            this.add(labelInfoTitre);
 
+            //Si l'utilisateur se trouve dans le champ Titre et appuye sur ENTREE
             fieldTitre.addKeyListener(new KeyListener() {
                 @Override
                 public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                        fieldPseudo.requestFocusInWindow();
+                        fieldPseudo.requestFocusInWindow();//L'utilisateur est déplacé au champ suivant
                     }
                 }
 
@@ -80,25 +81,26 @@ public class AddPassword extends JDialog {
             this.add(fieldPseudo);
 
             //Icone astuce Pseudo
-            JLabel labelInfo3 = new JLabel("",info,JLabel.CENTER);
-            labelInfo3.setBounds(440,60,15,15);
-            labelInfo3.setToolTipText("Peut également être une adresse mail");
-            this.add(labelInfo3);
+            JLabel labelInfoPseudo = new JLabel("",info,JLabel.CENTER);
+            labelInfoPseudo.setBounds(440,60,15,15);
+            labelInfoPseudo.setToolTipText("Peut également être une adresse mail");
+            this.add(labelInfoPseudo);
 
-                fieldPseudo.addKeyListener(new KeyListener() {
-                    @Override
-                    public void keyPressed(KeyEvent e) {
-                        if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                            fieldMDP.requestFocusInWindow();
-                        }
+            //Si l'utilisateur se trouve dans le champ Pseudo et appuye sur ENTREE
+            fieldPseudo.addKeyListener(new KeyListener() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                        fieldMDP.requestFocusInWindow();//L'utilisateur est déplacé au champ suivant
                     }
+                }
 
-                    @Override
-                    public void keyTyped(KeyEvent e) { }
+                @Override
+                public void keyTyped(KeyEvent e) { }
 
-                    @Override
-                    public void keyReleased(KeyEvent e) { }
-                });
+                @Override
+                public void keyReleased(KeyEvent e) { }
+            });
 
         //Label demandant d'entrer le mdp
         JLabel labelMDP = new JLabel("");
@@ -111,20 +113,21 @@ public class AddPassword extends JDialog {
             fieldMDP.setBounds(135,95,300,35);
             this.add(fieldMDP);
 
-                fieldMDP.addKeyListener(new KeyListener() {
-                    @Override
-                    public void keyPressed(KeyEvent e) {
-                        if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                            fieldURL.requestFocusInWindow();
-                        }
+            //Si l'utilisateur se trouve dans le champ MDP et appuye sur ENTREE
+            fieldMDP.addKeyListener(new KeyListener() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                        fieldURL.requestFocusInWindow();//L'utilisateur est déplacé au champ suivant
                     }
+                }
 
-                    @Override
-                    public void keyTyped(KeyEvent e) { }
+                @Override
+                public void keyTyped(KeyEvent e) { }
 
-                    @Override
-                    public void keyReleased(KeyEvent e) { }
-                });
+                @Override
+                public void keyReleased(KeyEvent e) { }
+            });
 
         //Label demandant d'entrer l'URL
         JLabel labelURL = new JLabel("URL :");
@@ -137,10 +140,10 @@ public class AddPassword extends JDialog {
             this.add(fieldURL);
 
             //Icone astuce URL
-            JLabel labelInfo2 = new JLabel("",info,JLabel.CENTER);
-            labelInfo2.setBounds(440,150,15,15);
-            labelInfo2.setToolTipText("Le lien du site");
-            this.add(labelInfo2);
+            JLabel labelInfoURL = new JLabel("",info,JLabel.CENTER);
+            labelInfoURL.setBounds(440,150,15,15);
+            labelInfoURL.setToolTipText("Le lien du site");
+            this.add(labelInfoURL);
 
         //Label demandant d'entrer la date d'expiration
         JLabel labelDate = new JLabel("Date d'expiration : ");
@@ -176,6 +179,7 @@ public class AddPassword extends JDialog {
         validation.setBounds(230,365,100,25);
         this.add(validation);
 
+            //Si l'utilisateur clique sur le bouton "Valider", on vérifie les champs requis
             validation.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -183,19 +187,23 @@ public class AddPassword extends JDialog {
 
                     if(fieldTitre.getText().isEmpty())
                     {
-                        DialogMessage.messageDialog("Aucun titre n'a été saisi");
+                        DialogMessage.messageDialog("Aucun titre n'a été saisi");//Champ titre vide
+                        fieldTitre.requestFocusInWindow();
                     }
                     else if(fieldPseudo.getText().isEmpty())
                     {
-                        DialogMessage.messageDialog("Aucun pseudo ou adresse mail n'a été saisi(e)");
+                        DialogMessage.messageDialog("Aucun pseudo ou adresse mail n'a été saisi(e)");//Champ pseudo vide
+                        fieldPseudo.requestFocusInWindow();
                     }
                     else if(pwdWritten.length<=0)
                     {
-                        DialogMessage.messageDialog("Aucun mot de passe n'a été saisi");
+                        DialogMessage.messageDialog("Aucun mot de passe n'a été saisi");//Champ mdp vide
+                        fieldMDP.requestFocusInWindow();
                     }
                     else
                     {
                         passwordController.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getJFormattedTextField().getText());
+                        dispose();
                     }
                 }
 
@@ -217,9 +225,8 @@ public class AddPassword extends JDialog {
         cancel.setBounds(340,365,100,25);
         this.add(cancel);
 
-            cancel.addActionListener(e -> {
-                dispose();
-            });
+            //Si l'utilisateur clique sur Annuler
+            cancel.addActionListener(e -> dispose());
 
         this.setVisible(true);
     }

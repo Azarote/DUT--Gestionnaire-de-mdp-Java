@@ -12,9 +12,10 @@ public class Principal {
             ex.printStackTrace();
         }
 
-        File data = new File("../general/src/hashed.dat");
+        File hashed = new File("../general/src/hashed.dat");
 
-        if(data.exists())
+        //Si un mdp global a été enregistré, on lance la fenêtre de Login au démarrage ; sinon fenêtre SignUp
+        if(hashed.exists())
             new LoginWindow();
         else
             new SignUpWindow();

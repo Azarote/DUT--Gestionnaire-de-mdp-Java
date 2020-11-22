@@ -89,7 +89,7 @@ public class LoginWindow extends JFrame {
         info.setBounds(0,135,500,50);
         this.add(info);
 
-        //Label pour réinitialiser le mot de passer (hypertexte)
+        //Label pour réinitialiser le mot de passe (hypertexte)
         JLabel lostPassword = new JLabel("", SwingConstants.CENTER);
         lostPassword.setCursor(new Cursor(Cursor.HAND_CURSOR));
         lostPassword.setText("<html><span style=\"color:red; font-size:10px;\"><u> Mot de passe perdu ? </u></span></html>");
@@ -121,7 +121,7 @@ public class LoginWindow extends JFrame {
                 public void mouseExited(MouseEvent e) { }
             });
 
-
+        //Image pour le fond de la fenêtre
         ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundLogin.png");
         JLabel background = new JLabel("",imgBackground,JLabel.CENTER);
         background.setBounds(0,0,500,265);

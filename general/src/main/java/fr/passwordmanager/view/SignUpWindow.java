@@ -19,7 +19,7 @@ public class SignUpWindow extends JFrame {
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
         this.setLayout(null);
 
-        ImageIcon icon = new ImageIcon("../general/images/cadenas.png");
+        ImageIcon icon = new ImageIcon("../general/images/cadenas.png");//Icône
         this.setIconImage(icon.getImage());
 
         //Label demandant d'entrer un nouveau mot de passe
@@ -33,12 +33,12 @@ public class SignUpWindow extends JFrame {
         passwordField.setBounds(150,50,290,25);
         this.add(passwordField);
 
-            //Appelle la fonction qui traite les mdps si on appuye sur "Entrée"
+            //Si l'utilisateur se trouve dans le champ passwordField et appuye sur ENTREE
             passwordField.addKeyListener(new KeyListener() {
                 @Override
                 public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                        passwordFieldConfirmation.requestFocusInWindow();
+                        passwordFieldConfirmation.requestFocusInWindow();//L'utilisateur est déplacé au champ suivant
                     }
                 }
 
@@ -116,6 +116,7 @@ public class SignUpWindow extends JFrame {
         info.setBounds(-6,200,600,100);
         this.add(info);
 
+        //Image pour le fond de la fenêtre
         ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundSignUp.png");
         JLabel background = new JLabel("",imgBackground,JLabel.CENTER);
         background.setBounds(0,0,600,370);
