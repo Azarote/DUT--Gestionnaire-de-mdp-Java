@@ -55,7 +55,7 @@ public class LoginController {
         //Compare le mot de passe saisi avec le mot de passe enregistré
         if(pwdWrittenHashed.equals(pwdSaved)){
             File data = new File("../general/src/data.dat");
-            FileEncrypterDecrypter.encryptDecrypt(pwdWritten, Cipher.DECRYPT_MODE,data,data);
+            //FileEncrypterDecrypter.encryptDecrypt(String.valueOf(pwdWritten), Cipher.DECRYPT_MODE,data,data);
             return 0;
 
         }

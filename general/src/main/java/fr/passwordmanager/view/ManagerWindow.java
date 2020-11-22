@@ -1,5 +1,6 @@
 package fr.passwordmanager.view;
 
+import fr.passwordmanager.controller.AddPasswordController;
 import fr.passwordmanager.controller.FileEncrypterDecrypter;
 import fr.passwordmanager.controller.Singleton;
 import fr.passwordmanager.model.ModeleTableObjet;
@@ -12,6 +13,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.IOException;
 
 public class ManagerWindow extends JFrame {
     private ModeleTableObjet modele = new ModeleTableObjet();
@@ -127,7 +129,7 @@ public class ManagerWindow extends JFrame {
                 if (result == JOptionPane.YES_OPTION){
                     Singleton singleton = Singleton.getInstance();
                     File data = new File("../general/src/data.dat");
-                    FileEncrypterDecrypter.encryptDecrypt(singleton.getInfo(), Cipher.DECRYPT_MODE,data,data);//On chiffre le fichier
+                    //FileEncrypterDecrypter.encryptDecrypt(String.valueOf(singleton.getInfo()), Cipher.DECRYPT_MODE,data,data);//On chiffre le fichier
                     System.exit(0);//On ferme la fenêtre
                 }
             }

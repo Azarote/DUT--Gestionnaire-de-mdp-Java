@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 
 public class AddPassword extends JDialog {
     private ImageIcon info = new ImageIcon("../general/images/icons/info.png");
@@ -203,6 +204,11 @@ public class AddPassword extends JDialog {
                     else
                     {
                         passwordController.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getJFormattedTextField().getText());
+                        try {
+                            AddPasswordController.VectorSaving();
+                        } catch (IOException ioException) {
+                            ioException.printStackTrace();
+                        }
                         dispose();
                     }
                 }

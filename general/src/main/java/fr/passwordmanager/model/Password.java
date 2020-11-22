@@ -1,8 +1,8 @@
 package fr.passwordmanager.model;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class Password {
+public class Password implements Serializable {
     private String title;
     private String username;
     private String password;
@@ -17,6 +17,18 @@ public class Password {
         this.URL = URL;
         this.description = description;
         this.expiration_date = expiration_date;
+    }
+
+    @Override
+    public String toString() {
+        return "Password{" +
+                "title='" + title + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", URL='" + URL + '\'' +
+                ", description='" + description + '\'' +
+                ", expiration_date='" + expiration_date + '\'' +
+                '}';
     }
 
     public String getTitle() {

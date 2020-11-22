@@ -9,7 +9,7 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
 public class FileEncrypterDecrypter {
-   public static void encryptDecrypt(char[] key, int cipherMode, File in, File out){
+   public static void encryptDecrypt(String key, int cipherMode, File in, File out){
        try{
            FileInputStream fis = new FileInputStream(in);
            FileOutputStream fos = new FileOutputStream(out);
@@ -46,9 +46,9 @@ public class FileEncrypterDecrypter {
            out.close();
            in.close();
    }
-  //  public static void main(String[] args) {
-     //   File test = new File("general/src/data.dat");
-       // File encrypt = new File("general/src/dataencrypt.dat");
-        //encryptDecrypt("12345678",Cipher.ENCRYPT_MODE,test,encrypt);
-//   }
+    //public static void main(String[] args) {
+      //  File data = new File("general/src/data.txt");
+       // File encrypt = new File("general/src/data.txt");
+        //encryptDecrypt("12345678",Cipher.DECRYPT_MODE,data,encrypt);
+   //}
 }
