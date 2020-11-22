@@ -217,6 +217,10 @@ public class AddPassword extends JDialog {
         cancel.setBounds(340,365,100,25);
         this.add(cancel);
 
+            cancel.addActionListener(e -> {
+                dispose();
+            });
+
         this.setVisible(true);
     }
 }
