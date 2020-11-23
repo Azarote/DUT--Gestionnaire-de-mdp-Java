@@ -128,7 +128,7 @@ public class ManagerWindow extends JFrame {
                 int result = DialogMessage.confirmDialog("Êtes-vous sur de vouloir fermer le gestionnaire ?","Confirmation");
                 if (result == JOptionPane.YES_OPTION){
                     Singleton singleton = Singleton.getInstance();
-                    File data = new File("../general/src/data.dat");
+                    //File data = new File("../general/src/data.dat");
                     //FileEncrypterDecrypter.encryptDecrypt(String.valueOf(singleton.getInfo()), Cipher.DECRYPT_MODE,data,data);//On chiffre le fichier
                     System.exit(0);//On ferme la fenêtre
                 }
