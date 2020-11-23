@@ -16,14 +16,6 @@ public final class Singleton {
         return INSTANCE;
     }
 
-    public static Singleton getINSTANCE() {
-        return INSTANCE;
-    }
-
-    public static void setINSTANCE(Singleton INSTANCE) {
-        Singleton.INSTANCE = INSTANCE;
-    }
-
     public char[] getInfo() {
         return info;
     }

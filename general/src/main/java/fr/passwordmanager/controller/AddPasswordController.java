@@ -24,5 +24,6 @@ public class AddPasswordController implements Serializable {
       bw.write(passwordVector.toString());
       bw.newLine();
       bw.flush();
+      bw.close();
    }
 }
