@@ -13,13 +13,21 @@ import java.awt.event.*;
  * @author Matteo MUNOZ
  */
 public class SignUpWindow extends JFrame {
+    /**
+     * Champ pour saisir un mot de passe global
+     */
     private final JPasswordField passwordField;
+
+    /**
+     * Champ pour confirmer le mot de passe
+     */
     private final JPasswordField passwordFieldConfirmation;
 
     /**
      * <p>Constructeur de la classe SignUpWindow</p>
      */
     public SignUpWindow(){
+        //Définition des propriétés de la fenêtre
         JFrame frame = new JFrame();
         this.setTitle("Enregistrer un mot de passe global");
         this.setSize(600,370);
@@ -42,12 +50,16 @@ public class SignUpWindow extends JFrame {
         passwordField.setBounds(150,50,290,25);
         this.add(passwordField);
 
-            //Si l'utilisateur se trouve dans le champ passwordField et appuye sur ENTREE
+            /*
+             * Ajoute un KeyListener sur passwordField
+             * Si l'utilisateur se trouve dans le champ passwordField et appuie sur ENTREE
+             * alors l'utilisateur est déplacé au champ suivant : passwordFieldConfirmation
+             */
             passwordField.addKeyListener(new KeyListener() {
                 @Override
                 public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                        passwordFieldConfirmation.requestFocusInWindow();//L'utilisateur est déplacé au champ suivant
+                        passwordFieldConfirmation.requestFocusInWindow();
                     }
                 }
 
@@ -69,7 +81,10 @@ public class SignUpWindow extends JFrame {
         passwordFieldConfirmation.setBounds(150,100,290,25);
         this.add(passwordFieldConfirmation);
 
-            //Appelle la fonction qui traite les mdps si on appuye sur "Entrée"
+            /*
+             * Ajoute un KeyListener sur passwordFieldConfirmation
+             * Appelle la fonction qui traite les mots de passe si on appuie sur ENTREE
+             */
             passwordFieldConfirmation.addKeyListener(new KeyListener() {
                 @Override
                 public void keyPressed(KeyEvent e) {
@@ -93,12 +108,15 @@ public class SignUpWindow extends JFrame {
                 public void keyTyped(KeyEvent e) { }
             });
 
-        //Bouton pour valider la saisie des mdp
+        //Bouton VALIDER pour valider la saisie des mdp
         JButton validateButton = new JButton("Valider");
         validateButton.setBounds(290,140,150,25);
         this.add(validateButton);
 
-            //Appelle la fonction qui traite les mdps si on clique sur "Valider"
+            /*
+             * Ajoute un ActionListener sur validateButton
+             * Appelle la fonction qui traite les mots de passe si on clique sur VALIDER
+             */
             validateButton.addActionListener(e -> {
                 try{
                     char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
@@ -111,9 +129,9 @@ public class SignUpWindow extends JFrame {
                         new LoginWindow();
                     }
                 }
-                catch(Exception ex)
+                catch(Exception ee)
                 {
-                    System.err.println(ex);
+                    System.err.println();
                 }
             });
 

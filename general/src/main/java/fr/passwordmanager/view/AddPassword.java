@@ -13,16 +13,48 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 
+/**
+ * <p>Classe qui gère la fenêtre pour ajouter un mot de passe dans le Gestionnaire</p>
+ *
+ * @author Matteo DUFOUR
+ * @author Matteo MUNOZ
+ */
 public class AddPassword extends JDialog {
+    /**
+     * Icône pour ToolTipText
+     */
     private ImageIcon info = new ImageIcon("../general/images/icons/info.png");
+
+    /**
+     * Instance du contrôleur
+     */
     private final AddPasswordController passwordController = new AddPasswordController();
 
+    /**
+     * Champ pour saisir le titre du mot de passe
+     */
     private final JTextField fieldTitre;
+
+    /**
+     * Champ pour saisir le pseudo/adresse mail
+     */
     private final JTextField fieldPseudo;
+
+    /**
+     * Champ pour saisir le mot de passe
+     */
     private final JPasswordField fieldMDP;
+
+    /**
+     * Champ pour saisir l'URL
+     */
     private final JTextField fieldURL;
 
+    /**
+     * <p>Constructeur de la classe AddPassword</p>>
+     */
     public AddPassword() {
+        //Définition des propriétés de la fenêtre
         JFrame frame = new JFrame();
         setModal(true);
         this.setTitle("Ajouter un mot de passe");
@@ -54,7 +86,11 @@ public class AddPassword extends JDialog {
             labelInfoTitre.setToolTipText("Peut être le nom du site (ex: Youtube)");
             this.add(labelInfoTitre);
 
-            //Si l'utilisateur se trouve dans le champ Titre et appuye sur ENTREE
+            /*
+             * Ajoute un KeyListener sur fieldTitre
+             * Si l'utilisateur se trouve dans le champ fieldTitre et appuie sur ENTREE
+             * alors l'utilisateur est déplacé au champ suivant : fieldPseudo
+             */
             fieldTitre.addKeyListener(new KeyListener() {
                 @Override
                 public void keyPressed(KeyEvent e) {
@@ -87,7 +123,11 @@ public class AddPassword extends JDialog {
             labelInfoPseudo.setToolTipText("Peut également être une adresse mail");
             this.add(labelInfoPseudo);
 
-            //Si l'utilisateur se trouve dans le champ Pseudo et appuye sur ENTREE
+            /*
+             * Ajoute un KeyListener sur fieldPseudo
+             * Si l'utilisateur se trouve dans le champ fieldPseudo et appuie sur ENTREE
+             * alors l'utilisateur est déplacé au champ suivant : fieldMDP
+             */
             fieldPseudo.addKeyListener(new KeyListener() {
                 @Override
                 public void keyPressed(KeyEvent e) {
@@ -114,7 +154,11 @@ public class AddPassword extends JDialog {
             fieldMDP.setBounds(135,95,300,35);
             this.add(fieldMDP);
 
-            //Si l'utilisateur se trouve dans le champ MDP et appuye sur ENTREE
+            /*
+             * Ajoute un KeyListener sur fieldMDP
+             * Si l'utilisateur se trouve dans le champ fieldMDP et appuie sur ENTREE
+             * alors l'utilisateur est déplacé au champ suivant : fieldURL
+             */
             fieldMDP.addKeyListener(new KeyListener() {
                 @Override
                 public void keyPressed(KeyEvent e) {
@@ -180,7 +224,12 @@ public class AddPassword extends JDialog {
         validation.setBounds(230,365,100,25);
         this.add(validation);
 
-            //Si l'utilisateur clique sur le bouton "Valider", on vérifie les champs requis
+            /*
+             * Ajoute un MouseListener sur validation
+             * Si l'utilisateur clique sur VALIDER
+             * on vérifie que les champs obligatoires soient remplis
+             * Si oui, on lance le processus d'ajout de mot de passe
+             */
             validation.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {

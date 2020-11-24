@@ -12,6 +12,7 @@ import java.io.File;
 public class Principal {
 
     public static void main(String[] args){
+        //Améliore le thème par défaut
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
@@ -20,7 +21,11 @@ public class Principal {
 
         File hashed = new File("../general/src/hashed.dat");
 
-        //Si un mdp global a été enregistré, on lance la fenêtre de Login au démarrage ; sinon fenêtre SignUp
+        /*
+         * Si un mot de passe global a été enregistré,
+         * on lance la fenêtre de Login au démarrage
+         * sinon fenêtre SignUp
+         */
         if(hashed.exists())
             new LoginWindow();
         else

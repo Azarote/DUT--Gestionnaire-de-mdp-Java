@@ -8,11 +8,23 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
+/**
+ * <p>Classe qui gère la fenêtre pour se connecter au Gestionnaire</p>
+ *
+ * @author Matteo DUFOUR
+ * @author Matteo MUNOZ
+ */
 public class LoginWindow extends JFrame {
-
+    /**
+     * Champ pour saisir le mot de passe global
+     */
     private final JPasswordField enterPasswordField;
 
+    /**
+     * <p>Constructeur de la classe LoginWindow</p>
+     */
     public LoginWindow(){
+        //Définition des propriétés de la fenêtre
         JFrame frame = new JFrame();
         this.setTitle("Authentification");//Titre
         this.setSize(500,265);//Dimensions
@@ -35,7 +47,11 @@ public class LoginWindow extends JFrame {
         enterPasswordField.setBounds(105,50,290,25);
         this.add(enterPasswordField);
 
-            //Appelle la fonction qui compare le mdp saisi avec celui enregistré si on appuye sur "Entrée"
+            /*
+             * Ajoute un KeyListener sur enterPasswordField
+             * Si l'utilisateur appuie sur ENTREE
+             * alors on appelle la fonction qui compare le mdp saisi avec celui enregistré
+             */
             enterPasswordField.addKeyListener(new KeyListener() {
                 @Override
                 public void keyPressed(KeyEvent e) {
@@ -68,7 +84,11 @@ public class LoginWindow extends JFrame {
         validatePassword.setBounds(245,90,150,25);
         this.add(validatePassword);
 
-            //Appelle la fonction qui compare le mdp saisi avec celui enregistré si on clique sur "Valider"
+            /*
+             * Ajoute un ActionListener sur validatePassword
+             * Si l'utilisateur clique sur VALIDER
+             * alors on appelle la fonction qui compare le mdp saisi avec celui enregistré
+             */
             validatePassword.addActionListener(e -> {
                 try{
                     char[] pwdWritten = enterPasswordField.getPassword();//Capte le mot de passe saisi dans le champ
@@ -101,11 +121,15 @@ public class LoginWindow extends JFrame {
         lostPassword.setBounds(0,180,500,30);
         this.add(lostPassword);
 
-            //Si on clique sur "Mot de passe perdu ?"
+            /*
+             * Ajoute un MouseListener sur lostPassword
+             * Si on clique sur "Mot de passe perdu ?"
+             * alors on appelle la fonction de réinitialisation de mdp
+             */
             lostPassword.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    int result = LoginController.passwordReset();//Appelle la fonction de réinitialisation de mdp
+                    int result = LoginController.passwordReset();
 
                     if(result == 0) {
                         dispose();
