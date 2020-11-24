@@ -205,7 +205,7 @@ public class AddPassword extends JDialog {
                     {
                         passwordController.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getJFormattedTextField().getText());
                         try {
-                            AddPasswordController.VectorSaving();
+                            AddPasswordController.ListSaving();
                         } catch (IOException ioException) {
                             ioException.printStackTrace();
                         }

@@ -1,9 +1,15 @@
 package fr.passwordmanager.controller;
 
+import fr.passwordmanager.model.Password;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public final class Singleton {
 
     private static Singleton INSTANCE;
     private char[] info = null;
+    private List<Password> passwordList = new ArrayList<>();
 
     private Singleton() {
     }
@@ -22,5 +28,13 @@ public final class Singleton {
 
     public void setInfo(char[] info) {
         this.info = info;
+    }
+
+    public List<Password> getPasswordList() {
+        return passwordList;
+    }
+
+    public void setPasswordList(List<Password> passwordList) {
+        this.passwordList = passwordList;
     }
 }

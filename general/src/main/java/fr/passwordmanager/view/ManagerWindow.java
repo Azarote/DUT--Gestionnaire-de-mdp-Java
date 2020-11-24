@@ -23,13 +23,14 @@ public class ManagerWindow extends JFrame {
     private ImageIcon supprimerIcon = new ImageIcon("../general/images/icons/supprimer_icon.jpg");
     private ImageIcon modifierIcon = new ImageIcon("../general/images/icons/modifier_icon.jpg");
 
-    public ManagerWindow(){
+    public ManagerWindow() throws IOException {
         JFrame frame = new JFrame();
         this.setTitle("Gestionnaire de mots de passe");
         this.setSize(650,500);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
         this.setLocationRelativeTo(null); //Centre la fenêtre
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
+        AddPasswordController.ListReading();
 
         ImageIcon icon = new ImageIcon("../general/images/cadenas.png");//Icône
         this.setIconImage(icon.getImage());

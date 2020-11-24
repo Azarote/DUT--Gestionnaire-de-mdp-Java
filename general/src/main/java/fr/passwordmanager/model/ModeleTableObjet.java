@@ -11,6 +11,7 @@ public class ModeleTableObjet extends AbstractTableModel {
     public ModeleTableObjet(){
         super();
         //passwords.add(new Password("Test","Celestin","123456","youtube.com","Test desc", "28-05-2020"));
+        //passwords.addAll(Singleton.getInstance().getPasswordList());
     }
     @Override
     public int getRowCount() {

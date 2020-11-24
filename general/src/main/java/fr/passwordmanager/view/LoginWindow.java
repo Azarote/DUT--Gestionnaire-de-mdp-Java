@@ -6,6 +6,7 @@ import fr.passwordmanager.controller.Singleton;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 public class LoginWindow extends JFrame {
 
@@ -46,7 +47,11 @@ public class LoginWindow extends JFrame {
 
                         if(result == 0) {
                             dispose();
-                            new ManagerWindow();
+                            try {
+                                new ManagerWindow();
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
                         }
                     }
                 }
