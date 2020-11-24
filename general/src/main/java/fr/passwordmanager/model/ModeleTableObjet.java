@@ -5,7 +5,6 @@ import fr.passwordmanager.controller.Singleton;
 
 import javax.swing.table.AbstractTableModel;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ModeleTableObjet extends AbstractTableModel {

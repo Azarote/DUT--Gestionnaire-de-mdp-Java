@@ -1,18 +1,14 @@
 package fr.passwordmanager.view;
 
-import fr.passwordmanager.controller.AddPasswordController;
-import fr.passwordmanager.controller.FileEncrypterDecrypter;
 import fr.passwordmanager.controller.Singleton;
 import fr.passwordmanager.model.ModeleTableObjet;
 
-import javax.crypto.Cipher;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
 import java.io.IOException;
 
 public class ManagerWindow extends JFrame {

@@ -3,7 +3,6 @@ package fr.passwordmanager.controller;
 import com.google.common.hash.Hashing;
 import fr.passwordmanager.view.DialogMessage;
 
-import javax.crypto.Cipher;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

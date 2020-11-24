@@ -1,17 +1,12 @@
 package fr.passwordmanager.controller;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
-import fr.passwordmanager.model.ModeleTableObjet;
 import fr.passwordmanager.model.Password;
 import fr.passwordmanager.view.ManagerWindow;
 
-import javax.swing.table.DefaultTableModel;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class AddPasswordController implements Serializable {
