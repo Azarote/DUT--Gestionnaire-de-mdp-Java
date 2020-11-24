@@ -6,10 +6,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * <p>Classe qui gère la fenêtre pour créer un mot de passe global</p>
+ *
+ * @author Matteo DUFOUR
+ * @author Matteo MUNOZ
+ */
 public class SignUpWindow extends JFrame {
     private final JPasswordField passwordField;
     private final JPasswordField passwordFieldConfirmation;
 
+    /**
+     * <p>Constructeur de la classe SignUpWindow</p>
+     */
     public SignUpWindow(){
         JFrame frame = new JFrame();
         this.setTitle("Enregistrer un mot de passe global");
@@ -124,6 +133,4 @@ public class SignUpWindow extends JFrame {
 
         this.setVisible(true);
     }
-
-
 }

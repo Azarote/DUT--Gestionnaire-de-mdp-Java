@@ -10,9 +10,19 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * <p>Classe qui traite les données de SignUpWindow</p>
+ *
+ * @author Matteo DUFOUR
+ * @author Matteo MUNOZ
+ */
 public class LoginController {
 
-    //Fonction qui lance la procédure de réinitialisation de mot de passe
+    /**
+     * <p>Méthode qui lance la procédure de réinitialisation de mot de passe</p>
+     *
+     * @return Un entier correspondant à l'achèvement de la procédure
+     */
     public static int passwordReset() {
         int reponse = DialogMessage.confirmDialog("Si vous réinitialisez le mot de passe global, toutes les données seront perdues. Voulez-vous poursuivre ?", "Réinitialiser le mot de passe");
 
@@ -35,7 +45,12 @@ public class LoginController {
 
     }
 
-    //Fonction qui compare le mot de passe enregistré avec le mot de passe saisi
+    /**
+     * <p>Méthode qui compare le mot de passe enregistré avec le mot de passe saisi</p>
+     *
+     * @param pwdWritten Le mot de passe saisi pour se connecter
+     * @return Un entier qui indique l'état de la comparaison
+     */
     public static int passwordComparison(char[] pwdWritten) {
         String pwdSaved = null;
 
@@ -57,7 +72,6 @@ public class LoginController {
             File data = new File("../general/src/data.dat");
             //FileEncrypterDecrypter.encryptDecrypt(String.valueOf(pwdWritten), Cipher.DECRYPT_MODE,data,data);
             return 0;
-
         }
         else if(pwdWritten.length<=0){
             DialogMessage.messageDialog("Aucun mot de passe n'a été saisi");//Pop-up

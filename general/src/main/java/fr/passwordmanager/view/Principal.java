@@ -3,6 +3,12 @@ package fr.passwordmanager.view;
 import javax.swing.*;
 import java.io.File;
 
+/**
+ * <p>Point d'entrée du Gestionnaire</p>
+ *
+ * @author Matteo DUFOUR
+ * @author Matteo MUNOZ
+ */
 public class Principal {
 
     public static void main(String[] args){
