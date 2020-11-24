@@ -30,9 +30,15 @@ public class AddPasswordController implements Serializable {
       }
    }
    public static void ListReading() throws IOException {
-      CollectionType listType = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Password.class);
-      List temp = mapper.readValue(new File("../general/src/data.json"), listType);
-      Singleton.getInstance().setPasswordList(temp);
+      File data = new File("../general/src/data.json");
+      if (data.exists()) {
+         CollectionType listType = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Password.class);
+         List temp = mapper.readValue(data, listType);
+         Singleton.getInstance().setPasswordList(temp);
+      }else {
+         List<Password> empty = new ArrayList<>();
+         Singleton.getInstance().setPasswordList(empty);
+      }
    }
 
 }
