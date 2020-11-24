@@ -34,7 +34,7 @@ public final class Singleton {
         return passwordList;
     }
 
-    public void setPasswordList(List<Password> passwordList) {
-        this.passwordList = passwordList;
+    public void setPasswordList(List<Password> passwordlist) {
+        this.passwordList = passwordlist;
     }
 }

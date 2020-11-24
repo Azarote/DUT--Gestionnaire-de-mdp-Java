@@ -1,17 +1,21 @@
 package fr.passwordmanager.model;
 
+import fr.passwordmanager.controller.AddPasswordController;
+import fr.passwordmanager.controller.Singleton;
+
 import javax.swing.table.AbstractTableModel;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ModeleTableObjet extends AbstractTableModel {
-    private final List<Password> passwords = new ArrayList<Password>();
+    private final List<Password> passwords ;
 
     private final String[] titles = {"Titre","Pseudo/Email","Mot de Passe","URL","Description","Date d'expiration"};
-    public ModeleTableObjet(){
+    public ModeleTableObjet() throws IOException {
         super();
-        //passwords.add(new Password("Test","Celestin","123456","youtube.com","Test desc", "28-05-2020"));
-        //passwords.addAll(Singleton.getInstance().getPasswordList());
+        AddPasswordController.ListReading();
+        passwords = Singleton.getInstance().getPasswordList();
     }
     @Override
     public int getRowCount() {

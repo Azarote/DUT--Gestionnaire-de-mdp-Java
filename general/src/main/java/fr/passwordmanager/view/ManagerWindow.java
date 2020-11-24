@@ -16,7 +16,16 @@ import java.io.File;
 import java.io.IOException;
 
 public class ManagerWindow extends JFrame {
-    private ModeleTableObjet modele = new ModeleTableObjet();
+    public static ModeleTableObjet modele;
+
+    static {
+        try {
+            modele = new ModeleTableObjet();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private JTable tableau;
 
     private ImageIcon ajouterIcon = new ImageIcon("../general/images/icons/ajouter_icon.jpg");
@@ -30,7 +39,6 @@ public class ManagerWindow extends JFrame {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); //Termine l'application à la fermeture de la fenêtre
         this.setLocationRelativeTo(null); //Centre la fenêtre
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
-        AddPasswordController.ListReading();
 
         ImageIcon icon = new ImageIcon("../general/images/cadenas.png");//Icône
         this.setIconImage(icon.getImage());
