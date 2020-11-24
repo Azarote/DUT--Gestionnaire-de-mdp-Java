@@ -7,21 +7,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
-public class HashingAndProcessing {
-
-    public static void mainPasswordHashing(char[] mainPassword) {
-        final String hashed = Hashing.sha256()
-                .hashString((String.valueOf(mainPassword)), StandardCharsets.UTF_8)
-                .toString();
-        File hashedFile = new File("../general/src/hashed.dat");
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(hashedFile));
-            writer.write(hashed);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+public class ProcessingAndHashing {
 
     //Fonction qui traite les mots de passes saisis dans les champs
     public static int passwordProcessing(char[] pwd1, char[] pwd2) {
@@ -62,6 +48,20 @@ public class HashingAndProcessing {
                 return 1;
             }
             return 0;
+        }
+    }
+
+    public static void mainPasswordHashing(char[] mainPassword) {
+        final String hashed = Hashing.sha256()
+                .hashString((String.valueOf(mainPassword)), StandardCharsets.UTF_8)
+                .toString();
+        File hashedFile = new File("../general/src/hashed.dat");
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(hashedFile));
+            writer.write(hashed);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

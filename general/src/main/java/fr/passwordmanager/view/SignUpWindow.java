@@ -1,6 +1,6 @@
 package fr.passwordmanager.view;
 
-import fr.passwordmanager.controller.HashingAndProcessing;
+import fr.passwordmanager.controller.ProcessingAndHashing;
 
 import javax.swing.*;
 import java.awt.*;
@@ -92,7 +92,7 @@ public class SignUpWindow extends JFrame {
                         char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
                         char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
 
-                        int result = HashingAndProcessing.passwordProcessing(pwd1,pwd2);//Appelle la fonction de traitement du mdp
+                        int result = ProcessingAndHashing.passwordProcessing(pwd1,pwd2);//Appelle la fonction de traitement du mdp
 
                         if(result == 0) {
                             dispose();
@@ -122,7 +122,7 @@ public class SignUpWindow extends JFrame {
                     char[] pwd1 = passwordField.getPassword();//Récupère la saisie dans le premier champ
                     char[] pwd2 = passwordFieldConfirmation.getPassword();//Récupère la saisie dans le deuxième champ
 
-                    int result = HashingAndProcessing.passwordProcessing(pwd1,pwd2);//Appelle la fonction de traitement du mdp
+                    int result = ProcessingAndHashing.passwordProcessing(pwd1,pwd2);//Appelle la fonction de traitement du mdp
 
                     if(result == 0) {
                         dispose();

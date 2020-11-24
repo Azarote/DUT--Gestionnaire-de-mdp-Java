@@ -77,7 +77,7 @@ public class ManagerWindow extends JFrame {
         JButton btnSupprimer = new JButton(supprimerIcon);
         btnSupprimer.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnSupprimer.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
-        btnAjouter.setMargin(new Insets(0, 0, 0, 0));//Enlève les espaces autour de l'icône
+        btnSupprimer.setMargin(new Insets(0, 0, 0, 0));//Enlève les espaces autour de l'icône
 
         //TODO Faire la fonction Supprimer un mdp
         btnSupprimer.addMouseListener(new MouseListener() {
@@ -106,7 +106,7 @@ public class ManagerWindow extends JFrame {
         JButton btnModifier = new JButton(modifierIcon);
         btnModifier.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnModifier.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
-        btnAjouter.setMargin(new Insets(0, 0, 0, 0));//Enlève les espaces autour de l'icône
+        btnModifier.setMargin(new Insets(0, 0, 0, 0));//Enlève les espaces autour de l'icône
 
         //TODO Faire la fonction Modifier un mdp
         btnModifier.addMouseListener(new MouseListener() {
