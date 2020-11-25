@@ -43,7 +43,9 @@ public class AddPasswordController implements Serializable {
    }
 
    public static void deletePassword(){
-      if(Singleton.getInstance().getPasswordList().isEmpty())
+      int row = ManagerWindow.tableau.getSelectedRow();
+
+      if(row == -1)
       {
          DialogMessage.messageDialog("Aucun mot de passe n'a été sélectionné");//Pop-up
       }

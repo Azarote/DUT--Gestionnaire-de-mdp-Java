@@ -155,8 +155,11 @@ public class ManagerWindow extends JFrame {
         this.add(menu, BorderLayout.NORTH);
         tableau = new JTable(modele);
         tableau.getTableHeader().setReorderingAllowed(false);//Empêche de bouger les colonnes
+        tableau.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
         JMenuItem deleteItem = new JMenuItem("Supprimer");
         JMenuItem editItem = new JMenuItem("Modifier");
+
         deleteItem.addActionListener(new ActionListener() {
 
             @Override
@@ -164,15 +167,18 @@ public class ManagerWindow extends JFrame {
                 AddPasswordController.deletePassword();
             }
         });
+
         editItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
             }
         });
+
         popupMenu.add(deleteItem);
         popupMenu.add(editItem);
         tableau.setComponentPopupMenu(popupMenu);
+
         getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 
         this.setVisible(true);
