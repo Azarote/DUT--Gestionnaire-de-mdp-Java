@@ -1,11 +1,13 @@
 package fr.passwordmanager.view;
 
+import fr.passwordmanager.controller.FileEncrypterDecrypter;
 import fr.passwordmanager.controller.LoginController;
 import fr.passwordmanager.controller.Singleton;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 
 /**
  * <p>Classe qui gère la fenêtre pour se connecter au Gestionnaire</p>
@@ -56,12 +58,14 @@ public class LoginWindow extends JFrame {
                 public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode() == KeyEvent.VK_ENTER){
                         char[] pwdWritten = enterPasswordField.getPassword();//Capte le mot de passe saisi dans le champ
-                        Singleton singleton = Singleton.getInstance();
-                        singleton.setInfo(pwdWritten);
                         int result = LoginController.passwordComparison(pwdWritten);//Appelle la fonction de comparaison de mdp
 
                         if(result == 0) {
                             dispose();
+                            if (new File("../general/src/data.json").exists()) {
+                                String passwordHashed = Singleton.getInstance().getInfo();
+                                FileEncrypterDecrypter.decryptedFile(passwordHashed.substring(0, 16), "../general/src/data.json", "../general/src/data.json");//On chiffre le fichier
+                            }
                             new ManagerWindow();
                         }
                     }
@@ -87,12 +91,14 @@ public class LoginWindow extends JFrame {
             validatePassword.addActionListener(e -> {
                 try{
                     char[] pwdWritten = enterPasswordField.getPassword();//Capte le mot de passe saisi dans le champ
-                    Singleton singleton = Singleton.getInstance();
-                    singleton.setInfo(pwdWritten);
                     int result = LoginController.passwordComparison(pwdWritten);//Appelle la fonction de comparaison de mdp
 
                     if(result == 0) {
                         dispose();
+                        if (new File("../general/src/data.json").exists()) {
+                            String passwordHashed = Singleton.getInstance().getInfo();
+                            FileEncrypterDecrypter.decryptedFile(passwordHashed.substring(0, 16), "../general/src/data.json", "../general/src/data.json");//On chiffre le fichier
+                        }
                         new ManagerWindow();
                     }
                 }

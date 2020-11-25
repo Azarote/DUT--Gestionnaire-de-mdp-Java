@@ -1,5 +1,6 @@
 package fr.passwordmanager.view;
 
+import fr.passwordmanager.controller.FileEncrypterDecrypter;
 import fr.passwordmanager.controller.ManagePassword;
 import fr.passwordmanager.controller.Singleton;
 import fr.passwordmanager.model.ModeleTableObjet;
@@ -7,6 +8,7 @@ import fr.passwordmanager.model.ModeleTableObjet;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -151,15 +153,17 @@ public class ManagerWindow extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 int result = DialogMessage.confirmDialog("Êtes-vous sur de vouloir fermer le gestionnaire ?","Confirmation");
-                if (result == JOptionPane.YES_OPTION){
+                if (result == JOptionPane.YES_OPTION) {
                     try {
                         ManagePassword.ListSaving();
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
-                    Singleton singleton = Singleton.getInstance();
-                    //File data = new File("../general/src/data.dat");
-                    //FileEncrypterDecrypter.encryptDecrypt(String.valueOf(singleton.getInfo()), Cipher.DECRYPT_MODE,data,data);//On chiffre le fichier
+                    if (new File("../general/src/data.json").exists()){
+                        String passwordHashed = Singleton.getInstance().getInfo();
+                        System.out.println(passwordHashed);
+                        FileEncrypterDecrypter.encryptFile(passwordHashed.substring(0, 16), "../general/src/data.json", "../general/src/data.json");//On chiffre le fichier
+                    }
                     System.exit(0);//On ferme la fenêtre
                 }
             }

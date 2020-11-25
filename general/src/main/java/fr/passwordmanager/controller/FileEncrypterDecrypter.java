@@ -1,54 +1,57 @@
 package fr.passwordmanager.controller;
 
 import javax.crypto.*;
-import javax.crypto.spec.DESKeySpec;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
 
 public class FileEncrypterDecrypter {
-   public static void encryptDecrypt(String key, int cipherMode, File in, File out){
-       try{
-           FileInputStream fis = new FileInputStream(in);
-           FileOutputStream fos = new FileOutputStream(out);
 
-           DESKeySpec desKeySpec = new DESKeySpec(new String(key).getBytes());
+    public static void encryptFile(String secretKey, String fileInputPath, String fileOutPath) {
+        try {
+            var key = new SecretKeySpec(secretKey.getBytes(), "AES");
+            var cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.ENCRYPT_MODE, key);
 
-           SecretKeyFactory skf = SecretKeyFactory.getInstance("DES");
-           SecretKey secretKey = skf.generateSecret(desKeySpec);
+            var fileInput = new File(fileInputPath);
+            var inputStream = new FileInputStream(fileInput);
+            var inputBytes = new byte[(int) fileInput.length()];
+            inputStream.read(inputBytes);
 
-           Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
+            var outputBytes = cipher.doFinal(inputBytes);
 
-           if (cipherMode == Cipher.ENCRYPT_MODE){
-               cipher.init(Cipher.ENCRYPT_MODE,secretKey, SecureRandom.getInstance("SHA1PRNG"));
-               CipherInputStream cis = new CipherInputStream(fis,cipher);
-               write(cis,fos);
-           }
-           else if(cipherMode == Cipher.DECRYPT_MODE){
-               cipher.init(Cipher.DECRYPT_MODE,secretKey, SecureRandom.getInstance("SHA1PRNG"));
-               CipherOutputStream cos = new CipherOutputStream(fos,cipher);
-               write(fis,cos);
-           }
+            var fileEncryptOut = new File(fileOutPath);
+            var outputStream = new FileOutputStream(fileEncryptOut);
+            outputStream.write(outputBytes);
 
-       } catch (NoSuchAlgorithmException | InvalidKeyException | NoSuchPaddingException | InvalidKeySpecException | IOException e) {
-           e.printStackTrace();
-       }
+            inputStream.close();
+            outputStream.close();
+        } catch (IOException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException | NoSuchPaddingException | NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void decryptedFile(String secretKey, String fileInputPath, String fileOutPath){
+        try {
+            var key = new SecretKeySpec(secretKey.getBytes(), "AES");
+            var cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.DECRYPT_MODE, key);
 
-   }
-   private  static void write(InputStream in, OutputStream out) throws IOException {
-           byte[] buffer = new byte[64];
-           int numOfBytesRead;
-           while ((numOfBytesRead = in.read(buffer)) != -1) {
-               out.write(buffer, 0, numOfBytesRead);
-           }
-           out.close();
-           in.close();
-   }
-    //public static void main(String[] args) {
-      //  File data = new File("general/src/data.txt");
-       // File encrypt = new File("general/src/data.txt");
-        //encryptDecrypt("12345678",Cipher.DECRYPT_MODE,data,encrypt);
-   //}
+            var fileInput = new File(fileInputPath);
+            var inputStream = new FileInputStream(fileInput);
+            var inputBytes = new byte[(int) fileInput.length()];
+            inputStream.read(inputBytes);
+
+            byte[] outputBytes = cipher.doFinal(inputBytes);
+
+            var fileEncryptOut = new File(fileOutPath);
+            var outputStream = new FileOutputStream(fileEncryptOut);
+            outputStream.write(outputBytes);
+
+            inputStream.close();
+            outputStream.close();
+    } catch (NoSuchAlgorithmException | BadPaddingException | InvalidKeyException | NoSuchPaddingException | IOException | IllegalBlockSizeException e) {
+            e.printStackTrace();
+        }
+    }
 }

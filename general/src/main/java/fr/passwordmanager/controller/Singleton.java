@@ -18,9 +18,9 @@ public final class Singleton {
     private static Singleton INSTANCE;
 
     /**
-     * Le mot de passe global
+     * Le mot de passe global haché
      */
-    private char[] info = null;
+    private String info = null;
 
     /**
      * La liste des mots de passe
@@ -51,7 +51,7 @@ public final class Singleton {
      *
      * @return Une info
      */
-    public char[] getInfo() {
+    public String getInfo() {
         return info;
     }
 
@@ -60,7 +60,7 @@ public final class Singleton {
      *
      * @param info  Stocke l'info
      */
-    public void setInfo(char[] info) {
+    public void setInfo(String info) {
         this.info = info;
     }
 
