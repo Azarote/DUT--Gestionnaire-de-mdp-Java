@@ -19,14 +19,12 @@ public class Principal {
             ex.printStackTrace();
         }
 
-        File hashed = new File("../general/src/hashed.dat");
-
         /*
          * Si un mot de passe global a été enregistré,
          * on lance la fenêtre de Login au démarrage
          * sinon fenêtre SignUp
          */
-        if(hashed.exists())
+        if(new File("../general/src/hashed.dat").exists())
             new LoginWindow();
         else
             new SignUpWindow();

@@ -6,8 +6,20 @@ import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * <p>Classe qui chiffre et dechiffre les données</p>
+ *
+ * @author Matteo DUFOUR
+ * @author Matteo MUNOZ
+ */
 public class FileEncrypterDecrypter {
-
+    /**
+     * <p>Méthode qui chiffre les données</p>
+     *
+     * @param secretKey La clé secrète
+     * @param fileInputPath Le fichier d'entrée
+     * @param fileOutPath Le fichier de sortie
+     */
     public static void encryptFile(String secretKey, String fileInputPath, String fileOutPath) {
         try {
             var key = new SecretKeySpec(secretKey.getBytes(), "AES");
@@ -31,6 +43,14 @@ public class FileEncrypterDecrypter {
             e.printStackTrace();
         }
     }
+
+    /**
+     * <p>Méthode qui déchiffre les données</p>
+     *
+     * @param secretKey La clé secrète
+     * @param fileInputPath Le fichier d'entrée
+     * @param fileOutPath Le fichier de sortie
+     */
     public static void decryptedFile(String secretKey, String fileInputPath, String fileOutPath){
         try {
             var key = new SecretKeySpec(secretKey.getBytes(), "AES");

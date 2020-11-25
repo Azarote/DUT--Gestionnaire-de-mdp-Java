@@ -161,7 +161,6 @@ public class ManagerWindow extends JFrame {
                     }
                     if (new File("../general/src/data.json").exists()){
                         String passwordHashed = Singleton.getInstance().getInfo();
-                        System.out.println(passwordHashed);
                         FileEncrypterDecrypter.encryptFile(passwordHashed.substring(0, 16), "../general/src/data.json", "../general/src/data.json");//On chiffre le fichier
                     }
                     System.exit(0);//On ferme la fenêtre
