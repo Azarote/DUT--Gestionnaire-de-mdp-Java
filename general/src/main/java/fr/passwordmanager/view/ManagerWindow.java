@@ -6,10 +6,7 @@ import fr.passwordmanager.model.ModeleTableObjet;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.io.IOException;
 
 public class ManagerWindow extends JFrame {
@@ -24,6 +21,7 @@ public class ManagerWindow extends JFrame {
     }
 
     public static JTable tableau;
+    final JPopupMenu popupMenu = new JPopupMenu();
 
     private ImageIcon ajouterIcon = new ImageIcon("../general/images/icons/ajouter_icon.jpg");
     private ImageIcon supprimerIcon = new ImageIcon("../general/images/icons/supprimer_icon.jpg");
@@ -157,6 +155,24 @@ public class ManagerWindow extends JFrame {
         this.add(menu, BorderLayout.NORTH);
         tableau = new JTable(modele);
         tableau.getTableHeader().setReorderingAllowed(false);//Empêche de bouger les colonnes
+        JMenuItem deleteItem = new JMenuItem("Supprimer");
+        JMenuItem editItem = new JMenuItem("Modifier");
+        deleteItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddPasswordController.deletePassword();
+            }
+        });
+        editItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
+        popupMenu.add(deleteItem);
+        popupMenu.add(editItem);
+        tableau.setComponentPopupMenu(popupMenu);
         getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
 
         this.setVisible(true);
