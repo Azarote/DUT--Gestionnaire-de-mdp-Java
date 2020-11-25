@@ -3,6 +3,7 @@ package fr.passwordmanager.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import fr.passwordmanager.model.Password;
+import fr.passwordmanager.view.DialogMessage;
 import fr.passwordmanager.view.ManagerWindow;
 
 import java.io.*;
@@ -34,15 +35,29 @@ public class AddPasswordController implements Serializable {
          CollectionType listType = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Password.class);
          List temp = mapper.readValue(data, listType);
          Singleton.getInstance().setPasswordList(temp);
-      }else {
+      }
+      else {
          List<Password> empty = new ArrayList<>();
          Singleton.getInstance().setPasswordList(empty);
       }
    }
 
    public static void deletePassword(){
-      Singleton.getInstance().getPasswordList().remove(ManagerWindow.tableau.getSelectedRow());
-      refreshTable();
-   }
+      if(Singleton.getInstance().getPasswordList().isEmpty())
+      {
+         DialogMessage.messageDialog("Aucun mot de passe n'a été sélectionné");//Pop-up
+      }
+      else {
+         int reponse = DialogMessage.confirmDialog("Le mot de passe sera supprimé. Voulez-vous poursuivre ?", "Supprimer le mot de passe");
 
+         if (reponse == 0) {
+            try {
+               Singleton.getInstance().getPasswordList().remove(ManagerWindow.tableau.getSelectedRow());
+               refreshTable();
+            } catch (Exception e) {
+               System.err.println();
+            }
+         }
+      }
+   }
 }

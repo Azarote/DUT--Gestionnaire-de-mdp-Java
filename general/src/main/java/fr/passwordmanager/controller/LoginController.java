@@ -25,8 +25,6 @@ public class LoginController {
     public static int passwordReset() {
         int reponse = DialogMessage.confirmDialog("Si vous réinitialisez le mot de passe global, toutes les données seront perdues. Voulez-vous poursuivre ?", "Réinitialiser le mot de passe");
 
-        System.out.println(reponse);
-
         if(reponse == 0)
         {
             try{
@@ -41,7 +39,6 @@ public class LoginController {
         }
         else
             return 1;
-
     }
 
     /**
