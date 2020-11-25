@@ -1,6 +1,6 @@
 package fr.passwordmanager.view;
 
-import fr.passwordmanager.controller.AddPasswordController;
+import fr.passwordmanager.controller.ManagePassword;
 import fr.passwordmanager.controller.Singleton;
 import fr.passwordmanager.model.ModeleTableObjet;
 
@@ -9,7 +9,16 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
+/**
+ * <p>Classe qui gère la fenêtre du Gestionnaire de mots de passe</p>
+ *
+ * @author Matteo DUFOUR
+ * @author Matteo MUNOZ
+ */
 public class ManagerWindow extends JFrame {
+    /**
+     * Modèle pour le tableau
+     */
     public static ModeleTableObjet modele;
 
     static {
@@ -20,14 +29,20 @@ public class ManagerWindow extends JFrame {
         }
     }
 
+    /**
+     * Tableau pour stocker les mots de passe
+     */
     public static JTable tableau;
+
+    /**
+     * Pop-up
+     */
     final JPopupMenu popupMenu = new JPopupMenu();
 
-    private ImageIcon ajouterIcon = new ImageIcon("../general/images/icons/ajouter_icon.jpg");
-    private ImageIcon supprimerIcon = new ImageIcon("../general/images/icons/supprimer_icon.jpg");
-    private ImageIcon modifierIcon = new ImageIcon("../general/images/icons/modifier_icon.jpg");
-
-    public ManagerWindow() throws IOException {
+    /**
+     * <p>Constructeur de la classe ManagerWindow</p>>
+     */
+    public ManagerWindow() {
         JFrame frame = new JFrame();
         this.setTitle("Gestionnaire de mots de passe");
         this.setSize(650,500);
@@ -43,6 +58,7 @@ public class ManagerWindow extends JFrame {
         menu.setBackground(new Color(186, 186, 186,255));//Colore le fond de la barre d'outils en gris
 
         //Bouton pour ajouter un mdp
+        ImageIcon ajouterIcon = new ImageIcon("../general/images/icons/ajouter_icon.jpg");//Icône Ajouter un mot de passe
         JButton btnAjouter = new JButton(ajouterIcon);
         btnAjouter.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnAjouter.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
@@ -73,6 +89,7 @@ public class ManagerWindow extends JFrame {
         menu.add(btnAjouter);
 
         //Bouton pour supprimer un mdp
+        ImageIcon supprimerIcon = new ImageIcon("../general/images/icons/supprimer_icon.jpg");//Icône Supprimer un mot de passe
         JButton btnSupprimer = new JButton(supprimerIcon);
         btnSupprimer.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnSupprimer.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
@@ -83,7 +100,7 @@ public class ManagerWindow extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 //TODO confirmation oui / non
-                AddPasswordController.deletePassword();
+                ManagePassword.deletePassword();
             }
 
             @Override
@@ -105,6 +122,7 @@ public class ManagerWindow extends JFrame {
         menu.addSeparator();//Ajoute une séparation à droite du bouton "Supprimer un mdp"
 
         //Bouton pour modifier un mdp
+        ImageIcon modifierIcon = new ImageIcon("../general/images/icons/modifier_icon.jpg");//Icône Modifier un mot de passe
         JButton btnModifier = new JButton(modifierIcon);
         btnModifier.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnModifier.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
@@ -135,7 +153,7 @@ public class ManagerWindow extends JFrame {
                 int result = DialogMessage.confirmDialog("Êtes-vous sur de vouloir fermer le gestionnaire ?","Confirmation");
                 if (result == JOptionPane.YES_OPTION){
                     try {
-                        AddPasswordController.ListSaving();
+                        ManagePassword.ListSaving();
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
@@ -164,7 +182,7 @@ public class ManagerWindow extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddPasswordController.deletePassword();
+                ManagePassword.deletePassword();
             }
         });
 

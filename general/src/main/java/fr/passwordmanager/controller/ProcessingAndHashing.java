@@ -7,9 +7,21 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
+/**
+ * <p>Classe qui traite le mot de passe global</p>
+ *
+ * @author Matteo DUFOUR
+ * @author Matteo MUNOZ
+ */
 public class ProcessingAndHashing {
 
-    //Fonction qui traite les mots de passes saisis dans les champs
+    /**
+     * <p>Méthode qui traite les mots de passe saisis dans les champs</p>
+     *
+     * @param pwd1 Le mdp du premier champ
+     * @param pwd2 Le mdp du deuxième champ
+     * @return Un entier correspondant à l'issue de la procédure
+     */
     public static int passwordProcessing(char[] pwd1, char[] pwd2) {
 
         int nbLettre = 0;
@@ -51,6 +63,11 @@ public class ProcessingAndHashing {
         }
     }
 
+    /**
+     * <p>Méthode qui chiffre le mot de passe global</p>
+     *
+     * @param mainPassword Le mot de passe global créé
+     */
     public static void mainPasswordHashing(char[] mainPassword) {
         final String hashed = Hashing.sha256()
                 .hashString((String.valueOf(mainPassword)), StandardCharsets.UTF_8)

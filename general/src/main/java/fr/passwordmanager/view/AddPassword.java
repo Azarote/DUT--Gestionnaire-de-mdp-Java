@@ -1,6 +1,6 @@
 package fr.passwordmanager.view;
 
-import fr.passwordmanager.controller.AddPasswordController;
+import fr.passwordmanager.controller.ManagePassword;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
@@ -28,7 +28,7 @@ public class AddPassword extends JDialog {
     /**
      * Instance du contrôleur
      */
-    private final AddPasswordController passwordController = new AddPasswordController();
+    private final ManagePassword passwordController = new ManagePassword();
 
     /**
      * Champ pour saisir le titre du mot de passe
@@ -56,7 +56,7 @@ public class AddPassword extends JDialog {
     public AddPassword() {
         //Définition des propriétés de la fenêtre
         JFrame frame = new JFrame();
-        setModal(true);
+        this.setModal(true);
         this.setTitle("Ajouter un mot de passe");
         this.setSize(480,450);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -252,9 +252,9 @@ public class AddPassword extends JDialog {
                     }
                     else
                     {
-                        passwordController.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getJFormattedTextField().getText());
+                        ManagePassword.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getJFormattedTextField().getText());
                         try {
-                            AddPasswordController.ListSaving();
+                            ManagePassword.ListSaving();
                         } catch (IOException ioException) {
                             ioException.printStackTrace();
                         }

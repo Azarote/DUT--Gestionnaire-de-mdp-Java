@@ -6,7 +6,6 @@ import fr.passwordmanager.controller.Singleton;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 
 /**
  * <p>Classe qui gère la fenêtre pour se connecter au Gestionnaire</p>
@@ -63,11 +62,7 @@ public class LoginWindow extends JFrame {
 
                         if(result == 0) {
                             dispose();
-                            try {
-                                new ManagerWindow();
-                            } catch (IOException ioException) {
-                                ioException.printStackTrace();
-                            }
+                            new ManagerWindow();
                         }
                     }
                 }
@@ -103,7 +98,7 @@ public class LoginWindow extends JFrame {
                 }
                 catch(Exception ex)
                 {
-                    System.err.println(ex);
+                    System.err.println();
                 }
             });
 

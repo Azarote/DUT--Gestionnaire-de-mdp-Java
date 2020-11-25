@@ -10,25 +10,51 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddPasswordController implements Serializable {
+/**
+ * <p>Classe qui traite les mots de passe</p>
+ *
+ * @author Matteo DUFOUR
+ * @author Matteo MUNOZ
+ */
+public class ManagePassword implements Serializable {
+   /**
+    * Mapper pour le fichier JSON
+    */
    private static final ObjectMapper mapper = new ObjectMapper();
 
-   public AddPasswordController(){
+   /**
+    * <p>Constructeur de la classe ManagePassword</p>
+    */
+   public ManagePassword(){
    }
 
+   /**
+    * <p>Méthode qui rafraîchit les données du tableau</p>
+    */
    private static void refreshTable(){
       ManagerWindow.modele.fireTableDataChanged();
    }
 
+   /**
+    * <p>Méthode qui ajoute un mot de passe au tableau</p>
+    */
    public static void AddPasswordProcessing(String titre, String username, char[] password, String URL, String description, String expiration_date){
       Singleton.getInstance().getPasswordList().add(new Password(titre,username,String.valueOf(password),URL,description,expiration_date));
       refreshTable();
    }
+
+   /**
+    * <p>Méthode qui sauvegarde les mots de passe ajouté dans le fichier JSON</p>
+    */
    public static void ListSaving() throws IOException {
       try(OutputStream fos = new FileOutputStream(new File("../general/src/data.json"))) {
          mapper.writeValue(fos, Singleton.getInstance().getPasswordList());
       }
    }
+
+   /**
+    * <p>Méthode qui lit les données du fichier JSON</p>
+    */
    public static void ListReading() throws IOException {
       File data = new File("../general/src/data.json");
       if (data.exists()) {
@@ -42,6 +68,9 @@ public class AddPasswordController implements Serializable {
       }
    }
 
+   /**
+    * <p>Méthode qui supprime un mot de passe</p>
+    */
    public static void deletePassword(){
       int row = ManagerWindow.tableau.getSelectedRow();
 
