@@ -15,9 +15,13 @@ public class AddPasswordController implements Serializable {
    public AddPasswordController(){
    }
 
+   private static void refreshTable(){
+      ManagerWindow.modele.fireTableDataChanged();
+   }
+
    public static void AddPasswordProcessing(String titre, String username, char[] password, String URL, String description, String expiration_date){
       Singleton.getInstance().getPasswordList().add(new Password(titre,username,String.valueOf(password),URL,description,expiration_date));
-      ManagerWindow.modele.fireTableDataChanged();
+      refreshTable();
    }
    public static void ListSaving() throws IOException {
       try(OutputStream fos = new FileOutputStream(new File("../general/src/data.json"))) {
@@ -34,6 +38,11 @@ public class AddPasswordController implements Serializable {
          List<Password> empty = new ArrayList<>();
          Singleton.getInstance().setPasswordList(empty);
       }
+   }
+
+   public static void deletePassword(){
+      Singleton.getInstance().getPasswordList().remove(ManagerWindow.tableau.getSelectedRow());
+      refreshTable();
    }
 
 }

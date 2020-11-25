@@ -1,5 +1,6 @@
 package fr.passwordmanager.view;
 
+import fr.passwordmanager.controller.AddPasswordController;
 import fr.passwordmanager.controller.Singleton;
 import fr.passwordmanager.model.ModeleTableObjet;
 
@@ -22,7 +23,7 @@ public class ManagerWindow extends JFrame {
         }
     }
 
-    private JTable tableau;
+    public static JTable tableau;
 
     private ImageIcon ajouterIcon = new ImageIcon("../general/images/icons/ajouter_icon.jpg");
     private ImageIcon supprimerIcon = new ImageIcon("../general/images/icons/supprimer_icon.jpg");
@@ -82,7 +83,10 @@ public class ManagerWindow extends JFrame {
         //TODO Faire la fonction Supprimer un mdp
         btnSupprimer.addMouseListener(new MouseListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {}
+            public void mouseClicked(MouseEvent e) {
+                //TODO confirmation oui / non
+                AddPasswordController.deletePassword();
+            }
 
             @Override
             public void mousePressed(MouseEvent e) {}
@@ -132,6 +136,11 @@ public class ManagerWindow extends JFrame {
             public void windowClosing(WindowEvent e) {
                 int result = DialogMessage.confirmDialog("Êtes-vous sur de vouloir fermer le gestionnaire ?","Confirmation");
                 if (result == JOptionPane.YES_OPTION){
+                    try {
+                        AddPasswordController.ListSaving();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
                     Singleton singleton = Singleton.getInstance();
                     //File data = new File("../general/src/data.dat");
                     //FileEncrypterDecrypter.encryptDecrypt(String.valueOf(singleton.getInfo()), Cipher.DECRYPT_MODE,data,data);//On chiffre le fichier
