@@ -23,13 +23,16 @@ public class LoginController {
      * @return Un entier correspondant à l'achèvement de la procédure
      */
     public static int passwordReset() {
-        int reponse = DialogMessage.confirmDialog("Si vous réinitialisez le mot de passe global, toutes les données seront perdues. Voulez-vous poursuivre ?", "Réinitialiser le mot de passe");
+        int reponse = DialogMessage.confirmDialog("Si vous réinitialisez le mot de passe global, toutes les données seront perdues.\nVoulez-vous poursuivre ?", "Réinitialiser le mot de passe");
 
         if(reponse == 0)
         {
             try{
-                File f = new File("../general/src/hashed.dat");//Repère le fichier
-                f.delete();//Supprime le fichier
+                File filePwd = new File("../general/src/hashed.dat");//Repère le fichier du mdp global
+                File fileData = new File("../general/src/data.json");//Repère le fichier des données
+
+                filePwd.delete();//Supprime le fichier
+                fileData.delete();//Supprime le fichier
             }
             catch(Exception e)
             {

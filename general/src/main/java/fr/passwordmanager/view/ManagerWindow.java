@@ -40,7 +40,7 @@ public class ManagerWindow extends JFrame {
 
         JToolBar menu = new JToolBar();//Crée une barre d'outils pour mettre les boutons
         menu.setFloatable(false);//Empêche le possibilité de déplacer la barre d'outils
-        menu.setBackground(new Color(255, 255, 255,255));//Colore le fond de la barre d'outils en blanc
+        menu.setBackground(new Color(186, 186, 186,255));//Colore le fond de la barre d'outils en gris
 
         //Bouton pour ajouter un mdp
         JButton btnAjouter = new JButton(ajouterIcon);

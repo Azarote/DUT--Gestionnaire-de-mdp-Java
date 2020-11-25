@@ -117,7 +117,7 @@ public class LoginWindow extends JFrame {
         //Label pour réinitialiser le mot de passe (hypertexte)
         JLabel lostPassword = new JLabel("", SwingConstants.CENTER);
         lostPassword.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        lostPassword.setText("<html><span style=\"color:red; font-size:10px;\"><u> Mot de passe perdu ? </u></span></html>");
+        lostPassword.setText("<html><span style=\"color:red; font-size:10px;\"><u>Mot de passe perdu ?</u></span></html>");
         lostPassword.setBounds(0,180,500,30);
         this.add(lostPassword);
 
