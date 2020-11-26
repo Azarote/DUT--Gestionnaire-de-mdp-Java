@@ -97,26 +97,25 @@ public class ManagerWindow extends JFrame {
         btnSupprimer.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
         btnSupprimer.setMargin(new Insets(0, 0, 0, 0));//Enlève les espaces autour de l'icône
 
-        //TODO Faire la fonction Supprimer un mdp
-        btnSupprimer.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                //TODO confirmation oui / non
-                ManagePassword.deletePassword();
-            }
+            //Si l'utilisateur clique sur le bouton pour supprimer un mdp
+            btnSupprimer.addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    ManagePassword.deletePassword();
+                }
 
-            @Override
-            public void mousePressed(MouseEvent e) {}
+                @Override
+                public void mousePressed(MouseEvent e) {}
 
-            @Override
-            public void mouseReleased(MouseEvent e) {}
+                @Override
+                public void mouseReleased(MouseEvent e) {}
 
-            @Override
-            public void mouseEntered(MouseEvent e) { }
+                @Override
+                public void mouseEntered(MouseEvent e) { }
 
-            @Override
-            public void mouseExited(MouseEvent e) {}
-        });
+                @Override
+                public void mouseExited(MouseEvent e) {}
+            });
 
         btnSupprimer.setToolTipText("Supprimer un mot de passe");//Ajoute un message au survol du bouton
         menu.addSeparator();//Ajoute une séparation à gauche du bouton "Supprimer un mdp"
@@ -130,23 +129,58 @@ public class ManagerWindow extends JFrame {
         btnModifier.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
         btnModifier.setMargin(new Insets(0, 0, 0, 0));//Enlève les espaces autour de l'icône
 
-        //TODO Faire la fonction Modifier un mdp
-        btnModifier.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {}
+            //TODO Faire la fonction Modifier un mdp
+            btnModifier.addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {}
 
-            @Override
-            public void mousePressed(MouseEvent e) {}
+                @Override
+                public void mousePressed(MouseEvent e) {}
 
-            @Override
-            public void mouseReleased(MouseEvent e) {}
+                @Override
+                public void mouseReleased(MouseEvent e) {}
 
-            @Override
-            public void mouseEntered(MouseEvent e) {}
+                @Override
+                public void mouseEntered(MouseEvent e) {}
 
-            @Override
-            public void mouseExited(MouseEvent e) {}
-        });
+                @Override
+                public void mouseExited(MouseEvent e) {}
+            });
+
+        btnModifier.setToolTipText("Modifier un mot de passe");//Ajoute un message au survol du bouton
+        menu.add(btnModifier);
+        menu.addSeparator();
+        //menu.add(Box.createHorizontalGlue());//Ajoute un espacement à droite du dernier bouton pour centrer
+
+        //Bouton pour voir les mots de passe expirant bientôt
+        ImageIcon expirationIcon = new ImageIcon("../general/images/icons/expiration_icon.jpg");//Icône Expiration
+        JButton btnExpiration = new JButton(expirationIcon);
+        btnExpiration.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
+        btnExpiration.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
+        btnExpiration.setMargin(new Insets(0, 0, 0, 0));//Enlève les espaces autour de l'icône
+        btnExpiration.setContentAreaFilled(false);
+
+            //TODO Faire la fonction Expiration
+            btnExpiration.addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {}
+
+                @Override
+                public void mousePressed(MouseEvent e) {}
+
+                @Override
+                public void mouseReleased(MouseEvent e) {}
+
+                @Override
+                public void mouseEntered(MouseEvent e) {}
+
+                @Override
+                public void mouseExited(MouseEvent e) {}
+            });
+
+        btnExpiration.setToolTipText("Voir les mots de passe expirant bientôt");//Ajoute un message au survol du bouton
+        menu.add(btnExpiration);
+        menu.add(Box.createHorizontalGlue());//Ajoute un espacement à droite du dernier bouton pour centrer
 
         //Si l'utilisateur veut fermer la fenêtre
         addWindowListener(new WindowAdapter() {
@@ -163,10 +197,6 @@ public class ManagerWindow extends JFrame {
                 }
             }
         });
-
-        btnModifier.setToolTipText("Modifier un mot de passe");//Ajoute un message au survol du bouton
-        menu.add(btnModifier);
-        menu.add(Box.createHorizontalGlue());//Ajoute un espacement à droite du dernier bouton pour centrer
 
         //Layout pour ajouter un tableau (stockage de mdp)
         this.add(menu, BorderLayout.NORTH);
