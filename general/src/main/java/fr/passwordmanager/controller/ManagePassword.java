@@ -35,8 +35,16 @@ public class ManagePassword implements Serializable {
       ManagerWindow.modele.fireTableDataChanged();
    }
 
+
    /**
     * <p>Méthode qui ajoute un mot de passe au tableau</p>
+    *
+    * @param titre Le titre du mot de passe
+    * @param username Le nom d'utilisateur
+    * @param password Le mot de passe
+    * @param URL Le lien du site
+    * @param description La description
+    * @param expiration_date La date d'expiration
     */
    public static void AddPasswordProcessing(String titre, String username, char[] password, String URL, String description, String expiration_date){
       Singleton.getInstance().getPasswordList().add(new Password(titre,username,String.valueOf(password),URL,description,expiration_date));
@@ -45,15 +53,21 @@ public class ManagePassword implements Serializable {
 
    /**
     * <p>Méthode qui sauvegarde les mots de passe ajouté dans le fichier JSON</p>
+    *
     */
-   public static void ListSaving() throws IOException {
+   public static void ListSaving() {
       try(OutputStream fos = new FileOutputStream(new File("../general/src/data.json"))) {
          mapper.writeValue(fos, Singleton.getInstance().getPasswordList());
+      }
+      catch(IOException e)
+      {
+         e.printStackTrace();
       }
    }
 
    /**
     * <p>Méthode qui lit les données du fichier JSON</p>
+    * @throws IOException Les exceptions
     */
    public static void ListReading() throws IOException {
       File data = new File("../general/src/data.json");

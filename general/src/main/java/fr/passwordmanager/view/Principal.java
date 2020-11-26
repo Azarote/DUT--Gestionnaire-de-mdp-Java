@@ -11,6 +11,11 @@ import java.io.File;
  */
 public class Principal {
 
+    /**
+     * <p>Classe main</p>
+     *
+     * @param args Les arguments
+     */
     public static void main(String[] args){
         //Améliore le thème par défaut
         try {

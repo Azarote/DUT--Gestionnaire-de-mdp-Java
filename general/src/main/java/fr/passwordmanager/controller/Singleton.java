@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>Classe qui garanti qu'il n'y aura qu'une seule instance pour récupérer une donnée dans tous les fichiers</p>
+ * <p>Classe qui garantit qu'il n'y aura qu'une seule instance pour récupérer une donnée dans tous les fichiers</p>
  *
  * @author Matteo DUFOUR
  * @author Matteo MUNOZ

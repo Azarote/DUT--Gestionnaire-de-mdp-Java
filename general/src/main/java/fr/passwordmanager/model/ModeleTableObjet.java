@@ -26,6 +26,7 @@ public class ModeleTableObjet extends AbstractTableModel {
 
     /**
      * <p>Constructeur de la classe ModeleTableObjet</p>
+     * @throws IOException Les exceptions
      */
     public ModeleTableObjet() throws IOException {
         super();
