@@ -256,6 +256,12 @@ public class AddPassword extends JDialog {
                         DialogMessage.messageDialog("Aucun mot de passe n'a été saisi");//Champ mdp vide
                         fieldMDP.requestFocusInWindow();
                     }
+                    else if(datePicker.getModel().getValue() == null)
+                    {
+                        ManagePassword.AddPasswordProcessingIfDateEmpty(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText());
+                        ManagePassword.ListSaving();
+                        dispose();
+                    }
                     else
                     {
                         ManagePassword.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getModel().getYear(),datePicker.getModel().getMonth(),datePicker.getModel().getDay());

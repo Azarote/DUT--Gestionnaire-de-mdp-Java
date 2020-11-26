@@ -41,11 +41,11 @@ public class Password implements Serializable {
     /**
      * La date d'expiration du mot de passe
      */
-    private int day;
+    private final int day;
 
-    private int month;
+    private final int month;
 
-    private int year;
+    private final int year;
 
     /**
      * <p>Constructeur de mot de passe</p>

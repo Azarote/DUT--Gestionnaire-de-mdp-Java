@@ -50,10 +50,14 @@ public class ManagePassword implements Serializable {
     * @param password Le mot de passe
     * @param URL Le lien du site
     * @param description La description
-    * @param expiration_date La date d'expiration
     */
    public static void AddPasswordProcessing(String titre, String username, char[] password, String URL, String description, int year,int day,int month){
       Singleton.getInstance().getPasswordList().add(new Password(titre,username,String.valueOf(password),URL,description,year,day,month));
+      refreshTable();
+   }
+
+   public static void AddPasswordProcessingIfDateEmpty(String titre, String username, char[] password, String URL, String description){
+      Singleton.getInstance().getPasswordList().add(new Password(titre,username,String.valueOf(password),URL,description,0,0,0));
       refreshTable();
    }
 
@@ -116,16 +120,18 @@ public class ManagePassword implements Serializable {
       List<Password> expiresoon= new ArrayList<>();
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
 
-      for (int i = 0; i < Singleton.getInstance().getPasswordList().size(); i++) {
-         int month = Singleton.getInstance().getPasswordList().get(i).getMonth()+1;
-         String date1 = Singleton.getInstance().getPasswordList().get(i).getYear() + "-" + month + "-" + Singleton.getInstance().getPasswordList().get(i).getDay();
-         LocalDate datepassword = LocalDate.parse(date1,formatter);
-         long difference = ChronoUnit.DAYS.between(datenow,datepassword);
-         
-         if (difference <= 5){
-            expiresoon.add(Singleton.getInstance().getPasswordList().get(i)) ;
+         for (int i = 0; i < Singleton.getInstance().getPasswordList().size(); i++) {
+            if(Singleton.getInstance().getPasswordList().get(i).getYear()!=0) {
+               int month = Singleton.getInstance().getPasswordList().get(i).getMonth() + 1;
+               String date1 = Singleton.getInstance().getPasswordList().get(i).getYear() + "-" + month + "-" + Singleton.getInstance().getPasswordList().get(i).getDay();
+               LocalDate datepassword = LocalDate.parse(date1, formatter);
+               long difference = ChronoUnit.DAYS.between(datenow, datepassword);
+
+               if (difference <= 5) {
+                  expiresoon.add(Singleton.getInstance().getPasswordList().get(i));
+               }
+            }
          }
-      }
       DialogMessage.warningDialog(expiresoon);
    }
 
