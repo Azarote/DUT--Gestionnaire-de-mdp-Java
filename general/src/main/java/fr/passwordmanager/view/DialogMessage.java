@@ -3,6 +3,7 @@ package fr.passwordmanager.view;
 import fr.passwordmanager.model.Password;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,6 +45,15 @@ public class DialogMessage {
      * @param liste La liste des mots de passe expirant bientôt
      */
     public static void warningDialog(List<Password> liste) {
-        JOptionPane.showMessageDialog(null,liste.toString(),"Mots de passe expirant dans 5 jours", JOptionPane.WARNING_MESSAGE);
+        List<String> temp = new ArrayList<>();
+
+        for(int i = 0; i < liste.size(); i++) {
+            temp.add(String.valueOf(liste.get(i).getTitle()));
+        }
+
+        if(!temp.isEmpty())
+            JOptionPane.showMessageDialog(null,temp,"Mot(s) de passe expirant dans 5 jours", JOptionPane.WARNING_MESSAGE);
+        else
+            JOptionPane.showMessageDialog(null,"Aucun mot de passe n'expire dans 5 jours.","Erreur", JOptionPane.ERROR_MESSAGE);
     }
 }

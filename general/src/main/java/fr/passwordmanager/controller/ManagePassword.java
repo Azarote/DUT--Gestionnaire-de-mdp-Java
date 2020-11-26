@@ -120,7 +120,8 @@ public class ManagePassword implements Serializable {
          int month = Singleton.getInstance().getPasswordList().get(i).getMonth()+1;
          String date1 = Singleton.getInstance().getPasswordList().get(i).getYear() + "-" + month + "-" + Singleton.getInstance().getPasswordList().get(i).getDay();
          LocalDate datepassword = LocalDate.parse(date1,formatter);
-         long difference = ChronoUnit.DAYS.between(datepassword,datenow);
+         long difference = ChronoUnit.DAYS.between(datenow,datepassword);
+         
          if (difference <= 5){
             expiresoon.add(Singleton.getInstance().getPasswordList().get(i)) ;
          }
