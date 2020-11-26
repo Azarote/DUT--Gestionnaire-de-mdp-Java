@@ -154,11 +154,7 @@ public class ManagerWindow extends JFrame {
             public void windowClosing(WindowEvent e) {
                 int result = DialogMessage.confirmDialog("Êtes-vous sur de vouloir fermer le gestionnaire ?\nLes données seront sauvegardées.","Confirmation");
                 if (result == JOptionPane.YES_OPTION) {
-                    try {
-                        ManagePassword.ListSaving();
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                    }
+                    ManagePassword.ListSaving();
                     if (new File("../general/src/data.json").exists()){
                         String passwordHashed = Singleton.getInstance().getInfo();
                         FileEncrypterDecrypter.encryptFile(passwordHashed.substring(0, 16), "../general/src/data.json", "../general/src/data.json");//On chiffre le fichier
