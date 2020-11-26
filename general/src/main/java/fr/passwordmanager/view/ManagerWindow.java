@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 
 /**
  * <p>Classe qui gère la fenêtre du Gestionnaire de mots de passe</p>
@@ -163,7 +164,13 @@ public class ManagerWindow extends JFrame {
             //TODO Faire la fonction Expiration
             btnExpiration.addMouseListener(new MouseListener() {
                 @Override
-                public void mouseClicked(MouseEvent e) {}
+                public void mouseClicked(MouseEvent e) {
+                    try {
+                        ManagePassword.isDateExpire();
+                    } catch (ParseException parseException) {
+                        parseException.printStackTrace();
+                    }
+                }
 
                 @Override
                 public void mousePressed(MouseEvent e) {}

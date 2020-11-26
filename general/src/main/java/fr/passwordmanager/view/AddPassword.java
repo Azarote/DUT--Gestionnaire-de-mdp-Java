@@ -1,6 +1,7 @@
 package fr.passwordmanager.view;
 
 import fr.passwordmanager.controller.ManagePassword;
+import net.sourceforge.jdatepicker.JDatePicker;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
@@ -12,6 +13,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 /**
  * <p>Classe qui gère la fenêtre pour ajouter un mot de passe dans le Gestionnaire</p>
@@ -196,9 +198,13 @@ public class AddPassword extends JDialog {
         this.add(labelDate);
 
             //Champ de texte pour saisir la date d'expiration
+            String datePattern = "dd-MM-yyyy";
+            SimpleDateFormat dateformatter = new SimpleDateFormat(datePattern);
+
             UtilDateModel model = new UtilDateModel();
             JDatePanelImpl datePanel = new JDatePanelImpl(model);
             JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
+
             datePicker.setBounds(135,185,300,40);
             this.add(datePicker);
 
@@ -252,7 +258,7 @@ public class AddPassword extends JDialog {
                     }
                     else
                     {
-                        ManagePassword.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getJFormattedTextField().getText());
+                        ManagePassword.AddPasswordProcessing(fieldTitre.getText(),fieldPseudo.getText(),fieldMDP.getPassword(),fieldURL.getText(),areaDescription.getText(),datePicker.getModel().getYear(),datePicker.getModel().getMonth(),datePicker.getModel().getDay());
                         ManagePassword.ListSaving();
                         dispose();
                     }

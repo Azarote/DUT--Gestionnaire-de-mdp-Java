@@ -85,7 +85,7 @@ public class ModeleTableObjet extends AbstractTableModel {
             case 4:
                 return passwords.get(i).getDescription();
             case 5:
-                return passwords.get(i).getExpiration_date();
+                return passwords.get(i).getDay() + "/" +passwords.get(i).getMonth() + "/" + passwords.get(i).getYear();
             default:
                 return null;
         }

@@ -7,8 +7,14 @@ import fr.passwordmanager.view.DialogMessage;
 import fr.passwordmanager.view.ManagerWindow;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DateFormatSymbols;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 /**
  * <p>Classe qui traite les mots de passe</p>
@@ -46,8 +52,8 @@ public class ManagePassword implements Serializable {
     * @param description La description
     * @param expiration_date La date d'expiration
     */
-   public static void AddPasswordProcessing(String titre, String username, char[] password, String URL, String description, String expiration_date){
-      Singleton.getInstance().getPasswordList().add(new Password(titre,username,String.valueOf(password),URL,description,expiration_date));
+   public static void AddPasswordProcessing(String titre, String username, char[] password, String URL, String description, int year,int day,int month){
+      Singleton.getInstance().getPasswordList().add(new Password(titre,username,String.valueOf(password),URL,description,year,day,month));
       refreshTable();
    }
 
@@ -104,5 +110,25 @@ public class ManagePassword implements Serializable {
             }
          }
       }
+   }
+   public static void isDateExpire() throws ParseException {
+      LocalDate datenow = java.time.LocalDate.now();
+      List<Password> expiresoon= new ArrayList<>();
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
+
+      for (int i = 0; i < Singleton.getInstance().getPasswordList().size(); i++) {
+         int month = Singleton.getInstance().getPasswordList().get(i).getMonth()+1;
+         String date1 = Singleton.getInstance().getPasswordList().get(i).getYear() + "-" + month + "-" + Singleton.getInstance().getPasswordList().get(i).getDay();
+         LocalDate datepassword = LocalDate.parse(date1,formatter);
+         long difference = ChronoUnit.DAYS.between(datepassword,datenow);
+         if (difference <= 5){
+            expiresoon.add(Singleton.getInstance().getPasswordList().get(i)) ;
+         }
+      }
+      DialogMessage.warningDialog(expiresoon);
+   }
+
+   public static void main(String[] args) throws ParseException {
+
    }
 }

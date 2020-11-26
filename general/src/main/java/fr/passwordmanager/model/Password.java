@@ -41,7 +41,11 @@ public class Password implements Serializable {
     /**
      * La date d'expiration du mot de passe
      */
-    private String expiration_date;
+    private int day;
+
+    private int month;
+
+    private int year;
 
     /**
      * <p>Constructeur de mot de passe</p>
@@ -54,13 +58,15 @@ public class Password implements Serializable {
      * @param description La description
      */
     @JsonCreator
-    public Password(@JsonProperty("title") String title,@JsonProperty("username") String username, @JsonProperty("password")String password, @JsonProperty("URL")String URL, @JsonProperty("description")String description, @JsonProperty("expiration_date")String expiration_date) {
+    public Password(@JsonProperty("title") String title,@JsonProperty("username") String username, @JsonProperty("password")String password, @JsonProperty("URL")String URL, @JsonProperty("description")String description, @JsonProperty("year")int year,@JsonProperty("month")int month,@JsonProperty("day")int day) {
         this.title = title;
         this.username = username;
         this.password = password;
         this.URL = URL;
         this.description = description;
-        this.expiration_date = expiration_date;
+        this.year = year;
+        this.month = month;
+        this.day = day;
     }
 
     /**
@@ -74,7 +80,9 @@ public class Password implements Serializable {
                 ", password='" + password + '\'' +
                 ", URL='" + URL + '\'' +
                 ", description='" + description + '\'' +
-                ", expiration_date='" + expiration_date + '\'' +
+                ", day=" + day +
+                ", month=" + month +
+                ", year=" + year +
                 '}';
     }
 
@@ -178,17 +186,16 @@ public class Password implements Serializable {
      *
      * @return La date d'expiration
      */
-    @JsonGetter("expiration_date")
-    public String getExpiration_date() {
-        return expiration_date;
+    @JsonGetter("day")
+    public int getDay() {
+        return day;
     }
-
-    /**
-     * Setter pour la date d'expiration
-     *
-     * @param expiration_date String qui stocke la date d'expiration
-     */
-    public void setExpiration_date(String expiration_date) {
-        this.expiration_date = expiration_date;
+    @JsonGetter("month")
+    public int getMonth() {
+        return month;
+    }
+    @JsonGetter("year")
+    public int getYear() {
+        return year;
     }
 }

@@ -44,6 +44,6 @@ public class DialogMessage {
      * @param liste La liste des mots de passe expirant bientôt
      */
     public static void warningDialog(List<Password> liste) {
-        JOptionPane.showMessageDialog(null,liste,"Mots de passe expirant dans 5 jours", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null,liste.toString(),"Mots de passe expirant dans 5 jours", JOptionPane.WARNING_MESSAGE);
     }
 }
