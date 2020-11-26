@@ -1,6 +1,9 @@
 package fr.passwordmanager.view;
 
+import fr.passwordmanager.model.Password;
+
 import javax.swing.*;
+import java.util.List;
 
 /**
  * <p>Classe permettant de réutiliser des fenêtres de dialogue</p>
@@ -33,5 +36,14 @@ public class DialogMessage {
             return JOptionPane.YES_OPTION;//Si l'utilisateur veut poursuivre
         else
             return 1;//Si l'utilisateur ne veut pas poursuivre
+    }
+
+    /**
+     * <p>Alerte pour mots de passe expirant bientôt</p>
+     *
+     * @param liste La liste des mots de passe expirant bientôt
+     */
+    public static void warningDialog(List<Password> liste) {
+        JOptionPane.showMessageDialog(null,liste,"Mots de passe expirant dans 5 jours", JOptionPane.WARNING_MESSAGE);
     }
 }

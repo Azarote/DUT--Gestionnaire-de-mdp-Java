@@ -153,7 +153,7 @@ public class ManagerWindow extends JFrame {
         //menu.add(Box.createHorizontalGlue());//Ajoute un espacement à droite du dernier bouton pour centrer
 
         //Bouton pour voir les mots de passe expirant bientôt
-        ImageIcon expirationIcon = new ImageIcon("../general/images/icons/expiration_icon.jpg");//Icône Expiration
+        ImageIcon expirationIcon = new ImageIcon("../general/images/icons/expiration_icon.png");//Icône Expiration
         JButton btnExpiration = new JButton(expirationIcon);
         btnExpiration.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnExpiration.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
