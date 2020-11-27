@@ -193,7 +193,7 @@ public class ManagerWindow extends JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = DialogMessage.confirmDialog("Êtes-vous sur de vouloir fermer le gestionnaire ?\nLes données seront sauvegardées.","Confirmation");
+                int result = DialogMessage.confirmDialog("Êtes-vous sur de vouloir fermer le gestionnaire ?","Confirmation");
                 if (result == JOptionPane.YES_OPTION) {
                     ManagePassword.ListSaving();
                     if (new File("../general/src/data.json").exists()){
