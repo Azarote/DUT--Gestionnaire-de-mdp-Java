@@ -39,13 +39,19 @@ public class Password implements Serializable {
     private String description;
 
     /**
-     * La date d'expiration du mot de passe
+     * Le jour de la date d'expiration
      */
-    private final int day;
+    private int day;
 
-    private final int month;
+    /**
+     * Le mois de la date d'expiration
+     */
+    private int month;
 
-    private final int year;
+    /**
+     * L'année de la date d'expiration
+     */
+    private int year;
 
     /**
      * <p>Constructeur de mot de passe</p>
@@ -54,8 +60,10 @@ public class Password implements Serializable {
      * @param username Le nom d'utilisateur
      * @param password Le mot de passe
      * @param URL Le lien du site
-     * @param expiration_date La date d'expiration
      * @param description La description
+     * @param year L'année
+     * @param month Le mois
+     * @param day La jour
      */
     @JsonCreator
     public Password(@JsonProperty("title") String title,@JsonProperty("username") String username, @JsonProperty("password")String password, @JsonProperty("URL")String URL, @JsonProperty("description")String description, @JsonProperty("year")int year,@JsonProperty("month")int month,@JsonProperty("day")int day) {
@@ -182,18 +190,30 @@ public class Password implements Serializable {
     }
 
     /**
-     * Getter pour la date d'expiration
+     * Getter pour le jour de la date d'expiration
      *
-     * @return La date d'expiration
+     * @return Le jour de la date d'expiration
      */
     @JsonGetter("day")
     public int getDay() {
         return day;
     }
+
+    /**
+     * Getter pour le mois de la date d'expiration
+     *
+     * @return Le mois de la date d'expiration
+     */
     @JsonGetter("month")
     public int getMonth() {
         return month;
     }
+
+    /**
+     * Getter pour l'année de la date d'expiration
+     *
+     * @return L'année de la date d'expiration
+     */
     @JsonGetter("year")
     public int getYear() {
         return year;

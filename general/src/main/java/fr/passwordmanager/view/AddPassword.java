@@ -1,7 +1,6 @@
 package fr.passwordmanager.view;
 
 import fr.passwordmanager.controller.ManagePassword;
-import net.sourceforge.jdatepicker.JDatePicker;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
@@ -12,7 +11,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 /**
@@ -53,7 +51,7 @@ public class AddPassword extends JDialog {
     private final JTextField fieldURL;
 
     /**
-     * <p>Constructeur de la classe AddPassword</p>>
+     * <p>Constructeur de la classe AddPassword</p>
      */
     public AddPassword() {
         //Définition des propriétés de la fenêtre

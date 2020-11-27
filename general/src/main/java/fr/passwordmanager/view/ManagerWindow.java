@@ -130,10 +130,11 @@ public class ManagerWindow extends JFrame {
         btnModifier.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
         btnModifier.setMargin(new Insets(0, 0, 0, 0));//Enlève les espaces autour de l'icône
 
-            //TODO Faire la fonction Modifier un mdp
             btnModifier.addMouseListener(new MouseListener() {
                 @Override
-                public void mouseClicked(MouseEvent e) {}
+                public void mouseClicked(MouseEvent e) {
+                    DialogMessage.messageDialog("Fonctionnalité en cours de développement.");
+                }
 
                 @Override
                 public void mousePressed(MouseEvent e) {}
@@ -161,7 +162,6 @@ public class ManagerWindow extends JFrame {
         btnExpiration.setMargin(new Insets(0, 0, 0, 0));//Enlève les espaces autour de l'icône
         btnExpiration.setContentAreaFilled(false);
 
-            //TODO Faire la fonction Expiration
             btnExpiration.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -214,20 +214,9 @@ public class ManagerWindow extends JFrame {
         JMenuItem deleteItem = new JMenuItem("Supprimer");
         JMenuItem editItem = new JMenuItem("Modifier");
 
-        deleteItem.addActionListener(new ActionListener() {
+        deleteItem.addActionListener(e -> ManagePassword.deletePassword());
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ManagePassword.deletePassword();
-            }
-        });
-
-        editItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-
-            }
-        });
+        editItem.addActionListener(actionEvent -> DialogMessage.messageDialog("Fonctionnalité en cours de développement."));
 
         popupMenu.add(deleteItem);
         popupMenu.add(editItem);

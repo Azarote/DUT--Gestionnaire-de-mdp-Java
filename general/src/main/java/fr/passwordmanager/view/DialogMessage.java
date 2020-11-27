@@ -47,13 +47,13 @@ public class DialogMessage {
     public static void warningDialog(List<Password> liste) {
         List<String> temp = new ArrayList<>();
 
-        for(int i = 0; i < liste.size(); i++) {
-            temp.add(String.valueOf(liste.get(i).getTitle()));
+        for (Password password : liste) {
+            temp.add(String.valueOf(password.getTitle()));
         }
 
         if(!temp.isEmpty())
-            JOptionPane.showMessageDialog(null,temp,"Mot(s) de passe expirant dans 5 jours", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,temp,"Mot(s) de passe expirant prochainement (moins de 5 jours)", JOptionPane.WARNING_MESSAGE);
         else
-            JOptionPane.showMessageDialog(null,"Aucun mot de passe n'expire dans 5 jours.","Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Aucun mot de passe n'expire prochainement","Erreur", JOptionPane.ERROR_MESSAGE);
     }
 }

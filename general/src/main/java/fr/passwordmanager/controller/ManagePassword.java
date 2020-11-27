@@ -7,11 +7,8 @@ import fr.passwordmanager.view.DialogMessage;
 import fr.passwordmanager.view.ManagerWindow;
 
 import java.io.*;
-import java.text.DateFormatSymbols;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -50,12 +47,25 @@ public class ManagePassword implements Serializable {
     * @param password Le mot de passe
     * @param URL Le lien du site
     * @param description La description
+    * @param year L'année
+    * @param month Le mois
+    * @param day La jour
     */
    public static void AddPasswordProcessing(String titre, String username, char[] password, String URL, String description, int year,int month,int day){
       Singleton.getInstance().getPasswordList().add(new Password(titre,username,String.valueOf(password),URL,description,year,month+1,day));
       refreshTable();
    }
 
+
+   /**
+    * <p>Méthode qui ajoute un mot de passe au tableau sans la date</p>
+    *
+    * @param titre Le titre du mot de passe
+    * @param username Le nom d'utilisateur
+    * @param password Le mot de passe
+    * @param URL Le lien du site
+    * @param description La description
+    */
    public static void AddPasswordProcessingIfDateEmpty(String titre, String username, char[] password, String URL, String description){
       Singleton.getInstance().getPasswordList().add(new Password(titre,username,String.valueOf(password),URL,description,0,0,0));
       refreshTable();
@@ -115,6 +125,13 @@ public class ManagePassword implements Serializable {
          }
       }
    }
+
+
+   /**
+    * <p>Méthode qui récupère les mots de passe dont la date expire bientôt (5 jours)</p>
+    *
+    * @throws ParseException Exception analyse syntaxique
+    */
    public static void isDateExpire() throws ParseException {
       LocalDate datenow = java.time.LocalDate.now();
       List<Password> expiresoon= new ArrayList<>();
@@ -132,9 +149,5 @@ public class ManagePassword implements Serializable {
             }
          }
       DialogMessage.warningDialog(expiresoon);
-   }
-
-   public static void main(String[] args) throws ParseException {
-
    }
 }
