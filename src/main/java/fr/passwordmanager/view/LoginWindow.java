@@ -34,7 +34,7 @@ public class LoginWindow extends JFrame {
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
         this.setLayout(null);
 
-        ImageIcon icon = new ImageIcon("../general/images/cadenas.png");//Icône
+        ImageIcon icon = new ImageIcon(getClass().getResource("/cadenas.png"));//Icône
         this.setIconImage(icon.getImage());
 
         //Label demandant d'entrer le mot de passe
@@ -62,9 +62,9 @@ public class LoginWindow extends JFrame {
 
                         if(result == 0) {
                             dispose();
-                            if (new File("../general/src/data.json").exists()) {
+                            if (new File("data.json").exists()) {
                                 String passwordHashed = Singleton.getInstance().getInfo();
-                                FileEncrypterDecrypter.decryptedFile(passwordHashed.substring(0, 16), "../general/src/data.json", "../general/src/data.json");//On chiffre le fichier
+                                FileEncrypterDecrypter.decryptedFile(passwordHashed.substring(0, 16), "data.json", "data.json");//On chiffre le fichier
                             }
                             new ManagerWindow();
                         }
@@ -95,9 +95,9 @@ public class LoginWindow extends JFrame {
 
                     if(result == 0) {
                         dispose();
-                        if (new File("../general/src/data.json").exists()) {
+                        if (new File("data.json").exists()) {
                             String passwordHashed = Singleton.getInstance().getInfo();
-                            FileEncrypterDecrypter.decryptedFile(passwordHashed.substring(0, 16), "../general/src/data.json", "../general/src/data.json");//On chiffre le fichier
+                            FileEncrypterDecrypter.decryptedFile(passwordHashed.substring(0, 16), "data.json", "data.json");//On chiffre le fichier
                         }
                         new ManagerWindow();
                     }
@@ -152,7 +152,7 @@ public class LoginWindow extends JFrame {
             });
 
         //Image pour le fond de la fenêtre
-        ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundLogin.png");
+        ImageIcon imgBackground = new ImageIcon(getClass().getResource("/background/backgroundLogin.png"));
         JLabel background = new JLabel("",imgBackground,JLabel.CENTER);
         background.setBounds(0,0,500,265);
         this.add(background);

@@ -76,7 +76,7 @@ public class ManagePassword implements Serializable {
     *
     */
    public static void ListSaving() {
-      try(OutputStream fos = new FileOutputStream(new File("../general/src/data.json"))) {
+      try(OutputStream fos = new FileOutputStream(new File("data.json"))) {
          mapper.writeValue(fos, Singleton.getInstance().getPasswordList());
       }
       catch(IOException e)
@@ -90,7 +90,7 @@ public class ManagePassword implements Serializable {
     * @throws IOException Les exceptions
     */
    public static void ListReading() throws IOException {
-      File data = new File("../general/src/data.json");
+      File data = new File("data.json");
       if (data.exists()) {
          CollectionType listType = mapper.getTypeFactory().constructCollectionType(ArrayList.class, Password.class);
          List temp = mapper.readValue(data, listType);

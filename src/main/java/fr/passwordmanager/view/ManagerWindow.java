@@ -53,7 +53,7 @@ public class ManagerWindow extends JFrame {
         this.setLocationRelativeTo(null); //Centre la fenêtre
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
 
-        ImageIcon icon = new ImageIcon("../general/images/cadenas.png");//Icône
+        ImageIcon icon = new ImageIcon(getClass().getResource("/cadenas.png"));//Icône
         this.setIconImage(icon.getImage());
 
         JToolBar menu = new JToolBar();//Crée une barre d'outils pour mettre les boutons
@@ -61,7 +61,7 @@ public class ManagerWindow extends JFrame {
         menu.setBackground(new Color(186, 186, 186,255));//Colore le fond de la barre d'outils en gris
 
         //Bouton pour ajouter un mdp
-        ImageIcon ajouterIcon = new ImageIcon("../general/images/icons/ajouter_icon.jpg");//Icône Ajouter un mot de passe
+        ImageIcon ajouterIcon = new ImageIcon(getClass().getResource("/icons/ajouter_icon.jpg"));//Icône Ajouter un mot de passe
         JButton btnAjouter = new JButton(ajouterIcon);
         btnAjouter.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnAjouter.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
@@ -92,7 +92,7 @@ public class ManagerWindow extends JFrame {
         menu.add(btnAjouter);
 
         //Bouton pour supprimer un mdp
-        ImageIcon supprimerIcon = new ImageIcon("../general/images/icons/supprimer_icon.jpg");//Icône Supprimer un mot de passe
+        ImageIcon supprimerIcon = new ImageIcon(getClass().getResource("/icons/supprimer_icon.jpg"));//Icône Supprimer un mot de passe
         JButton btnSupprimer = new JButton(supprimerIcon);
         btnSupprimer.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnSupprimer.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
@@ -124,7 +124,7 @@ public class ManagerWindow extends JFrame {
         menu.addSeparator();//Ajoute une séparation à droite du bouton "Supprimer un mdp"
 
         //Bouton pour modifier un mdp
-        ImageIcon modifierIcon = new ImageIcon("../general/images/icons/modifier_icon.jpg");//Icône Modifier un mot de passe
+        ImageIcon modifierIcon = new ImageIcon(getClass().getResource("/icons/modifier_icon.jpg"));//Icône Modifier un mot de passe
         JButton btnModifier = new JButton(modifierIcon);
         btnModifier.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnModifier.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
@@ -155,7 +155,7 @@ public class ManagerWindow extends JFrame {
         //menu.add(Box.createHorizontalGlue());//Ajoute un espacement à droite du dernier bouton pour centrer
 
         //Bouton pour voir les mots de passe expirant bientôt
-        ImageIcon expirationIcon = new ImageIcon("../general/images/icons/expiration_icon.png");//Icône Expiration
+        ImageIcon expirationIcon = new ImageIcon(getClass().getResource("/icons/expiration_icon.png"));//Icône Expiration
         JButton btnExpiration = new JButton(expirationIcon);
         btnExpiration.setFocusPainted(false);//Empêche le bouton d'être sélectionné par défaut (rectangle gris)
         btnExpiration.setFocusable(false);//Empêche le bouton d'être sélectionné par défaut
@@ -196,9 +196,9 @@ public class ManagerWindow extends JFrame {
                 int result = DialogMessage.confirmDialog("Êtes-vous sur de vouloir fermer le gestionnaire ?","Confirmation");
                 if (result == JOptionPane.YES_OPTION) {
                     ManagePassword.ListSaving();
-                    if (new File("../general/src/data.json").exists()){
+                    if (new File("data.json").exists()){
                         String passwordHashed = Singleton.getInstance().getInfo();
-                        FileEncrypterDecrypter.encryptFile(passwordHashed.substring(0, 16), "../general/src/data.json", "../general/src/data.json");//On chiffre le fichier
+                        FileEncrypterDecrypter.encryptFile(passwordHashed.substring(0, 16), "data.json", "data.json");//On chiffre le fichier
                     }
                     System.exit(0);//On ferme la fenêtre
                 }

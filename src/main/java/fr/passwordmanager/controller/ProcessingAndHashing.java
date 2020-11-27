@@ -72,7 +72,7 @@ public class ProcessingAndHashing {
         final String hashed = Hashing.sha256()
                 .hashString((String.valueOf(mainPassword)), StandardCharsets.UTF_8)
                 .toString();
-        File hashedFile = new File("../general/src/hashed.dat");
+        File hashedFile = new File("hashed.dat");
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(hashedFile));
             writer.write(hashed);

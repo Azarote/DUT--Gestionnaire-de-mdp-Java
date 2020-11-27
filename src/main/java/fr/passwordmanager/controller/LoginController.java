@@ -28,8 +28,8 @@ public class LoginController {
         if(reponse == 0)
         {
             try{
-                File filePwd = new File("../general/src/hashed.dat");//Repère le fichier du mdp global
-                File fileData = new File("../general/src/data.json");//Repère le fichier des données
+                File filePwd = new File("hashed.dat");//Repère le fichier du mdp global
+                File fileData = new File("data.json");//Repère le fichier des données
 
                 filePwd.delete();//Supprime le fichier
                 fileData.delete();//Supprime le fichier
@@ -55,7 +55,7 @@ public class LoginController {
 
         //Lit le mot de passe enregistré
         try{
-            Path file = Path.of("../general/src/hashed.dat");
+            Path file = Path.of("hashed.dat");
             pwdSaved = Files.readString(file);
 
         }

@@ -29,7 +29,7 @@ public class Principal {
          * on lance la fenêtre de Login au démarrage
          * sinon fenêtre SignUp
          */
-        if(new File("../general/src/hashed.dat").exists())
+        if(new File("hashed.dat").exists())
             new LoginWindow();
         else
             new SignUpWindow();

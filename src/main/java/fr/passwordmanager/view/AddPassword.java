@@ -23,7 +23,7 @@ public class AddPassword extends JDialog {
     /**
      * Icône pour ToolTipText
      */
-    private ImageIcon info = new ImageIcon("../general/images/icons/info.png");
+    private ImageIcon info = new ImageIcon(getClass().getResource("/icons/info.png"));
 
     /**
      * Instance du contrôleur
@@ -64,7 +64,7 @@ public class AddPassword extends JDialog {
         this.setResizable(false);//Empêche le redimensionnement de la fenêtre
         this.setLayout(null);
 
-        ImageIcon icon = new ImageIcon("../general/images/cadenas.png");//Icône
+        ImageIcon icon = new ImageIcon(getClass().getResource("/cadenas.png"));//Icône
         this.setIconImage(icon.getImage());
 
         UIManager.put("ToolTip.background", Color.white);//Rend le fond des bulles d'aide blanc

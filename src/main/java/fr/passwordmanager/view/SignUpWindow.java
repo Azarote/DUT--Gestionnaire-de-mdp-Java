@@ -36,7 +36,7 @@ public class SignUpWindow extends JFrame {
         this.setResizable(false); //Empêche le redimensionnement de la fenêtre
         this.setLayout(null);
 
-        ImageIcon icon = new ImageIcon("../general/images/cadenas.png");//Icône
+        ImageIcon icon = new ImageIcon(getClass().getResource("/cadenas.png"));//Icône
         this.setIconImage(icon.getImage());
 
         //Label demandant d'entrer un nouveau mot de passe
@@ -144,7 +144,7 @@ public class SignUpWindow extends JFrame {
         this.add(info);
 
         //Image pour le fond de la fenêtre
-        ImageIcon imgBackground = new ImageIcon("../general/images/background/backgroundSignUp.png");
+        ImageIcon imgBackground = new ImageIcon(getClass().getResource("/background/backgroundSignUp.png"));
         JLabel background = new JLabel("",imgBackground,JLabel.CENTER);
         background.setBounds(0,0,600,370);
         this.add(background);
