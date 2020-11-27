@@ -51,8 +51,8 @@ public class ManagePassword implements Serializable {
     * @param URL Le lien du site
     * @param description La description
     */
-   public static void AddPasswordProcessing(String titre, String username, char[] password, String URL, String description, int year,int day,int month){
-      Singleton.getInstance().getPasswordList().add(new Password(titre,username,String.valueOf(password),URL,description,year,day,month));
+   public static void AddPasswordProcessing(String titre, String username, char[] password, String URL, String description, int year,int month,int day){
+      Singleton.getInstance().getPasswordList().add(new Password(titre,username,String.valueOf(password),URL,description,year,month+1,day));
       refreshTable();
    }
 
@@ -122,8 +122,7 @@ public class ManagePassword implements Serializable {
 
          for (int i = 0; i < Singleton.getInstance().getPasswordList().size(); i++) {
             if(Singleton.getInstance().getPasswordList().get(i).getYear()!=0) {
-               int month = Singleton.getInstance().getPasswordList().get(i).getMonth() + 1;
-               String date1 = Singleton.getInstance().getPasswordList().get(i).getYear() + "-" + month + "-" + Singleton.getInstance().getPasswordList().get(i).getDay();
+               String date1 = Singleton.getInstance().getPasswordList().get(i).getYear() + "-" + Singleton.getInstance().getPasswordList().get(i).getMonth() + "-" + Singleton.getInstance().getPasswordList().get(i).getDay();
                LocalDate datepassword = LocalDate.parse(date1, formatter);
                long difference = ChronoUnit.DAYS.between(datenow, datepassword);
 
